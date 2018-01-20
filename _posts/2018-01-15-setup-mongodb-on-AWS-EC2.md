@@ -1,5 +1,13 @@
+---
+layout: post
+title: "Launch mongoDB on EC2 instance"
+date: 2018-01-18
+---
+
+
+
 # Launch mongoDB on EC2 instance
-*Yrieix Leprince* -- 18/01/2018
+
 ### SSH on the EC2 instance
 
 In a new terminal (change *MY-Public-DNS-(IPv4)*):

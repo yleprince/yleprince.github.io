@@ -23,14 +23,14 @@ https://docs.mongodb.com/manual/tutorial/install-mongodb-on-amazon/
 sudo vi /etc/yum.repos.d/mongodb-org-3.6.repo
 ```
 The copy-paste the following lines:
-<code><br>
-[mongodb-org-3.6]<br>
-name=MongoDB Repository<br>
-baseurl=https://repo.mongodb.org/yum/amazon/2013.03/mongodb-org/3.6/x86_64/<br>
-gpgcheck=1<br>
-enabled=1<br>
+```
+[mongodb-org-3.6]
+name=MongoDB Repository
+baseurl=https://repo.mongodb.org/yum/amazon/2013.03/mongodb-org/3.6/x86_64/
+gpgcheck=1
+enabled=1
 gpgkey=https://www.mongodb.org/static/pgp/server-3.6.asc
-</code>
+```
 
 2° You can now **install** mongodb:
 ```

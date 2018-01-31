@@ -13,13 +13,29 @@
       position: relative;
       z-index: 100;
     }
-    #sticky {
+    #sticky0 {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 75%;
+      z-index: 50;
+    }
+		#sticky1 {
       position: absolute;
       top: 0;
       right: 0;
       width: 50%;
       z-index: 50;
     }
+		#sticky2 {
+			position: absolute;
+			top: 0;
+			right: 0;
+			width: 25%;
+			z-index: 50;
+		}
+
+
     .panel {
       width: 100%;
       padding-left: 20px;
@@ -39,9 +55,13 @@
 </head>
 
 <body>
-  <div id="sticky">
-
+  <div id="sticky0">
   </div>
+	<div id="sticky1">
+  </div>
+	<div id="sticky2">
+	</div>
+
   <div id="container" style="height: 100vh; overflow: scroll">
     <div id="content">
       <div class="panel">
@@ -95,31 +115,79 @@ window.requestAnimationFrame(render)
 
     var translate = 'translate(' + (WIDTH / 2) + ',' + (HEIGHT / 2) + ')'
 
-    var svg = d3.select("#sticky").append("svg")
+    var svg0 = d3.select("#sticky0").append("svg")
+    	.attr('width', WIDTH)
+    	.attr('height', HEIGHT)
+
+		var svg1 = d3.select("#sticky1").append("svg")
+	  	.attr('width', WIDTH)
+	  	.attr('height', HEIGHT)
+
+		var svg2 = d3.select("#sticky2").append("svg")
     	.attr('width', WIDTH)
     	.attr('height', HEIGHT)
 
     var currentScrollTop = d3.select('#currentScrollTop')
 
-    var hourLayer = svg.append('g')
+    var hourLayer0 = svg0.append('g')
     	.attr('transform', translate)
 
-    var hourRect = hourLayer.append('rect')
+		var hourLayer1 = svg1.append('g')
+    	.attr('transform', translate)
+
+		var hourLayer2 = svg2.append('g')
+			.attr('transform', translate)
+
+    var hourRect0 = hourLayer0.append('rect')
     	.attr('x', -3)
     	.attr('y', -87)
     	.attr('width', 6)
     	.attr('height', 90)
     	.attr('fill', '#333')
 
-    var minuteLayer = svg.append('g')
+		var hourRect1 = hourLayer1.append('rect')
+    	.attr('x', -3)
+    	.attr('y', -87)
+    	.attr('width', 6)
+    	.attr('height', 90)
+    	.attr('fill', '#333')
+
+		var hourRect2 = hourLayer2.append('rect')
+			.attr('x', -3)
+			.attr('y', -87)
+			.attr('width', 6)
+			.attr('height', 90)
+			.attr('fill', '#333')
+
+    var minuteLayer0 = svg0.append('g')
     	.attr('transform', translate)
 
-    var minuteRect = minuteLayer.append('rect')
+		var minuteLayer1 = svg1.append('g')
+			.attr('transform', translate)
+
+		var minuteLayer2 = svg2.append('g')
+			.attr('transform', translate)
+
+    var minuteRect0 = minuteLayer0.append('rect')
     	.attr('x', -2)
     	.attr('y', -118)
     	.attr('width', 4)
     	.attr('height', 120)
     	.attr('fill', '#333')
+
+		var minuteRect1 = minuteLayer1.append('rect')
+    	.attr('x', -2)
+    	.attr('y', -118)
+    	.attr('width', 4)
+    	.attr('height', 120)
+    	.attr('fill', '#333')
+
+		var minuteRect2 = minuteLayer2.append('rect')
+			.attr('x', -2)
+			.attr('y', -118)
+			.attr('width', 4)
+			.attr('height', 120)
+			.attr('fill', '#333')
 
     var body = d3.select('body').node()
     var container = d3.select('#container')
@@ -158,10 +226,14 @@ window.requestAnimationFrame(render)
         scrollTop = newScrollTop
 
         var hourHandRotate = hourHandRotation(scrollTop)
-      	hourLayer.attr('transform', translate + ' rotate(' + hourHandRotate + ')')
+      	hourLayer0.attr('transform', translate + ' rotate(' + hourHandRotate + ')')
+				hourLayer1.attr('transform', translate + ' rotate(' + hourHandRotate + ')')
+				hourLayer2.attr('transform', translate + ' rotate(' + hourHandRotate + ')')
 
         var minuteHandRotate = minuteHandRotation(scrollTop)
-      	minuteLayer.attr('transform', translate + ' rotate(' + minuteHandRotate + ')')
+      	minuteLayer0.attr('transform', translate + ' rotate(' + minuteHandRotate + ')')
+				minuteLayer1.attr('transform', translate + ' rotate(' + minuteHandRotate + ')')
+				minuteLayer2.attr('transform', translate + ' rotate(' + minuteHandRotate + ')')
 
         currentScrollTop.text(scrollTop)
       }

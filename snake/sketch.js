@@ -4,7 +4,7 @@ let foods = [];
 
 function setup() {
   // put setup code here
-  createCanvas(300, 300);
+  createCanvas(500, 500);
   s = new Snake();
   frameRate(10);
 

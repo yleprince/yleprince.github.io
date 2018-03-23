@@ -7,8 +7,8 @@ function Snake() {
 	this.total = 0;
 	this.tail = [];
 
-	this.eat = function(pos){
-		var d = dist(this.x, this.y, pos.x, pos.y);
+	this.eat = function(food){
+		var d = dist(this.x, this.y, food.x, food.y);
 		if (d<1){
 			this.total++;
 			return true;
@@ -35,9 +35,7 @@ function Snake() {
 
 	}
 
-
 	this.update = function () {
-
 		if (this.total === this.tail.length){
 			for (var i = 0; i<this.tail.length-1; i++){
 				this.tail[i] = this.tail[i+1];

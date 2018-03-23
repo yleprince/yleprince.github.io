@@ -1,21 +1,18 @@
 let s;
 let scl = 10;
-let food;
+let foods = [];
 
 function setup() {
   // put setup code here
   createCanvas(300, 300);
   s = new Snake();
   frameRate(10);
-  pickLocation();
+
+  f = new Food(width, height, scl);
+  f.pickLocation();
+  foods[0] = f;
 }
 
-function pickLocation(){
-	var cols = floor(width/scl);
-	var rows = floor(height/scl);
-	food = createVector(floor(random(cols)), floor(random(rows)));
-	food.mult(scl);
-}
 
 
 
@@ -23,17 +20,28 @@ function draw() {
   // put drawing code here
   background(51);
 
-  if (s.eat(food)) {
-  	pickLocation();
+  for (var i=0; i<foods.length; i++){
+    f = foods[i];
+    if (s.eat(f)) {
+  	 f.pickLocation();
+     new_f = new Food(width, height, scl);
+     new_f.pickLocation();
+     foods.push(new_f);
+     break;
+     console.log(foods.length);
+    }
   }
   s.death();
   s.update();
-  s.show();
-
 
   
   fill(255, 0, 100);
-  rect(food.x, food.y, scl, scl);
+  for (var i=0; i<foods.length; i++){
+    f = foods[i];
+    rect(f.x, f.y, scl, scl);
+  }
+  s.show();
+
 }
 
 

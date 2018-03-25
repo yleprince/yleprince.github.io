@@ -22,6 +22,9 @@ function Snake() {
 		this.yspeed = y;
 	}
 
+	this.score = function(){
+		return this.tail.length;
+	}
 
 	this.death = function(){
 		for (var i = 0; i < this.tail.length; i++){

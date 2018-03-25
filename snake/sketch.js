@@ -1,24 +1,37 @@
 let s;
 let scl = 10;
 let foods = [];
+var score;
+var max_score;
 
 function setup() {
-  // put setup code here
-  createCanvas(500, 500);
+  var canvas = createCanvas(600, 400);
+  canvas.parent('sketch-holder');
   s = new Snake();
   frameRate(10);
 
   f = new Food(width, height, scl);
   f.pickLocation();
   foods[0] = f;
+
+  score = 0;
+  max_score = 0;
 }
 
 
 
 
 function draw() {
-  // put drawing code here
-  background(51);
+  background(42);
+
+  noStroke();
+  fill(0, 102, 153, 100);
+  textSize(64); 
+  text(score,width/2-30,height/2+30);
+
+  fill(0, 102, 153, 200);
+  textSize(16); 
+  text('Max: '+max_score,width*0.8,height*0.95);
 
   for (var i=0; i<foods.length; i++){
     f = foods[i];
@@ -28,18 +41,23 @@ function draw() {
      new_f.pickLocation();
      foods.push(new_f);
      break;
-     console.log(foods.length);
     }
+  }
+
+  score = s.score();
+  if (max_score<score){
+    max_score = score;
   }
   s.death();
   s.update();
 
   
-  fill(255, 0, 100);
+  fill(0, 102, 153);
   for (var i=0; i<foods.length; i++){
     f = foods[i];
     rect(f.x, f.y, scl, scl);
   }
+  stroke('rgb(0, 102, 153)');
   s.show();
 
 }

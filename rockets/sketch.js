@@ -4,7 +4,7 @@ var populations = [];
 
 var lifeP;
 var count = 0;
-var lifespan = 400;
+var lifespan = 300;
 
 var maxForce = 0.2;
 

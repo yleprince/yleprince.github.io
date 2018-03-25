@@ -2,13 +2,11 @@ var mutation_rate = 0.01;
 var nb_populations = 2;
 var populations = [];
 
-var lifeP;
 var count = 0;
 var lifespan = 300;
 
 var maxForce = 0.2;
 
-var generationP;
 var generationCount = 0;
 
 var target;
@@ -23,9 +21,8 @@ var rx = canvas_width/2 - rw/2;
 var ry = canvas_height/2;
 
 function setup() {
-	createCanvas(canvas_width, canvas_height);
-	lifeP = createP();
-	generationP = createP();
+	var canvas = createCanvas(canvas_width, canvas_height);
+	canvas.parent('sketch-holder');
 	
 	for (var i=0; i<nb_populations; i++){
 		populations[i] = new Population();
@@ -37,8 +34,9 @@ function setup() {
 function draw() {
 	
 	background(50);
-	lifeP.html('Life: ' + count);
-	generationP.html('Generation: ' + generationCount);
+	fill(0, 102, 153, 200);
+	textSize(16); 
+	text('Generation: ' + generationCount, width*0.8, height*0.95);
 	
 	for (var i=0; i<nb_populations; i++){
 		populations[i].run();
@@ -57,9 +55,14 @@ function draw() {
 
 	noStroke();
 	fill(255);
+	ellipse(target.x, target.y, target_diameter, target_diameter);
+
 
 	rect(rx, ry, rw, rh);
 	ellipse(target.x, target.y, target_diameter, target_diameter);
+
+	fill(0, 102, 153, 200);
+	rect(rx, ry, rw*count/lifespan, rh);
 
 }
 

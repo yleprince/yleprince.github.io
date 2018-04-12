@@ -16,6 +16,14 @@ h1{
   font-size: 80px;
 }
 
+h3 {
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  font: 20px "Lato", sans-serif;
+  color: #111;
+}
+
+
 #sketch-holder{
   margin: 0;
   display: flex;
@@ -52,10 +60,11 @@ h1{
 .caption {
   position: absolute;
   left: 0;
-  top: 50%;
+  top: 35%;
   width: 100%;
   text-align: center;
   color: #000;
+  z-index: 5;
 }
 
 .caption span.border {
@@ -68,12 +77,16 @@ h1{
 
 }
 
-h3 {
-  letter-spacing: 5px;
-  text-transform: uppercase;
-  font: 20px "Lato", sans-serif;
-  color: #111;
+.arrow{
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  text-align: center;
+  color: #000;
+  z-index: 3;
 }
+
 
 .buttonsDiv{
   position: absolute;
@@ -82,6 +95,7 @@ h3 {
   width: 100%;
   text-align: center;
   color: #000;
+  z-index: 2;
 }
 
 
@@ -197,8 +211,8 @@ h3 {
   43% {
     -webkit-animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
     animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
-    -webkit-transform: translate3d(0, -30px, 0);
-    transform: translate3d(0, -30px, 0);
+    -webkit-transform: translate3d(0, -100px, 0);
+    transform: translate3d(0, -100px, 0);
   }
 
   70% {
@@ -230,8 +244,8 @@ h3 {
   43% {
     -webkit-animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
     animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
-    -webkit-transform: translate3d(0, -60px, 0);
-    transform: translate3d(0, -60px, 0);
+    -webkit-transform: translate3d(0, -100px, 0);
+    transform: translate3d(0, -100px, 0);
   }
 
   70% {
@@ -324,4 +338,37 @@ h3 {
 .pulse {
   -webkit-animation-name: pulse;
   animation-name: pulse;
+}
+
+
+
+@-webkit-keyframes slideInUp {
+  from {
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+    visibility: visible;
+  }
+
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+    visibility: visible;
+  }
+
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.slideInUp {
+  -webkit-animation-name: slideInUp;
+  animation-name: slideInUp;
 }

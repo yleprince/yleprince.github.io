@@ -1,8 +1,7 @@
 body {
 	height: 100%;
-  	margin: 0;
-    font-family: 'Poiret One', cursive;
-	margin-top: 200px;
+	margin: 0;
+  font-family: 'Lato', cursive;
 	text-align: center;
 	color: white;
 }
@@ -10,18 +9,9 @@ body {
 
 #clock {
 	font-weight: 200;
-	font-size: 100px;
+	font-size: 80px;
+  text-shadow:4px 4px 12px #000000;
 }
-
-
-
-
-
-
-
-
-
-
 
 
 /*!
@@ -75,4 +65,32 @@ body {
 .slideInUp {
   -webkit-animation-name: slideInUp;
   animation-name: slideInUp;
+}
+
+
+
+
+
+a:link {
+    color: white;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+a:visited {
+    color: white;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #f2a83d;
+    background-color: transparent;
+    text-decoration: underline;
+}
+
+a:active {
+    color: white;
+    background-color: transparent;
+    text-decoration: underline;
 }

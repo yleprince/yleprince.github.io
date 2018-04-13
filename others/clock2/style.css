@@ -31,6 +31,7 @@ body {
 }
 
 #HoursBar {
+  margin:0 auto;
   width: 0%;
   height: 80px;
   background-color: #4CAF50;
@@ -45,6 +46,7 @@ body {
 }
 
 #MinutesBar {
+  margin:0 auto;
   width: 0%;
   height: 40px;
   background-color: #4CAF50;
@@ -58,6 +60,7 @@ body {
 }
 
 #SecondsBar {
+  margin:0 auto;
   width: 0%;
   height: 20px;
   background-color: #4CAF50;
@@ -72,6 +75,7 @@ body {
 
 
 #MillisecondsBar {
+  margin:0 auto;
   width: 0%;
   height: 10px;
   text-align: center;

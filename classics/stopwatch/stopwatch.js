@@ -85,17 +85,17 @@ var lapsbtn = document.getElementById('lapsbtn');
 var resetbtn = document.getElementById('resetbtn');
 
 var watch = new Stopwatch(stopwatch);
+let lapID = 1;
 
-resetbtn.addEventListener('click', function(){
+function reset(){
 	watch.reset(); 
+	lapID = 1;
 	while (lapsDiv.firstChild) {
 	    lapsDiv.removeChild(lapsDiv.firstChild);
 	}
-	
-});
+}
 
-startstopbtn.addEventListener('click', function(){
-
+function startstop(){
 	if (startstopbtn.innerHTML === 'start'){ // Need to stop
 		watch.start();
 		startstopbtn.innerHTML = 'stop';
@@ -103,18 +103,35 @@ startstopbtn.addEventListener('click', function(){
 		watch.stop();
 		startstopbtn.innerHTML = 'start';
 	}
-});
+}
 
-
-let lapID = 1;
-lapsbtn.addEventListener('click', function(){
+function addLap(){
 	let lap = document.createElement('p');
 	lap.class = 'lap';
 	lap.textContent = 'lap ' + lapID + '      ---      ' + watch.getFormattedTime();
 	lapsDiv.insertBefore(lap, lapsDiv.firstChild);
 
 	lapID += 1;
-});
+}
+
+resetbtn.addEventListener('click', reset);
+
+startstopbtn.addEventListener('click', startstop);
+
+lapsbtn.addEventListener('click', addLap);
 
 
+document.addEventListener("keydown", keyDownTextField, false);
+function keyDownTextField (e) {
+  var keyCode = e.keyCode;
 
+  if (keyCode === 32){ //space bar
+  	startstop();
+  }
+  if (keyCode === 76){ // 'L'
+  	addLap();
+  }
+  if (keyCode === 82){ // 'R'
+  	reset();
+  }
+}

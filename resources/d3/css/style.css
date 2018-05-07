@@ -1,0 +1,42 @@
+@charset "UTF-8";
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  padding: 0; 
+}
+
+h1{
+  text-align: center;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+
+  color: rgba(0, 102, 153, 100);
+  font-family: 'Faster One', cursive;
+  font-size: 60px;
+}
+
+
+h2{
+  text-align: center;
+  color: rgba(0, 102, 153, 150);
+  font-family: 'Faster One', cursive;
+  font-size: 20px;
+}
+
+h3 {
+  text-align: center;
+  color: rgba(0, 102, 153, 50);
+  font-family: 'Faster One', cursive;
+  font-size: 15px;
+}
+
+/*
+#my_map{
+     margin: 0 auto;
+     padding: 30px;
+     width: 10px;
+}*/

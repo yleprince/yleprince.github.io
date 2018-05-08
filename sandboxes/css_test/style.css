@@ -83,7 +83,7 @@ ul li a{
   text-decoration: none;
   box-shadow: 0 10px 15px rgba(0,0,0,0.3);
   background: linear-gradient(0deg, #ddd, #fff);
-  transition: .3s;
+  transition: .3s ease-in-out;
 }
 
 ul li a:hover{
@@ -99,7 +99,7 @@ ul li a .fas{
   border-radius: 50%;
   font-size: 2.5em;
   color: #262626;
-  transition: .5s;
+  transition: .5s ease;
 }
 
 

@@ -86,3 +86,18 @@ Browse [https://developer.nvidia.com/rdp/cudnn-download](https://developer.nvidi
  * Choose  `Download cuDNN v7.1.3 (April 17, 2018), for CUDA 9.0`
  * And then download `cuDNN v7.1.3 Library for Linux`
  * You should now have the `cudnn-9.0-linux-x64-v7.1.tgz` file.
+
+Go to the location of `cudnn-9.0-linux-x64-v7.1.tgz` and run the following commands:
+```
+tar -zxvf cudnn-9.0-linux-x64-v7.1.tgz
+```
+
+Once extracted, run the following commands to cp the files to the right place (exact same commands than __markjay4k__):
+```
+sudo cp cuda/include/cudnn.h /usr/local/cuda/include
+sudo cp cuda/lib64/libcudnn* /usr/local/cuda/lib64
+sudo chmod a+r /usr/local/cuda/include/cudnn.h /usr/local/cuda/lib64/libcudnn*
+```
+
+
+4.

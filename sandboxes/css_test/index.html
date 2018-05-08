@@ -1,0 +1,68 @@
+<!doctype html>
+
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>YL - Homepage</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <!-- icons -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css" integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous">  </head>
+
+    <!-- page icon -->
+    <link rel="shortcut icon" href="">
+
+  <body>
+    <h1 id='page_title'>Homepage</h1>
+
+    <ul>
+      <li><a href="/algorithms"><i id='algorithms' class="fas fa-code-branch"></i></a></li>
+      <li><a href="/resources"><i id='resources' class="fas fa-database"></i></a></li>
+      <li><a href="/games"><i id='games' class="fas fa-gamepad"></i></a></li>
+    </ul>
+
+    <h2 id="selected_button"></h1>
+
+    <script type="text/javascript">
+      let hover_selected = document.getElementById('selected_button');
+      let page_title = document.getElementById('page_title');
+
+      let algorithms = {id:'algorithms', color:"#588c7e", title_color:"#dedede"};
+      let resources = {id:'resources', color:"#f2ae72", title_color:"#262626"};
+      let games = {id:'games', color:"#d96459", title_color:"#dedede"};
+
+      let buttons = [algorithms, resources, games];
+
+      for(var i = 0; i<buttons.length; i++){
+        let button = buttons[i];
+        let element = document.getElementById(button.id);
+
+        element.addEventListener("mouseover", function(){
+          hover_selected.style.transition ='1.5s';
+          hover_selected.style.opacity = '0.8';
+          hover_selected.style.color = button.title_color;
+          hover_selected.textContent = button.id;
+
+          page_title.style.transition ='1.5s';
+          page_title.style.color = button.title_color;
+
+          element.style.color = button.color;
+          document.body.style.transition = '1.5s';
+          document.body.style.backgroundColor = button.color;
+        }, false);
+
+        element.addEventListener("mouseout", function(){
+          hover_selected.style.transition ='1.5s';
+          hover_selected.style.opacity = '0';
+          element.style.color = '#262626';
+
+          document.body.style.backgroundColor = 'linear-gradient(10deg, #ddd, #fff)';
+
+        }, false);
+
+      };
+
+
+    </script>
+  </body>
+</html>

@@ -13,7 +13,7 @@
     <link rel="shortcut icon" href="">
 
   <body>
-    <h1 id='page_title'>Homepage</h1>
+    <h1 class="page_text">Homepage</h1>
 
     <ul>
       <li><a href="/algorithms"><i id='algorithms' class="fas fa-code-branch"></i></a></li>
@@ -21,15 +21,20 @@
       <li><a href="/games"><i id='games' class="fas fa-gamepad"></i></a></li>
     </ul>
 
-    <h2 id="selected_button"></h1>
+    <h2 id="selected_button" class='page_text'></h2>
+
+    <a href="/"><i id='home' class="page_text footer fas fa-home"></i></a>
+    <a href="www.linkedin.com/in/yrieixleprince/"><i id='contact' class="page_text footer fab fa-linkedin-in"></i></a>
+
+
 
     <script type="text/javascript">
       let hover_selected = document.getElementById('selected_button');
-      let page_title = document.getElementById('page_title');
+      let page_text = document.getElementsByClassName("page_text");
 
-      let algorithms = {id:'algorithms', color:"#588c7e", title_color:"#dedede"};
-      let resources = {id:'resources', color:"#f2ae72", title_color:"#262626"};
-      let games = {id:'games', color:"#d96459", title_color:"#dedede"};
+      let algorithms = {id:'algorithms', color:"#588c7e", text_color:"#dedede"};
+      let resources = {id:'resources', color:"#f2ae72", text_color:"#262626"};
+      let games = {id:'games', color:"#d96459", text_color:"#dedede"};
 
       let buttons = [algorithms, resources, games];
 
@@ -40,11 +45,13 @@
         element.addEventListener("mouseover", function(){
           hover_selected.style.transition ='1.5s';
           hover_selected.style.opacity = '0.8';
-          hover_selected.style.color = button.title_color;
           hover_selected.textContent = button.id;
 
-          page_title.style.transition ='1.5s';
-          page_title.style.color = button.title_color;
+          for (var j=0; j<page_text.length; j++){
+            let text_content = page_text[j];
+            text_content.style.transition = '1.5s';
+            text_content.style.color = button.text_color;
+          }
 
           element.style.color = button.color;
           document.body.style.transition = '1.5s';

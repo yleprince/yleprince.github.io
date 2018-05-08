@@ -101,3 +101,27 @@ ul li a .fas{
   color: #262626;
   transition: .5s;
 }
+
+
+
+.footer{
+  position: absolute;
+  top: 90%;
+  font-size: 1.5em;
+  -webkit-transition: -webkit-transform .8s ease-in-out;
+  transition:         transform .8s ease-in-out;
+  color: #262626;
+}
+
+#home {
+  left: 10%;
+}
+
+#contact {
+  left: 90%;
+}
+
+.footer:hover {
+  -webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
+}

@@ -5,7 +5,7 @@
 
 * The following commands work for my GTX 1080 GPU on a Desktop 18.04 version of Ubuntu.
 
-## Update GPU driver with `nvidia-390`
+## 1. Update GPU driver with `nvidia-390`
 
 In a terminal run the following commands:
 ```
@@ -41,11 +41,19 @@ Time to reboot the computer. If the driver installation has been done correctly,
 
 ```
 
-## Install CUDA Toolkit 9.0
+## 2. Install CUDA Toolkit 9.0
 
-From the official Nvidia website download the base installer and the two patches.
+* From the official Nvidia website download the base installer and the two patches.
 [https://developer.nvidia.com/cuda-90-download-archive](https://developer.nvidia.com/cuda-90-download-archive?target_os=Linux&target_arch=x86_64&target_distro=Ubuntu&target_version=1704&target_type=deblocal)
+* Select the following option while browsing Nvidia website:
 
+| Option | Select |
+| --- | --- |
+| Operating system | Linux |
+| Architecture | x86_64 |
+| Distribution | Ubuntu |
+| Version | 17.04 (18.04 not available yet) |
+| Installer Type | deb (local) |
 
 
 First install the base installer by running the following commands where you downloaded
@@ -70,3 +78,11 @@ To do so run the following command:
 echo "export PATH=/usr/local/cuda-9.0/bin${PATH:+:$PATH}}" >> ~/.bashrc
 echo "export LD_LIBRARY_PATH=/usr/local/cuda-9.0/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}" >> ~/.bashrc
 ```
+
+
+## 3. Install CUDNN `7.0.5`
+
+Browse [https://developer.nvidia.com/rdp/cudnn-download](https://developer.nvidia.com/rdp/cudnn-download):
+ * Choose  `Download cuDNN v7.1.3 (April 17, 2018), for CUDA 9.0`
+ * And then download `cuDNN v7.1.3 Library for Linux`
+ * You should now have the `cudnn-9.0-linux-x64-v7.1.tgz` file.

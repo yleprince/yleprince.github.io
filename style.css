@@ -1,374 +1,135 @@
-@charset "UTF-8";
 
-html, body {
-  height: 100%;
+
+/* HEX: #588c7e
+
+HEX: #f2e394
+
+HEX: #f2ae72
+
+HEX: #d96459 */
+
+
+
+body{
+  /* background: linear-gradient(10deg, #ddd, #fff); */
+  height: 100vh;
   margin: 0;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
+
+  /* margin: 0; */
+  padding: 0;
+  background: #588c7e;
+  font-family: Arial, Helvetica, sans-serif;
+  transition-timing-function: ease;
 }
 
-body {
-  padding: 0; 
-}
-
-h1{
-  text-align: center;
-  color: rgba(0, 102, 153, 100);
-  font-family: 'Faster One', cursive;
-  font-size: 80px;
-}
-
-h3 {
-  letter-spacing: 5px;
-  text-transform: uppercase;
-  font: 20px "Lato", sans-serif;
-  color: #111;
-}
-
-
-#sketch-holder{
-  margin: 0;
-  display: flex;
-
-  /* This centers our sketch horizontally. */
-  justify-content: center;
-
-  /* This centers our sketch vertically. */
-  align-items: center;
-}
-
-
-.bg {
-    /* The image used */
-    background-image: url("./pictures/osman-rana-624536-unsplash.jpg");
-
-    /* Full height */
-    height: 100%; 
-
-    /* Center and scale the image nicely */
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-
-    -webkit-filter: sepia(30%); /* Safari 6.0 - 9.0 */
-    filter: sepia(30%);
-}
-
-.bg:hover{
-    -webkit-filter: sepia(0%); /* Safari 6.0 - 9.0 */
-    filter: sepia(0%);
-}
-
-.caption {
+h1 {
   position: absolute;
-  left: 0;
   top: 35%;
-  width: 100%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+
   text-align: center;
-  color: #000;
-  z-index: 5;
-}
-
-.caption span.border {
-  background-color: #111;
-  color: #fff;
-  padding: 18px;
-  font-size: 25px;
-  letter-spacing: 12px;
-  border-radius: 8px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #f9f9f9;
+  font: 3em "Lato", sans-serif;
+  transition-timing-function: ease;
 
 }
 
-.arrow{
+h2 {
   position: absolute;
-  left: 0;
-  top: 50%;
-  width: 100%;
-  text-align: center;
-  color: #000;
-  z-index: 3;
-}
-
-
-.buttonsDiv{
-  position: absolute;
-  left: 0;
   top: 60%;
-  width: 100%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+
   text-align: center;
-  color: #000;
-  z-index: 2;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #f9f9f9;
+  font: 1.8em "Lato", sans-serif;
+  opacity: 0;
+  transition-timing-function: ease;
 }
 
 
 
-
-.button {
-    background-color: #f2a83d; /* Blue */
-    border: none;
-    color: white;
-    padding: 16px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font: 16px "Lato", sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 5px;
-    margin: 4px 2px;
-    -webkit-transition-duration: 0.4s; /* Safari */
-    transition-duration: 0.4s;
-    cursor: pointer;
-    border-radius: 8px;
+ul{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  margin: 0;
+  padding: 0;
+  display: flex;
 }
 
-.button1 {
-    background-color: #111; 
-    color: white; 
-    border: 2px solid #f2a83d;
+ul li{
+  list-style: none;
 }
 
-.button1:hover {
-    background-color: #f2a83d;
-    color: black;
+ul li a{
+  position: relative;
+  width: 5em;
+  height: 5em;
+  display: block;
+  text-align: center;
+  margin: 0 2em;
+  border-radius: 50%;
+  padding: 0.5em;
+  box-sizing: border-box;
+  text-decoration: none;
+  box-shadow: 0 10px 15px rgba(0,0,0,0.3);
+  background: linear-gradient(0deg, #ddd, #fff);
+  transition: .3s ease-in-out;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*!
- * animate.css -http://daneden.me/animate
- * Version - 3.6.0
- * Licensed under the MIT license - http://opensource.org/licenses/MIT
- *
- * Copyright (c) 2018 Daniel Eden
- */
-
-.animated {
-  -webkit-animation-duration: 2s;
-  animation-duration: 2s;
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both;
+ul li a:hover{
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
 }
 
-.animated.infinite {
-  -webkit-animation-iteration-count: infinite;
-  animation-iteration-count: infinite;
-}
-
-@-webkit-keyframes bounce{
-  from,
-  20%,
-  53%,
-  80%,
-  to {
-    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-  }
-
-  40%,
-  43% {
-    -webkit-animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
-    animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
-    -webkit-transform: translate3d(0, -100px, 0);
-    transform: translate3d(0, -100px, 0);
-  }
-
-  70% {
-    -webkit-animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
-    animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
-    -webkit-transform: translate3d(0, -15px, 0);
-    transform: translate3d(0, -15px, 0);
-  }
-
-  90% {
-    -webkit-transform: translate3d(0, -4px, 0);
-    transform: translate3d(0, -4px, 0);
-  }
-}
-
-@keyframes bounce {
-  from,
-  20%,
-  53%,
-  80%,
-  to {
-    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-  }
-
-  40%,
-  43% {
-    -webkit-animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
-    animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
-    -webkit-transform: translate3d(0, -100px, 0);
-    transform: translate3d(0, -100px, 0);
-  }
-
-  70% {
-    -webkit-animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
-    animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
-    -webkit-transform: translate3d(0, -15px, 0);
-    transform: translate3d(0, -15px, 0);
-  }
-
-  90% {
-    -webkit-transform: translate3d(0, -4px, 0);
-    transform: translate3d(0, -4px, 0);
-  }
-}
-
-.bounce {
-  -webkit-animation-name: bounce;
-  animation-name: bounce;
-  -webkit-transform-origin: center bottom;
-  transform-origin: center bottom;
-}
-
-@-webkit-keyframes flash {
-  from,
-  50%,
-  to {
-    opacity: 1;
-  }
-
-  25%,
-  75% {
-    opacity: 0;
-  }
-}
-
-@keyframes flash {
-  from,
-  50%,
-  to {
-    opacity: 1;
-  }
-
-  25%,
-  75% {
-    opacity: 0;
-  }
-}
-
-.flash {
-  -webkit-animation-name: flash;
-  animation-name: flash;
-}
-
-/* originally authored by Nick Pettit - https://github.com/nickpettit/glide */
-
-@-webkit-keyframes pulse {
-  from {
-    -webkit-transform: scale3d(1, 1, 1);
-    transform: scale3d(1, 1, 1);
-  }
-
-  50% {
-    -webkit-transform: scale3d(1.05, 1.05, 1.05);
-    transform: scale3d(1.05, 1.05, 1.05);
-  }
-
-  to {
-    -webkit-transform: scale3d(1, 1, 1);
-    transform: scale3d(1, 1, 1);
-  }
-}
-
-@keyframes pulse {
-  from {
-    -webkit-transform: scale3d(1, 1, 1);
-    transform: scale3d(1, 1, 1);
-  }
-
-  50% {
-    -webkit-transform: scale3d(1.05, 1.05, 1.05);
-    transform: scale3d(1.05, 1.05, 1.05);
-  }
-
-  to {
-    -webkit-transform: scale3d(1, 1, 1);
-    transform: scale3d(1, 1, 1);
-  }
-}
-
-.pulse {
-  -webkit-animation-name: pulse;
-  animation-name: pulse;
+ul li a .fas{
+  width: 100%;
+  height: 100%;
+  line-height: calc(1.6em);
+  display: block;
+  background: linear-gradient(0deg, #fff, #ddd);
+  border-radius: 50%;
+  font-size: 2.5em;
+  color: #262626;
+  transition: .5s ease;
 }
 
 
 
-@-webkit-keyframes slideInUp {
-  from {
-    -webkit-transform: translate3d(0, 100%, 0);
-    transform: translate3d(0, 100%, 0);
-    visibility: visible;
-  }
-
-  to {
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-  }
+.footer{
+  position: absolute;
+  top: 90%;
+  font-size: 1.5em;
+  -webkit-transition: -webkit-transform .8s ease-in-out;
+          transition:         transform .8s ease-in-out;
+  color: #f9f9f9;
 }
 
-@keyframes slideInUp {
-  from {
-    -webkit-transform: translate3d(0, 100%, 0);
-    transform: translate3d(0, 100%, 0);
-    visibility: visible;
-  }
-
-  to {
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-  }
+#home {
+  left: 10%;
 }
 
-.slideInUp {
-  -webkit-animation-name: slideInUp;
-  animation-name: slideInUp;
+#contact {
+  left: 90%;
+}
+
+.footer:hover {
+  -webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
+
+  color: white;   
+
+}
+
+#particles-js{
+  height: 99%;
 }

@@ -1,33 +1,96 @@
-<!DOCTYPE html>
+<!doctype html>
+
 <html>
   <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1", charset="UTF-8">
+    <meta charset="UTF-8" name="mobile-web-app-capable" content="yes">
 
-    <title>Welcome</title>
-    <link rel="stylesheet" href="style.css">
-	  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" type="text/css" href="/style.css">
 
-  </head>
+    <!-- icons -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css" integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous">  </head>
+
+    <!-- page icon -->
+    <link rel="shortcut icon" href="">
+
+    <!-- particules min js -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+
+
   <body>
-<div class="bg">
+
+    <div id="particles-js"></div>
+
+    <!-- buttons containers -->
+    <div id='container'></div>
 
 
-  <div class="caption">
-    <span class="border">WELCOME HOME</span>
-  </div>
+    <!-- selected component title displayer -->
+    <h2 id="selected_button"></h2>
+ 
+    <!-- footer -->
+    <a href="/"><i id='home' class="footer fas fa-home"></i></a>
+    <a href="https://www.linkedin.com/in/yrieixleprince/" target="_blank"><i id='contact' class="footer fab fa-linkedin-in"></i></a>
 
-  <i class="material-icons arrow animated infinite bounce" style="font-size:85px;color:white;text-shadow:4px 4px 8px #000000;">arrow_drop_down</i>
-  
-  <div class="buttonsDiv animated slideInUp">
+    <script type="text/javascript" src="/my_particles.js"></script>
+    <script type="text/javascript" src="./setup.js"></script>
+    <script type="text/javascript">
+            
+      // INIT:
+      document.title = 'YL - ' + page_title;
 
-    <button class="button button1" onclick="window.location.href='/algorithms'">Algorithms</button>
-    <button class="button button1" onclick="window.location.href='/classics'">Classics</button>
-    <button class="button button1" onclick="window.location.href='/resources'">Resources</button>
-    <button class="button button1" onclick="window.location.href='/games'">Games</button>
+      let h1 = document.createElement('h1');
+      h1.textContent = page_title;
+      document.body.appendChild(h1);
 
-  </div>
+      let container = document.getElementById('container');
+      let ul = document.createElement('ul');
+      container.appendChild(ul);
 
-</div>
+      for(var i = 0; i<content.length; i++){
+        let button = content[i];
+        ul.appendChild(createLIfromButton(button));
+      }
 
-</body>
+
+      function createLIfromButton(button){
+        let li = document.createElement('li');
+        let a = document.createElement('a');
+        a.href = button.href_;
+
+        let i = document.createElement('i');
+        i.id = button.id_;
+        i.className = button.class_;
+
+        a.appendChild(i);
+        li.appendChild(a);
+        return li;
+      }
+
+      // ACTION:
+
+      // Title of the button hovered:
+      let hover_selected = document.getElementById('selected_button');
+
+
+      for(var i = 0; i<content.length; i++){
+        let button = content[i];
+        let element = document.getElementById(button.id_);
+
+        element.addEventListener("mouseover", function(){
+          hover_selected.style.transition ='.5s';
+          hover_selected.style.opacity = '0.8';
+          hover_selected.textContent = button.id_;
+          element.style.color = '#588c7e';
+        }, false);
+
+        element.addEventListener("mouseout", function(){
+          hover_selected.style.transition ='.5s';
+          hover_selected.style.opacity = '0';
+          element.style.color = '#262626';
+
+        }, false);
+
+      };
+    </script>
+  </body>
 </html>

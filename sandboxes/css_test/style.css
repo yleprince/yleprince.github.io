@@ -32,9 +32,9 @@ h1 {
   transform: translate(-50%,-50%);
 
   text-align: center;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.3em;
   text-transform: uppercase;
-  color: #dedede;
+  color: #f9f9f9;
   font: 3em "Lato", sans-serif;
   transition-timing-function: ease;
 
@@ -49,7 +49,7 @@ h2 {
   text-align: center;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: #dedede;
+  color: #f9f9f9;
   font: 1.8em "Lato", sans-serif;
   opacity: 0;
   transition-timing-function: ease;
@@ -110,8 +110,8 @@ ul li a .fas{
   top: 90%;
   font-size: 1.5em;
   -webkit-transition: -webkit-transform .8s ease-in-out;
-  transition:         transform .8s ease-in-out;
-  color: #dedede;
+          transition:         transform .8s ease-in-out;
+  color: #f9f9f9;
 }
 
 #home {

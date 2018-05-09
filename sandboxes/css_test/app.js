@@ -1,50 +1,75 @@
 let content = [
-  {'id': 'algorithms',
-    'href': '/algorithms',
-    'class': 'fas fa-code-branch'},
-  {'id': 'resources',
-    'href': '/resources',
-    'class': 'fas fa-database'},
-  {'id': 'games',
-    'href': '/games',
-    'class': 'fas fa-gamepad'}
+  {'id_': 'algorithms',
+    'href_': '/algorithms',
+    'class_': 'fas fa-code-branch'},
+  {'id_': 'resources',
+    'href_': '/resources',
+    'class_': 'fas fa-database'},
+  {'id_': 'games',
+    'href_': '/games',
+    'class_': 'fas fa-gamepad'}
 ];
 
+let page_title = 'homepage';
 
+
+
+// INIT:
+document.title = 'YL - ' + page_title;
+
+let h1 = document.createElement('h1');
+h1.textContent = page_title;
+document.body.appendChild(h1);
+
+let container = document.getElementById('container');
+let ul = document.createElement('ul');
+container.appendChild(ul);
+
+for(var i = 0; i<content.length; i++){
+  let button = content[i];
+  ul.appendChild(createLIfromButton(button));
+}
+
+
+function createLIfromButton(button){
+  let li = document.createElement('li');
+  let a = document.createElement('a');
+  a.href = button.href_;
+
+  let i = document.createElement('i');
+  i.id = button.id_;
+  i.className = button.class_;
+
+  a.appendChild(i);
+  li.appendChild(a);
+  return li;
+}
+
+
+
+
+// ACTION:
 
 // Title of the button hovered:
 let hover_selected = document.getElementById('selected_button');
 
-// Array of all the B/W content to change
-let page_text = document.getElementsByClassName("page_text");
-
-
-
 
 for(var i = 0; i<content.length; i++){
   let button = content[i];
-  let element = document.getElementById(button.id);
+  let element = document.getElementById(button.id_);
 
   element.addEventListener("mouseover", function(){
-    hover_selected.style.transition ='1.5s';
+    hover_selected.style.transition ='.5s';
     hover_selected.style.opacity = '0.8';
-    hover_selected.textContent = button.id;
+    hover_selected.textContent = button.id_;
     element.style.color = '#588c7e';
   }, false);
 
   element.addEventListener("mouseout", function(){
-    hover_selected.style.transition ='1.5s';
+    hover_selected.style.transition ='.5s';
     hover_selected.style.opacity = '0';
     element.style.color = '#262626';
 
   }, false);
 
 };
-
-
-
-
-
-
-
-

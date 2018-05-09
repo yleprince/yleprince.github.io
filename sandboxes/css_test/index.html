@@ -12,64 +12,37 @@
     <!-- page icon -->
     <link rel="shortcut icon" href="">
 
+    <!-- particules min js -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+
+
   <body>
     <h1 class="page_text">Homepage</h1>
 
-    <ul>
-      <li><a href="/algorithms"><i id='algorithms' class="fas fa-code-branch"></i></a></li>
-      <li><a href="/resources"><i id='resources' class="fas fa-database"></i></a></li>
-      <li><a href="/games"><i id='games' class="fas fa-gamepad"></i></a></li>
-    </ul>
+
+    <div id="particles-js"></div>
+
+    <div id='buttons'>
+      <ul>
+        <li><a href="/algorithms"><i id='algorithms' class="fas fa-code-branch"></i></a></li>
+        <li><a href="/resources"><i id='resources' class="fas fa-database"></i></a></li>
+        <li><a href="/games"><i id='games' class="fas fa-gamepad"></i></a></li>
+      </ul>
+
+    </div>
+
+
 
     <h2 id="selected_button" class='page_text'></h2>
+ 
+
 
     <a href="/"><i id='home' class="page_text footer fas fa-home"></i></a>
     <a href="https://www.linkedin.com/in/yrieixleprince/" target="_blank"><i id='contact' class="page_text footer fab fa-linkedin-in"></i></a>
 
 
 
-    <script type="text/javascript">
-      let hover_selected = document.getElementById('selected_button');
-      let page_text = document.getElementsByClassName("page_text");
-
-      let algorithms = {id:'algorithms', color:"#588c7e", text_color:"#dedede"};
-      let resources = {id:'resources', color:"#f2ae72", text_color:"#262626"};
-      let games = {id:'games', color:"#d96459", text_color:"#dedede"};
-
-      let buttons = [algorithms, resources, games];
-
-      for(var i = 0; i<buttons.length; i++){
-        let button = buttons[i];
-        let element = document.getElementById(button.id);
-
-        element.addEventListener("mouseover", function(){
-          hover_selected.style.transition ='1.5s';
-          hover_selected.style.opacity = '0.8';
-          hover_selected.textContent = button.id;
-
-          for (var j=0; j<page_text.length; j++){
-            let text_content = page_text[j];
-            text_content.style.transition = '1.5s';
-            text_content.style.color = button.text_color;
-          }
-
-          element.style.color = button.color;
-          document.body.style.transition = '1.5s';
-          document.body.style.backgroundColor = button.color;
-        }, false);
-
-        element.addEventListener("mouseout", function(){
-          hover_selected.style.transition ='1.5s';
-          hover_selected.style.opacity = '0';
-          element.style.color = '#262626';
-
-          document.body.style.backgroundColor = 'linear-gradient(10deg, #ddd, #fff)';
-
-        }, false);
-
-      };
-
-
-    </script>
+    <script type="text/javascript" src="app.js"></script>
+    <script type="text/javascript" src="my_particles.js"></script>
   </body>
 </html>

@@ -1,17 +1,4 @@
-
-
-/* HEX: #588c7e
-
-HEX: #f2e394
-
-HEX: #f2ae72
-
-HEX: #d96459 */
-
-
-
 body{
-  /* background: linear-gradient(10deg, #ddd, #fff); */
   height: 100vh;
   margin: 0;
   background-repeat: no-repeat;
@@ -20,7 +7,8 @@ body{
 
   /* margin: 0; */
   padding: 0;
-  background: #588c7e;
+  /*background: #588c7e;*/
+  background: linear-gradient(10deg, #588c7e, #17b78c); 
   font-family: Arial, Helvetica, sans-serif;
   transition-timing-function: ease;
 }
@@ -91,7 +79,7 @@ ul li a:hover{
   box-shadow: 0 2px 5px rgba(0,0,0,0.3);
 }
 
-ul li a .fas .fab{
+ul li a .fas{
   width: 100%;
   height: 100%;
   line-height: calc(1.6em);

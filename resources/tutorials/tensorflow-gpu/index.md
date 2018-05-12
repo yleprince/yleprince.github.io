@@ -3,7 +3,7 @@
 
 * This tutorial has been made from __markjay4k__'s one for Ubuntu 17.10: [markjay4k tutorial](https://github.com/markjay4k/Install-Tensorflow-on-Ubuntu-17.10-/blob/master/Tensorflow%20Install%20instructions.ipynb)
 
-* The following commands work for my GTX 1080 GPU on a Desktop 18.04 version of Ubuntu. I install it for python3.
+* The following commands work for my GTX 1080 GPU on a Desktop 18.04 version of Ubuntu. I install it for python3. ʕ•ᴥ•ʔ
 
 ## 1. Update GPU driver with `nvidia-390`
 
@@ -18,7 +18,7 @@ Time to reboot the computer. If the driver installation has been done correctly,
 ```
 nvidia-smi
 
->> Tue May  8 16:52:31 2018       
+>> Sat May 12 16:44:27 2018       
    +-----------------------------------------------------------------------------+
    | NVIDIA-SMI 390.48                 Driver Version: 390.48                    |
    |-------------------------------+----------------------+----------------------+
@@ -26,17 +26,18 @@ nvidia-smi
    | Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
    |===============================+======================+======================|
    |   0  GeForce GTX 1080    Off  | 00000000:65:00.0  On |                  N/A |
-   |  0%   42C    P0    47W / 200W |    227MiB /  8118MiB |      0%      Default |
+   | 21%   49C    P0    48W / 200W |    492MiB /  8118MiB |      1%      Default |
    +-------------------------------+----------------------+----------------------+
 
    +-----------------------------------------------------------------------------+
    | Processes:                                                       GPU Memory |
    |  GPU       PID   Type   Process name                             Usage      |
    |=============================================================================|
-   |    0      1029      G   /usr/lib/xorg/Xorg                            18MiB |
-   |    0      1078      G   /usr/bin/gnome-shell                          49MiB |
-   |    0      1370      G   /usr/lib/xorg/Xorg                            86MiB |
-   |    0      1514      G   /usr/bin/gnome-shell                          70MiB |
+   |    0      2373      G   /usr/lib/xorg/Xorg                            18MiB |
+   |    0      2422      G   /usr/bin/gnome-shell                          49MiB |
+   |    0      2608      G   /usr/lib/xorg/Xorg                           162MiB |
+   |    0      2754      G   /usr/bin/gnome-shell                         215MiB |
+   |    0      7691      G   ...-token=0AADF382A4354D48E741D4FCD27C5DC8    43MiB |
    +-----------------------------------------------------------------------------+
 
 ```
@@ -128,19 +129,23 @@ Insert the test code from __markjay4k__:
 And you should see :
 
 ```
-2018-05-12 16:33:37.810583: I tensorflow/core/platform/cpu_feature_guard.cc:140] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 AVX512F FMA
-2018-05-12 16:33:37.962584: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1356] Found device 0 with properties:
+2018-05-12 16:46:12.403348: I tensorflow/core/platform/cpu_feature_guard.cc:140] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 AVX512F FMA
+2018-05-12 16:46:12.539701: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1356] Found device 0 with properties:
 name: GeForce GTX 1080 major: 6 minor: 1 memoryClockRate(GHz): 1.7715
 pciBusID: 0000:65:00.0
-totalMemory: 7.93GiB freeMemory: 7.32GiB
-2018-05-12 16:33:37.962610: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1435] Adding visible gpu devices: 0
-2018-05-12 16:33:38.149141: I tensorflow/core/common_runtime/gpu/gpu_device.cc:923] Device interconnect StreamExecutor with strength 1 edge matrix:
-2018-05-12 16:33:38.149177: I tensorflow/core/common_runtime/gpu/gpu_device.cc:929]      0
-2018-05-12 16:33:38.149183: I tensorflow/core/common_runtime/gpu/gpu_device.cc:942] 0:   N
-2018-05-12 16:33:38.149332: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1053] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 7063 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1080, pci bus id: 0000:65:00.0, compute capability: 6.1)
+totalMemory: 7.93GiB freeMemory: 7.33GiB
+2018-05-12 16:46:12.539727: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1435] Adding visible gpu devices: 0
+2018-05-12 16:46:12.724514: I tensorflow/core/common_runtime/gpu/gpu_device.cc:923] Device interconnect StreamExecutor with strength 1 edge matrix:
+2018-05-12 16:46:12.724547: I tensorflow/core/common_runtime/gpu/gpu_device.cc:929]      0
+2018-05-12 16:46:12.724554: I tensorflow/core/common_runtime/gpu/gpu_device.cc:942] 0:   N
+2018-05-12 16:46:12.724699: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1053] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 7073 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1080, pci bus id: 0000:65:00.0, compute capability: 6.1)
 b'hello tensorflow'
 ```
 
-As you can see the last line correspond to the answer we wanted to.
+As you can see the last line correspond to the answer we wanted to. (•̀ᴗ•́)و
+
+# ｡◕‿◕｡
+### Hope this will help !   
+
 
 PS: the first line `Your CPU supports [...] AVX2 AVX512F FMA` is just a warning. More details to be found on [this stackoverflow question](https://stackoverflow.com/questions/47068709/your-cpu-supports-instructions-that-this-tensorflow-binary-was-not-compiled-to-u).

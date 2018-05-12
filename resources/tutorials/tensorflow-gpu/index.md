@@ -1,22 +1,22 @@
 
-# Tensorflow-gpu install on Ubuntu 18.04
+# Tensorflow-gpu install on Ubuntu 18.04 and python3
 
 * This tutorial has been made from __markjay4k__'s one for Ubuntu 17.10: [markjay4k tutorial](https://github.com/markjay4k/Install-Tensorflow-on-Ubuntu-17.10-/blob/master/Tensorflow%20Install%20instructions.ipynb)
 
-* The following commands work for my GTX 1080 GPU on a Desktop 18.04 version of Ubuntu.
+* The following commands work for my GTX 1080 GPU on a Desktop 18.04 version of Ubuntu. I install it for python3.
 
 ## 1. Update GPU driver with `nvidia-390`
 
 In a terminal run the following commands:
 ```
-~$ sudo add-apt-repository ppa:graphics-drivers/ppa
-~$ sudo apt-get update
-~$ sudo apt-get install nvidia-390
+sudo add-apt-repository ppa:graphics-drivers/ppa
+sudo apt-get update
+sudo apt-get install nvidia-390
 ```
 
 Time to reboot the computer. If the driver installation has been done correctly, the following command should output both GPU and driver names:
 ```
-~$ nvidia-smi
+nvidia-smi
 
 >> Tue May  8 16:52:31 2018       
    +-----------------------------------------------------------------------------+
@@ -100,4 +100,47 @@ sudo chmod a+r /usr/local/cuda/include/cudnn.h /usr/local/cuda/lib64/libcudnn*
 ```
 
 
-4.
+## 4. Install `tensorflow-gpu` with pip
+
+If you want to use Tensorflow within an environment it's time to active it (`source activate my_environment`).
+
+To install Tensorflow run the following command.
+```
+python3 -m pip install tensorflow-gpu
+```
+
+## 5. Do try this at home !
+
+Inside a terminal open a python environment:
+```
+python3
+```
+
+Insert the test code from __markjay4k__:
+
+```
+>>> import tensorflow as tf
+>>> hello = tf.constant('hello tensorflow')
+>>> with tf.Session() as sesh:
+>>>     sesh.run(hello)
+```
+
+And you should see :
+
+```
+2018-05-12 16:33:37.810583: I tensorflow/core/platform/cpu_feature_guard.cc:140] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 AVX512F FMA
+2018-05-12 16:33:37.962584: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1356] Found device 0 with properties:
+name: GeForce GTX 1080 major: 6 minor: 1 memoryClockRate(GHz): 1.7715
+pciBusID: 0000:65:00.0
+totalMemory: 7.93GiB freeMemory: 7.32GiB
+2018-05-12 16:33:37.962610: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1435] Adding visible gpu devices: 0
+2018-05-12 16:33:38.149141: I tensorflow/core/common_runtime/gpu/gpu_device.cc:923] Device interconnect StreamExecutor with strength 1 edge matrix:
+2018-05-12 16:33:38.149177: I tensorflow/core/common_runtime/gpu/gpu_device.cc:929]      0
+2018-05-12 16:33:38.149183: I tensorflow/core/common_runtime/gpu/gpu_device.cc:942] 0:   N
+2018-05-12 16:33:38.149332: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1053] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 7063 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1080, pci bus id: 0000:65:00.0, compute capability: 6.1)
+b'hello tensorflow'
+```
+
+As you can see the last line correspond to the answer we wanted to.
+
+PS: the first line `Your CPU supports [...] AVX2 AVX512F FMA` is just a warning. More details to be found on [this stackoverflow question](https://stackoverflow.com/questions/47068709/your-cpu-supports-instructions-that-this-tensorflow-binary-was-not-compiled-to-u).

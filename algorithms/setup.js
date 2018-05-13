@@ -10,4 +10,4 @@ let content = [
     'class_': 'fas fa-paper-plane'}
 ];
 
-let page_title = 'homepage';
+let page_title = 'algorithms';

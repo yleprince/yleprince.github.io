@@ -14,12 +14,12 @@ function setup() {
 }
 
 function draw() {
-	background(42);
-	fill(0, 102, 153, 100);
+	background(50);
+	fill(23, 183, 140, 200);
 	textSize(64); 
 	text(score,width/2-30,height/2+30);
 
-	fill(0, 102, 153, 200);
+	fill(23, 183, 140, 200);
 	textSize(16); 
 	text('Max: '+max_score,width*0.8,height*0.95);
 

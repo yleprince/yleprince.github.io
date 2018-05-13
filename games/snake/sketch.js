@@ -48,9 +48,7 @@ function draw() {
   if (max_score<score){
     max_score = score;
   }
-  if (s.death()){
-    foods = foods[0];
-  };
+  if (s.death()){foods = [foods.pop()]; };
   s.update();
 
   

@@ -4,4 +4,4 @@ let content = [
     'class_': 'fas fa-map-pin'}
 ];
 
-let page_title = 'homepage';
+let page_title = 'javascript';

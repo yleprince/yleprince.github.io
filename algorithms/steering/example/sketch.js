@@ -12,9 +12,9 @@ function draw() {
 	background(50);
 	
 	noStroke();
-	fill(255,255,255, 200);
+	fill(23, 183, 140, 200);
 	if (agents.length > 0){
-		textSize(32); 
+		textSize(28); 
 		text(agents.length,width*0.85,height*0.95);
 	} else {
 		textSize(64); 
@@ -25,8 +25,8 @@ function draw() {
 
 	let mouse = createVector(mouseX, mouseY);
 
-	fill(255, 100);
-	ellipse(mouse.x, mouse.y, 48, 48);
+	fill(255, 80);
+	ellipse(mouse.x, mouse.y, 30, 30);
 
 
 	for (var i = 0; i < agents.length; i++){

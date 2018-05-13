@@ -1,3 +1,4 @@
+
 body{
   height: 100vh;
   margin: 0;
@@ -12,6 +13,7 @@ body{
   font-family: Arial, Helvetica, sans-serif;
   transition-timing-function: ease;
 }
+
 
 h1 {
   position: absolute;
@@ -43,6 +45,14 @@ h2 {
   transition-timing-function: ease;
 }
 
+
+h3{
+  text-align: center;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #f9f9f9;
+  font: 3em "Lato", sans-serif;
+}
 
 
 ul{
@@ -142,4 +152,21 @@ ul li a .far{
 
 #particles-js{
   height: 99%;
+}
+
+
+
+#sketch-holder{
+  display: flex;
+
+  /* This centers our sketch horizontally. */
+  justify-content: center;
+
+  /* This centers our sketch vertically. */
+  align-items: center;
+}
+
+.container{
+  margin: auto;
+  text-align: center;
 }

@@ -53,12 +53,25 @@ function draw() {
 }
 
 
-function keyPressed(){
-	if (key == ' '){
-		bird.up();
-	}
-}
+// function keyPressed(){
+// 	if(e.keyCode == 32 && e.target == document.body) {
+//     	e.preventDefault();
+//     	bird.up();
+//   	}
+
+// 	// if (key == ' '){
+// 	// 	bird.up();
+// 	// }
+// }
 
 
-
-
+window.addEventListener('keydown', function(e) {
+  	if(e.keyCode == 32 && e.target == document.body) {
+    	e.preventDefault();
+    	bird.up();
+  	}
+  	if(e.keyCode == 38 && e.target == document.body) {
+    	e.preventDefault();
+    	bird.up();
+  	}
+});

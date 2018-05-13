@@ -9,10 +9,10 @@ function setup() {
 }
 
 function draw() {
-	background(42);
+	background(50);
 	
 	noStroke();
-	fill(0, 102, 153);
+	fill(255,255,255, 200);
 	if (agents.length > 0){
 		textSize(32); 
 		text(agents.length,width*0.85,height*0.95);

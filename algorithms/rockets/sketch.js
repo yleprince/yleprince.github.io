@@ -34,9 +34,9 @@ function setup() {
 function draw() {
 	
 	background(50);
-	fill(0, 102, 153, 200);
+	fill(255,255,255, 200);
 	textSize(16); 
-	text('Generation: ' + generationCount, width*0.8, height*0.95);
+	text('Generation: ' + generationCount, width*0.41, height*0.45);
 	
 	for (var i=0; i<nb_populations; i++){
 		populations[i].run();
@@ -61,7 +61,7 @@ function draw() {
 	rect(rx, ry, rw, rh);
 	ellipse(target.x, target.y, target_diameter, target_diameter);
 
-	fill(0, 102, 153, 200);
+	fill(23, 183, 140, 200);
 	rect(rx, ry, rw*count/lifespan, rh);
 
 }

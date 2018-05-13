@@ -63,15 +63,42 @@ function draw() {
 }
 
 
-function keyPressed(){
-	if (keyCode == UP_ARROW){
-		s.dir(0, -1);
-	} else if (keyCode == DOWN_ARROW){
-		s.dir(0, 1);
-	} else if (keyCode == LEFT_ARROW){
-		s.dir(-1, 0);
-	} else if (keyCode == RIGHT_ARROW){
-		s.dir(1, 0);
-	}
+// function keyPressed(){
+// 	if (keyCode == UP_ARROW){
+// 		s.dir(0, -1);
+// 	} else if (keyCode == DOWN_ARROW){
+// 		s.dir(0, 1);
+// 	} else if (keyCode == LEFT_ARROW){
+// 		s.dir(-1, 0);
+// 	} else if (keyCode == RIGHT_ARROW){
+// 		s.dir(1, 0);
+// 	}
 
-}
+// }
+
+
+window.addEventListener('keydown', function(e) {
+  console.log(e.keyCode);
+
+  if(e.keyCode == 38 && e.target == document.body) { 
+    // UP_ARROW
+    e.preventDefault();
+    s.dir(0, -1);
+  } else if (e.keyCode == 40 && e.target == document.body){
+    // DOWN_ARROW
+    e.preventDefault();
+    s.dir(0, 1);
+  } else if (e.keyCode == 37 && e.target == document.body){
+    // LEFT_ARROW
+    e.preventDefault();
+    s.dir(-1, 0);
+  } else if (e.keyCode == 39 && e.target == document.body){
+    // RIGHT_ARROW
+    e.preventDefault();
+    s.dir(1, 0);
+  }
+
+
+
+
+});

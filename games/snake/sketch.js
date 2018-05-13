@@ -22,14 +22,14 @@ function setup() {
 
 
 function draw() {
-  background(42);
+  background(50);
 
   noStroke();
-  fill(0, 102, 153, 100);
+  fill(23, 183, 140, 100);
   textSize(64); 
   text(score,width/2-30,height/2+30);
 
-  fill(0, 102, 153, 200);
+  fill(23, 183, 140, 200);
   textSize(16); 
   text('Max: '+max_score,width*0.8,height*0.95);
 
@@ -48,11 +48,13 @@ function draw() {
   if (max_score<score){
     max_score = score;
   }
-  s.death();
+  if (s.death()){
+    foods = foods[0];
+  };
   s.update();
 
   
-  fill(0, 102, 153);
+  fill(23, 183, 140);
   for (var i=0; i<foods.length; i++){
     f = foods[i];
     rect(f.x, f.y, scl, scl);

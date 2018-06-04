@@ -9,7 +9,7 @@ let content = [
     'href_': '/resources/javascript/stopwatch/',
     'class_': 'fas fa-stopwatch'},
   {'id_': 'france density map',
-    'href_': '/resources/javascript/d3/',
+    'href_': '/resources/javascript/map/',
     'class_': 'fas fa-map-pin'}
 ];
 

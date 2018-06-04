@@ -6,7 +6,7 @@ html, body {
 }
 
 body {
-  padding: 0; 
+  padding: 0;
 }
 
 h1{
@@ -34,9 +34,12 @@ h3 {
   font-size: 15px;
 }
 
-/*
+#map_container {
+  display: flex; 
+}
+
 #my_map{
-     margin: 0 auto;
-     padding: 30px;
-     width: 10px;
-}*/
+     margin: auto;
+/*     padding: 30px;
+     width: 10px;*/
+}

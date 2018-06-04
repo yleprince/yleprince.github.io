@@ -9,7 +9,7 @@ body{
   /* margin: 0; */
   padding: 0;
   /*background: #588c7e;*/
-  background: linear-gradient(10deg, #588c7e, #17b78c); 
+  background: linear-gradient(0deg, #007A58, #17b78c); 
   font-family: Arial, Helvetica, sans-serif;
   transition-timing-function: ease;
 }

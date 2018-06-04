@@ -1,16 +1,10 @@
 console.log("Hello, France!");
 
-
-
 // Create a blank canvas
 const margin = {top: 30, bottom: 30, left: 40, right: 30};
-const w = 650; 
-// - margin.left - margin.right; 
-const h = 650; 
-// - margin.top - margin.bottom; 
+const w = 500; 
+const h = 500; 
 
-// const w = 650;
-// const h = 650;
 let dataset = [];
 
 let y, x;
@@ -85,8 +79,6 @@ function draw(){
 		.call(d3.axisLeft(y))
 
 
-
-
 	svg.selectAll("circle")
 		.data(dataset)
 		.enter()
@@ -97,26 +89,23 @@ function draw(){
 		.attr("fill", (d) => d3.interpolateRdBu(color(d.density)))
 		.on("mouseover", function(d){
 			d3.select(this).transition()
-				.duration(500)
+				.duration(10)
 				.attr("r", 20)
-				.attr("opacity", 0.7);
+				.attr("opacity", 0.5);
 
 			place.textContent = d.place;
-			population.textContent = d.population + " habitants";
+			population.textContent = d.population + " habitants | densitée: " + d.density + " hab/km2";
 
 		})
 		.on("mouseout", function(d){
 			d3.select(this).transition()
-				.delay(1000)
-				.duration(1500)
+				.delay(10)
+				.duration(100)
 				.attr("r", (d) => radius(d.population))
 				.attr("opacity", 1)
 				.attr("fill", (d) => d3.interpolateSpectral(color(d.density)));
 		});
 
-
-
-    console.log('kikoo');
 }
 
 

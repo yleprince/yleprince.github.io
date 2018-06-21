@@ -6,13 +6,16 @@
 	<link rel="stylesheet" type="text/css" href="/style.css">
 	<link rel="stylesheet" type="text/css" href="style.css">
 
+    <!-- icons -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css" integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous">  
+
 	<!-- Load TensorFlow.js -->
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@0.11.6"></script>
 </head>
 <body>
 	<div class='container'>
 		<h3>Polynomial Regression with TensorFlow.JS</h3>
-		<h4>Inspired by <a href='https://github.com/CodingTrain/website/tree/master/CodingChallenges'>D. Shiffman</a></h4>
+		<h4>Made with <span class='far fa-heart'></span> Inspired by <a href='https://github.com/CodingTrain/website/tree/master/CodingChallenges'>D. Shiffman</a></h4>
 	</div>
 
 	<div class='figure-setup'>
@@ -28,13 +31,13 @@
 		<div class="figure-setup-element">
 			<p>Optimizer:</p>
 			<select id="opt_select">
-				<option value='adadelta'>ADADELTA</option>
-				<option value='adagrad'>ADAGRAD</option>
+				<!-- <option value='adadelta'>ADADELTA</option> -->
+				<!-- <option value='adagrad'>ADAGRAD</option> -->
 				<option value='adam' selected>ADAM</option>
-				<option value='adamax'>ADAMAX</option>
+				<!-- <option value='adamax'>ADAMAX</option> -->
 				<option value='momentum'>MOMENTUM</option>
-				<option value='rmsprop'>RMSPROP</option>
-				<option value='sgd'>SGD</option>
+<!-- 				<option value='rmsprop'>RMSPROP</option>
+ -->				<option value='sgd'>SGD</option>
 			</select>
 		</div>
 		<div class='figure-setup-element'>

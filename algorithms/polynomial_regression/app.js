@@ -1,6 +1,3 @@
-console.log('Hello poly');
-
-
 let x_vals, y_vals;
 
 let c, context;

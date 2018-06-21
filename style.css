@@ -54,6 +54,20 @@ h3{
   font: 3em "Lato", sans-serif;
 }
 
+h4{
+  text-align: center;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #f9f9f9;
+  font: 1.5em "Lato", sans-serif;
+}
+
+p {
+  color: #f9f9f9;
+}
+
+
+
 
 ul{
   position: absolute;

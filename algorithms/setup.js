@@ -1,6 +1,6 @@
 let content = [
-  {'id_': 'Linear Regression using TensorFlow.js',
-    'href_': '/algorithms/linear_regression/',
+  {'id_': 'Polynomial Regression using TensorFlow.js',
+    'href_': '/algorithms/polynomial_regression/',
     'class_': 'fab fa-google'},
   {'id_': 'kmeans',
     'href_': '/algorithms/kmeans/',

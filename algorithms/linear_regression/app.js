@@ -14,6 +14,8 @@ let learning_rate = lr_range.value;
 let optimizer;
 setup_optimizer();
 
+let loss_html = document.getElementById('loss_html');
+
 function setup_optimizer(){
  	if (opt_algo === 'sgd'){
  		optimizer = tf.train.sgd(learning_rate);
@@ -121,8 +123,17 @@ function predict(x){
 
 function loss(pred, labels){
 	const y_real = tf.tensor1d(labels);
-	return pred.sub(y_real).square().mean();
+	let current_loss = pred.sub(y_real).square().mean();
+
+	update_html_loss(current_loss.dataSync()[0]);
+	return current_loss;
 }
+
+function update_html_loss(loss){
+	// Math.trunc(loss*10000000000)/10000000000
+	loss_html.innerHTML = Math.trunc(loss*100000000)/1000000;
+}
+
 
 function draw(){
 

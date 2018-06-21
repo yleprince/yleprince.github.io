@@ -13,8 +13,7 @@ let learning_rate = lr_range.value;
 
 let optimizer;
 setup_optimizer();
-
-let loss_html = document.getElementById('loss_html');
+let current_loss = 0;
 
 function setup_optimizer(){
  	if (opt_algo === 'sgd'){
@@ -123,17 +122,16 @@ function predict(x){
 
 function loss(pred, labels){
 	const y_real = tf.tensor1d(labels);
-	let current_loss = pred.sub(y_real).square().mean();
-
-	update_html_loss(current_loss.dataSync()[0]);
-	return current_loss;
+	const loss_tf = pred.sub(y_real).square().mean();
+	current_loss = Math.trunc(loss_tf.dataSync()[0]*100000)/100
+	return loss_tf;
 }
 
-function update_html_loss(loss){
-	// Math.trunc(loss*10000000000)/10000000000
-	loss_html.innerHTML = Math.trunc(loss*100000000)/1000000;
+function display_text(text){
+	context.font = "2em Lato sans-serif";
+	context.fillStyle = '#ffffff';
+	context.fillText(text,15,40);
 }
-
 
 function draw(){
 
@@ -148,15 +146,22 @@ function draw(){
 
 		draw_line(x1_2[0], lineY[0], x1_2[1], lineY[1]);
 		});
+
+		display_text('Loss: ' + current_loss);
+	} else {
+		display_text('Click to add point');
 	}
 
 	for (let i=0; i<x_vals.length; ++i){
 		add_point(x_vals[i], y_vals[i]);
 	}
+
+	// console.log(tf.memory().numTensors);
 }
 
 
 setup();
 
 let t = setInterval(draw, 10);
+
 

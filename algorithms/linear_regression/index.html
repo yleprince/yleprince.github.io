@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>linear</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+
+	<!-- Load TensorFlow.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@0.11.6"></script>
+
+</head>
+<body>
+	<h1>Linear Regression with TensorFlow JS - inspired by D. Shiffman</h1>
+
+	<div class='figure-setup'>
+		<div class='figure-setup-element'>
+			<p>Learning rate: <span id='lr_html'>0.3</span></p>
+			<input type="range" id='lr_range' min="0.01" max="0.5" step="0.01" value='0.3'>
+		</div>
+		<div class="figure-setup-element">
+			<p>Optimizer:</p>
+			<select id="opt_select">
+				<option value='sgd' selected>SGD</option>
+				<option value='adam'>ADAM</option>
+				<option value='momentum'>MOMENTUM</option>
+			</select>
+		</div>
+		<div class='figure-setup-element'>
+			<input type="button" id='b_reset' value='RESET FIGURE'>
+		</div>
+
+
+	</div>
+	<div class="canvas-holder">
+		<canvas id="l_canvas">
+			Your browser does not support the HTML5 canvas tag.
+		</canvas>
+	</div>
+
+</body>
+<script type="text/javascript", src='app.js'></script>
+</html>

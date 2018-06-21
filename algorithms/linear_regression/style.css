@@ -1,0 +1,42 @@
+h1 {
+	color: green;
+}
+
+.figure-setup {
+	display: flex;
+}
+
+.canvas-holder {
+	display: flex;
+}
+
+#b_reset {
+	padding:1em;
+    background-color: white; 
+    color: black; 
+    border: 2px solid #d30000;
+
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+}
+
+#b_reset:hover {
+    background-color: #d30000;
+    color: white;
+}
+
+.figure-setup-element{
+	text-align: center;
+	padding: 1em;
+	margin: auto;
+}
+
+#l_canvas {
+	margin: auto;
+	background-color: #323232;
+	-webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.2),0 17px 50px 0 rgba(0,0,0,0.2);
+}
+
+}

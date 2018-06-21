@@ -123,7 +123,7 @@ function predict(x){
 function loss(pred, labels){
 	const y_real = tf.tensor1d(labels);
 	const loss_tf = pred.sub(y_real).square().mean();
-	current_loss = Math.trunc(loss_tf.dataSync()[0]*100000)/100
+	current_loss = Math.trunc(loss_tf.dataSync()[0]*100000)/100;
 	return loss_tf;
 }
 
@@ -139,17 +139,15 @@ function draw(){
 		context.clearRect(0, 0, c.width, c.height);
 		tf.tidy(() => {
 			optimizer.minimize(() => loss(predict(x_vals), y_vals));
-		const x1_2 = [0, c.width];
-		const y1_2 = tf.tidy( () => predict(x1_2));
+			const x1_2 = [0, c.width];
+			const y1_2 = tf.tidy( () => predict(x1_2));
 
-		let lineY = y1_2.dataSync();
+			let lineY = y1_2.dataSync();
 
-		draw_line(x1_2[0], lineY[0], x1_2[1], lineY[1]);
+			draw_line(x1_2[0], lineY[0], x1_2[1], lineY[1]);
 		});
 
 		display_text('Loss: ' + current_loss);
-	} else {
-		display_text('Click to add point');
 	}
 
 	for (let i=0; i<x_vals.length; ++i){

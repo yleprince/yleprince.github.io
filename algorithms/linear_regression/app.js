@@ -92,7 +92,7 @@ function draw_line(x1, y1, x2, y2){
 	context.moveTo(x1c, y1c);
 	context.lineTo(x2c, y2c);
 	context.lineWidth = 3;
-	context.strokeStyle = '#d30000';
+	context.strokeStyle = '#ffffff';
 	context.stroke();
 }
 
@@ -104,10 +104,10 @@ function add_point(x, y){
 
 	context.beginPath();
 	context.arc(xc, yc, radius, 0, 2 * Math.PI, false);
-	context.fillStyle = 'green';
+	context.fillStyle = '#17b78c';
 	context.fill();
 	context.lineWidth = 1;
-	context.strokeStyle = '#003300';
+	context.strokeStyle = '#007A58';
 	context.stroke();
 }	
 

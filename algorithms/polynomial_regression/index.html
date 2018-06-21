@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Polynomial regression</title>
+	<link rel="stylesheet" type="text/css" href="/style.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
+
+	<!-- Load TensorFlow.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@0.11.6"></script>
+</head>
+<body>
+	<div class='container'>
+		<h3>Polynomial Regression with TensorFlow.JS</h3>
+		<h4>Inspired by <a href='https://github.com/CodingTrain/website/tree/master/CodingChallenges'>D. Shiffman</a></h4>
+	</div>
+
+	<div class='figure-setup'>
+		<div class="figure-setup-element">
+			<p>Degree: <span id='degree-html'>1</span></p>
+			<input type='range' id='degree-range' min='1' max='10' step='1' value='1'>	
+			</input>
+		</div>
+		<div class='figure-setup-element'>
+			<p>Learning rate: <span id='lr_html'>0.1</span></p>
+			<input type="range" id='lr_range' min="0.01" max="0.9" step="0.01" value='0.1'>
+		</div>
+		<div class="figure-setup-element">
+			<p>Optimizer:</p>
+			<select id="opt_select">
+				<option value='adadelta'>ADADELTA</option>
+				<option value='adagrad'>ADAGRAD</option>
+				<option value='adam' selected>ADAM</option>
+				<option value='adamax'>ADAMAX</option>
+				<option value='momentum'>MOMENTUM</option>
+				<option value='rmsprop'>RMSPROP</option>
+				<option value='sgd'>SGD</option>
+			</select>
+		</div>
+		<div class='figure-setup-element'>
+			<input type="button" id='b_reset' value='RESET FIGURE'>
+		</div>
+	</div>
+
+	<div class="canvas-holder">
+		<canvas id='p_canvas'>
+			Your browser does not support the HTML5 canvas tag.
+		</canvas>
+	</div>
+
+
+</body>
+<script type="text/javascript" src='app.js'></script>
+</html>

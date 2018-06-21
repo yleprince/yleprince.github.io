@@ -1,4 +1,7 @@
 let content = [
+  {'id_': 'Linear Regression using TensorFlow.js',
+    'href_': '/algorithms/linear_regression/',
+    'class_': 'fab fa-google'},
   {'id_': 'kmeans',
     'href_': '/algorithms/kmeans/',
     'class_': 'fab fa-kickstarter-k'},
@@ -11,3 +14,5 @@ let content = [
 ];
 
 let page_title = 'algorithms';
+
+

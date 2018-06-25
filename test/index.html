@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Never Alone</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <!-- <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script> -->
+</head>
+</head>
+<body>
+
+<svg id="menu">
+    <g id="menu-holder" transform="translate(100,100)"></g>
+</svg>
+
+
+<article>
+    <div id="tab-home" class="tab activeTab">
+        Home
+        <h1>Speed Dating Data</h1>
+        <h2>Attractiveness, Sincerity, Intelligence, Hobbies</h2>
+    </div>
+    <div id="tab-wave" class="tab">
+        <div id="select-wave">
+            <span class="title">Wave</span>
+            <select class="select" id="nb-wave"></select>
+        </div>
+        <div id="options-columns-wave">
+            <div id="label-col-wave">
+                Columns
+            </div>
+            <div id="list-col-wave">
+            </div>
+        </div>
+        <div id="choice-columns">
+            <div id="label-sel-wave">
+                Selected columns
+            </div>
+            <div id="list-sel-wave">
+            </div>
+        </div>
+        <div class="options" id="options-wave">
+            <div id="options-wave-container">
+                <div id="label-middle-line-wave">
+                    Middle lines selection
+                </div>
+                <table id="midLineTable">
+                    <tr data-type="GG">
+                        <td>
+                            <input type="checkbox" id="GG" checked>
+                            <label for="GG"><span></span>Match</label><br>
+                        </td>
+                        <td><span id="valGG"></span>%</td>
+                    </tr>
+                    <tr data-type="GR">
+                        <td>
+                            <input type="checkbox" id="GR" checked>
+                            <label for="GR"><span></span>Man accepted - Woman refused</label><br>
+                        </td>
+                        <td><span id="valGR"></span>%</td>
+                    </tr>
+                    <tr data-type="RG">
+                        <td>
+                            <input type="checkbox" id="RG" checked>
+                            <label for="RG"><span></span>Man refused - Woman accepted</label><br>
+                        </td>
+                        <td><span id="valRG"></span>%</td>
+                    </tr>
+                    <tr data-type="RR">
+                        <td>
+                            <input type="checkbox" id="RR" checked>
+                            <label for="RR"><span></span>No match</label>
+                        </td>
+                        <td><span id="valRR"></span>%</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div id="graph-container-wave">
+            <div id="graph-wave"></div>
+        </div>
+    </div>
+
+    <div id="tab-person" class="tab">
+        <div id="select-person">
+            <span class="title">Person</span>
+            <input type="number" placeholder="Person's iid" id="iid-person" min="1" max="552" value="1"></select>
+        </div>
+        <div id="radar-person">
+            <!--<div id="radar-person-container">-->
+            <!--</div>-->
+        </div>
+        <div id="bar-person"></div>
+        <div id="id-person">
+            <div id="identity-card-person">
+                <span class="id-card-title">Identity Card</span>
+                <div id="image-container"></div>
+                <ul>
+                    <li>IID Number : <span class="li-id-card" id="li-iid"></span></li>
+                    <li>ID Number : <span class="li-id-card" id="li-id"></span></li>
+                    <li>Wave Number : <span class="li-id-card" id="li-wave"></span></li>
+                    <li>Gender : <span class="li-id-card" id="li-gender"></span></li>
+                    <li>Race : <span class="li-id-card" id="li-race"></span></li>
+                    <li>From : <span class="li-id-card" id="li-from"></span></li>
+                    <li>Field : <span class="li-id-card" id="li-field"></span></li>
+                    <li>Career : <span class="li-id-card" id="li-career"></span></li>
+                    <li>Income : <span class="li-id-card" id="li-income"></span></li>
+                    <li>Goal : <span class="li-id-card" id="li-goal"></span></li>
+                </ul>
+            </div>
+        </div>
+        <div id="feat1-person" class="plot-density">
+            <div class="select-density">
+                <select class="selectFeature" id="densityVarPersonContinuous"></select>
+            </div>
+            <div class="graph-density" id="graphVarPersonContinuous">
+            </div>
+        </div>
+        <div id="feat2-person" class="plot-density">
+            <div class="select-density">
+                <select class="selectFeature" id="densityVarPersonCategorical"></select>
+            </div>
+            <div class="graph-density" id="graphVarPersonCategorical">
+            </div>
+        </div>
+        <div id="cb-person">
+            <input type="checkbox" id="self_traits" checked>
+            <label for="self_traits">How you perceive yourself</label> <br>
+            <input type="checkbox" id="rating_o" checked>
+            <label for="rating_o">How your dates perceived you</label> <br>
+            <input type="checkbox" id="self_look_traits">
+            <label for="self_look_traits">What you look for in the opposite sex</label> <br>
+            <input type="checkbox" id="same_gender_look_traits">
+            <label for="same_gender_look_traits">What you think most of your fellow look for in the opposite sex</label>
+            <br>
+            <input type="checkbox" id="opposite_gender_look_traits">
+            <label for="opposite_gender_look_traits">What you think the opposite sex looks for in a date</label> <br>
+            <input type="checkbox" id="opposite_gender_self_traits">
+            <label for="opposite_gender_self_traits">How you think others perceive you</label> <br>
+        </div>
+    </div>
+
+    <div id="tab-success" class="tab">
+        <div id="select-success">
+            <span class="title">Success</span>
+        </div>
+        <div id="sbc-success">
+            <div id='sbc-success-interaction'></div>
+            <div id='sbc-success-plot'></div>
+            <div id='sbc-success-info'></div>
+        </div>
+        <div id="feat1-success" class="plot-density">
+            <div class="select-density">
+                <select class="selectFeature" id="varDensityContinuous"></select>
+            </div>
+            <div class="graph-density" id="graphDensityContinuous">
+            </div>
+        </div>
+        <div id="feat2-success" class="plot-density">
+            <div class="select-density">
+                <select class="selectFeature" id="varDensityCategorical"></select>
+            </div>
+            <div class="graph-density" id="graphDensityCategorical">
+            </div>
+        </div>
+    </div>
+</article>
+<script src="d3/d3.js"></script>
+<script type="module" src="js/main.js"></script>
+<script type="module" src="js/menu.js"></script>
+<script type="module" src="js/modules/graphs/Graph.js"></script>
+<script type="module" src="js/modules/graphs/ScatterBubble.js"></script>
+<script type="module" src="js/modules/graphs/GraphExample.js"></script>
+<script type="module" src="js/modules/graphs/RadarChart.js"></script>
+<script type="module" src="js/modules/graphs/GroupedBarChart.js"></script>
+<script type="module" src="js/modules/graphs/ParallelCoordinates.js"></script>
+<script type="module" src="js/modules/graphs/GraphDensityContinuous.js"></script>
+<script type="module" src="js/modules/graphs/GraphDensityCategorical.js"></script>
+<script type="module" src="js/modules/graphs/GraphDensityVerticalLine.js"></script>
+<script type="module" src="js/modules/graphs/GraphDensityCategoricalPerson.js"></script>
+<script type="module" src="js/modules/defaultOptions.js"></script>
+
+</body>
+</html>

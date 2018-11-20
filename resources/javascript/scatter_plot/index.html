@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Scatter Plot</title>
+	<link rel="stylesheet" type="text/css" href="./css/style.css">
+	<script src="https://d3js.org/d3.v4.min.js"></script>
+
+
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+	<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+</head>
+<body>
+
+	<div id='scatter'>
+
+	</div>
+
+	<pre><code class="js">
+		let svg; 
+
+		let max_radius = 5;
+
+		let margin = {top: 30, right: 30, bottom: 30, left:40},
+		  width = 600 - margin.left - margin.right,
+		  height = 400 - margin.top - margin.bottom;
+
+
+		d3.csv('data/data.csv', function(error, data){
+			if (error) throw error;
+
+			data.forEach(d => {
+				d.x = +d.x;
+				d.y = +d.y;
+				d.count = +d.count;
+				d.label = +d.label;
+			})
+
+		    svg = d3.select('#scatter').append('svg')
+		      .attr('width', width + margin.left + margin.right)
+		      .attr('height', height + margin.top + margin.bottom)
+		      .append("g")
+		      .attr("id", "container")
+		      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+	</code></pre>
+
+ <script type="text/javascript" src="js/scatter_plot.js"></script>
+</body>
+</html>

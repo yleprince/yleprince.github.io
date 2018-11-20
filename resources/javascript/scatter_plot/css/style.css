@@ -1,0 +1,23 @@
+body {
+	background-color: #a3ffb4;
+}
+
+#scatter {
+	display: flex;
+}
+
+svg {
+	margin: 2em auto;
+	background-color: white;
+	transition: ease 0.5s;
+	box-shadow: -2px 4px 10px 3px rgba(0, 0, 0, 0.1);	
+}
+
+svg:hover {
+  box-shadow: -2px 4px 10px 3px rgba(0, 0, 0, 0.3);
+}
+
+.selected_data{
+  stroke: black;
+  stroke-width: 3px; 
+}

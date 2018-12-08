@@ -1,7 +1,7 @@
 # Python tips and tricks
 
-<details><summary> &#x1f4dc Table of content</summary> <ul><li><a href = "#1-sorting-a-list-by-an-other">1. Sorting a list by an other</a></li>
-<li><a href = "#2-difference-between-append-and-extend">Difference between `append` and `extend`</a></li>
+<details><summary>Table of content</summary> <ul><li><a href = "#1-sorting-a-list-by-an-other">1. Sorting a list by an other</a></li>
+<li><a href = "#2-difference-between-append-and-extend">2. Difference between `append` and `extend`</a></li>
 </ul></details>
 
 ## 1. Sorting a list by an other:

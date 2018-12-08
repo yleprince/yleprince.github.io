@@ -142,7 +142,7 @@ totalMemory: 7.93GiB freeMemory: 7.33GiB
 b'hello tensorflow'
 ```
 
-As you can see the last line correspond to the answer we wanted to. (•̀ᴗ•́)و
+As you can see the last line corresponds to the answer we wanted to. (•̀ᴗ•́)و
 
 # ｡◕‿◕｡
 ### Hope this will help !   

@@ -1,5 +1,13 @@
 # Python tips and tricks
 
+# :scroll: Table of content
+
+<details><summary>View contents</summary> <ul><li><a href = "#1-sorting-a-list-by-an-other">Sorting a list by an other</a></li>
+<li><a href = "#1-sorting-a-list-by-an-other">Sorting a list by an other</a></li>
+<li><a href = "#1-sorting-a-list-by-an-other">Sorting a list by an other</a></li>
+<li><a href = "#1-sorting-a-list-by-an-other">Sorting a list by an other</a></li>
+</ul></details>
+
 ## 1. Sorting a list by an other:
 
 ```python

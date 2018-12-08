@@ -1,6 +1,6 @@
 # Python tips and tricks
 
-<details><summary>:scroll: Table of content</summary> <ul><li><a href = "#1-sorting-a-list-by-an-other">Sorting a list by an other</a></li>
+<details><summary>:scroll: Table of content</summary> <ul><li><a href = "#1-sorting-a-list-by-an-other">1. Sorting a list by an other</a></li>
 <li><a href = "#1-sorting-a-list-by-an-other">Sorting a list by an other</a></li>
 <li><a href = "#1-sorting-a-list-by-an-other">Sorting a list by an other</a></li>
 <li><a href = "#1-sorting-a-list-by-an-other">Sorting a list by an other</a></li>
@@ -50,4 +50,31 @@ for score, name in sorted(zip(scores, names)):
 ```
 > ```sh
 > ['John', 'Paul', 'Arthur']
+> ```
+
+## 2. Difference between `append` and `extend`
+
+No explaination is worth this example:
+
+__`append`__
+```python
+mylist = ['a']
+mylist.append(['b', 'c'])
+print(mylist)
+```
+
+> ```sh
+> ['a', ['b', 'c']]
+> ```
+
+
+__`extend`__
+```python
+mylist = ['a']
+mylist.extend(['b', 'c'])
+print(mylist)
+```
+
+> ```sh
+> ['a', 'b', 'c']
 > ```

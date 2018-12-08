@@ -1,8 +1,6 @@
 # Python tips and tricks
 
-# :scroll: Table of content
-
-<details><summary>View contents</summary> <ul><li><a href = "#1-sorting-a-list-by-an-other">Sorting a list by an other</a></li>
+<details><summary>:scroll: Table of content</summary> <ul><li><a href = "#1-sorting-a-list-by-an-other">Sorting a list by an other</a></li>
 <li><a href = "#1-sorting-a-list-by-an-other">Sorting a list by an other</a></li>
 <li><a href = "#1-sorting-a-list-by-an-other">Sorting a list by an other</a></li>
 <li><a href = "#1-sorting-a-list-by-an-other">Sorting a list by an other</a></li>

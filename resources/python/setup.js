@@ -1,7 +1,10 @@
 let content = [
   {'id_': 'code tips',
-    'href_': '/resources/python/code/',
+    'href_': '/resources/python/code/tips/',
     'class_': 'fab fa-stack-overflow'},
+  {'id_': 'code setup',
+    'href_': '/resources/python/code/setup/',
+    'class_': 'fas fa-plug'},
   {'id_': 'line chart',
     'href_': '/resources/python/linechart/',
     'class_': 'fas fa-chart-line'},

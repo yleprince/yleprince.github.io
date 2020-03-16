@@ -1,106 +1,112 @@
 <!doctype html>
 
 <html>
-  <head>
-    <meta charset="UTF-8" name="mobile-web-app-capable" content="yes">
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-130693761-1"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
 
-      gtag('config', 'UA-130693761-1');
-    </script>
+<head>
+  <meta charset="UTF-8" name="mobile-web-app-capable" content="yes">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-130693761-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
 
+    gtag('config', 'UA-130693761-1');
+  </script>
 
-    <link rel="stylesheet" type="text/css" href="/style.css">
+  <link rel="icon"
+    href="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/facebook/230/seedling_1f331.png">
+  <link rel="stylesheet" type="text/css" href="/style.css">
 
-    <!-- icons -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css" integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous">  </head>
+  <!-- icons -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css"
+    integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous">
+</head>
 
-    <!-- page icon -->
-    <link rel="shortcut icon" href="">
+<!-- page icon -->
+<link rel="shortcut icon" href="">
 
-    <!-- particules min js -->
-    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-
-
-  <body>
-
-    <div id="particles-js"></div>
-
-    <!-- buttons containers -->
-    <div id='container'></div>
+<!-- particules min js -->
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 
 
-    <!-- selected component title displayer -->
-    <h2 id="selected_button"></h2>
- 
-    <!-- footer -->
-    <a href="/"><i id='home' class="footer fas fa-home"></i></a>
-    <a href="https://www.linkedin.com/in/yrieixleprince/" target="_blank"><i id='contact' class="footer fab fa-linkedin-in"></i></a>
+<body>
 
-    <script type="text/javascript" src="/my_particles.js"></script>
-    <script type="text/javascript" src="./setup.js"></script>
-    <script type="text/javascript">
-            
-      // INIT:
-      document.title = 'YL - ' + page_title;
+  <div id="particles-js"></div>
 
-      let h1 = document.createElement('h1');
-      h1.textContent = page_title;
-      document.body.appendChild(h1);
-
-      let container = document.getElementById('container');
-      let ul = document.createElement('ul');
-      container.appendChild(ul);
-
-      for(var i = 0; i<content.length; i++){
-        let button = content[i];
-        ul.appendChild(createLIfromButton(button));
-      }
+  <!-- buttons containers -->
+  <div id='container'></div>
 
 
-      function createLIfromButton(button){
-        let li = document.createElement('li');
-        let a = document.createElement('a');
-        a.href = button.href_;
+  <!-- selected component title displayer -->
+  <h2 id="selected_button"></h2>
 
-        let i = document.createElement('i');
-        i.id = button.id_;
-        i.className = button.class_;
+  <!-- footer -->
+  <a href="/"><i id='home' class="footer fas fa-home"></i></a>
+  <a href="https://www.linkedin.com/in/yrieixleprince/" target="_blank"><i id='contact'
+      class="footer fab fa-linkedin-in"></i></a>
 
-        a.appendChild(i);
-        li.appendChild(a);
-        return li;
-      }
+  <script type="text/javascript" src="/my_particles.js"></script>
+  <script type="text/javascript" src="./setup.js"></script>
+  <script type="text/javascript">
 
-      // ACTION:
+    // INIT:
+    document.title = 'YL - ' + page_title;
 
-      // Title of the button hovered:
-      let hover_selected = document.getElementById('selected_button');
+    let h1 = document.createElement('h1');
+    h1.textContent = page_title;
+    document.body.appendChild(h1);
+
+    let container = document.getElementById('container');
+    let ul = document.createElement('ul');
+    container.appendChild(ul);
+
+    for (var i = 0; i < content.length; i++) {
+      let button = content[i];
+      ul.appendChild(createLIfromButton(button));
+    }
 
 
-      for(var i = 0; i<content.length; i++){
-        let button = content[i];
-        let element = document.getElementById(button.id_);
+    function createLIfromButton(button) {
+      let li = document.createElement('li');
+      let a = document.createElement('a');
+      a.href = button.href_;
 
-        element.addEventListener("mouseover", function(){
-          hover_selected.style.transition ='.5s';
-          hover_selected.style.opacity = '0.8';
-          hover_selected.textContent = button.id_;
-          element.style.color = '#17b78c';
-        }, false);
+      let i = document.createElement('i');
+      i.id = button.id_;
+      i.className = button.class_;
 
-        element.addEventListener("mouseout", function(){
-          hover_selected.style.transition ='.5s';
-          hover_selected.style.opacity = '0';
-          element.style.color = '#262626';
+      a.appendChild(i);
+      li.appendChild(a);
+      return li;
+    }
 
-        }, false);
+    // ACTION:
 
-      };
-    </script>
-  </body>
+    // Title of the button hovered:
+    let hover_selected = document.getElementById('selected_button');
+
+
+    for (var i = 0; i < content.length; i++) {
+      let button = content[i];
+      let element = document.getElementById(button.id_);
+
+      element.addEventListener("mouseover", function () {
+        hover_selected.style.transition = '.5s';
+        hover_selected.style.opacity = '0.8';
+        hover_selected.textContent = button.id_;
+        element.style.color = '#17b78c';
+      }, false);
+
+      element.addEventListener("mouseout", function () {
+        hover_selected.style.transition = '.5s';
+        hover_selected.style.opacity = '0';
+        element.style.color = '#262626';
+
+      }, false);
+
+    };
+  </script>
+</body>
+
 </html>

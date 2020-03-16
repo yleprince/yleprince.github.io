@@ -1,7 +1,7 @@
 body {
-    background-color: #ffc400;
+    background-color: hsl(41, 98%, 50%);
     font-family: Arial, Helvetica, sans-serif;
-    color: #404040;
+    color: #404040e5;
 }
 
 h1 {
@@ -26,8 +26,8 @@ li {
 }
 
 .number {
-    background-color: #2a2a2a;
-    color: #FFF;
+    background-color: #2a2a2a7a;
+    color: rgb(255, 245, 202);
 }
 
 .small {

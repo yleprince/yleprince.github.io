@@ -1,0 +1,35 @@
+body {
+    background-color: #ffc400;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #404040;
+}
+
+h1 {
+    font-size: 4rem;
+}
+
+li {
+    list-style: none;
+    font-size: 1.5rem;
+    margin: 1rem;
+}
+
+.container {
+    height: 50%;
+    max-width: 700px;
+    margin: 40px auto 40px auto;
+    display: flex;
+  }
+  
+.centered {
+    margin: auto;
+}
+
+.number {
+    background-color: #2a2a2a;
+    color: #FFF;
+}
+
+.small {
+    font-size: 1rem;
+}

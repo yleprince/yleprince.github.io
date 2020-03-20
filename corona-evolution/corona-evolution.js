@@ -1,4 +1,4 @@
-const colors = ['#63ACBE', '#EE442F', '#601A4A', '#49494D'];
+const colors = ['#46AFB9', '#0b6e78', '#DF8C95', '#8a2f3e'];
 
 const countryCheckboxes = document.querySelectorAll('#selectedCountries input');
 const logCheckbox = document.getElementById('logCheckbox');

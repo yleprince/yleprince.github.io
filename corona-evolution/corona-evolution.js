@@ -36,7 +36,7 @@ const update = () => {
     const tmp_colors = [...colors].reverse();
     Array.from(countryCheckboxes)
         .forEach((c, i) => {
-            c.labels[0].style.color = c.checked ? tmp_colors.pop() : '#979797';
+            c.labels[0].style.color = c.checked ? tmp_colors.pop() : '#666666';
         });
 
     Promise.all(countries.map(getData))

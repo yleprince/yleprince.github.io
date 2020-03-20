@@ -25,9 +25,29 @@
     <p>This page displays up to date data about the spread of <a
             href="https://en.wikipedia.org/wiki/Coronavirus">covid-19</a>.</p>
 
+
+    <ul id="selectedCountries">
+        <li>
+            <input id="chinaCheckbox" type="checkbox" value="CN"></input>
+            <label for="chinaCheckbox">China</label>
+        </li>
+        <li>
+            <input id="franceCheckbox" type="checkbox" value="FR" checked></input>
+            <label for="franceCheckbox">France</label>
+        </li>
+        <li>
+            <input id="italyCheckbox" type="checkbox" value="IT"></input>
+            <label for="italyCheckbox">Italy</label>
+        </li>
+        <li>
+            <input id="usaCheckbox" type="checkbox" value="US"></input>
+            <label for="usaCheckbox">USA</label>
+        </li>
+    </ul>
+
     <div class="controls">
         <input id="logCheckbox" type="checkbox" value="logscale"></input>
-        <label for="logscale">Log scale</label>
+        <label for="logCheckbox">Log scale</label>
     </div>
     <div id="plot"></div>
     <hr>

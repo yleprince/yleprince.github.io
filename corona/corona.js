@@ -7,7 +7,7 @@ let minutes = d.getMinutes().toString();
 
 hours = hours.length < 2 ? '0' + hours : hours;
 minutes = minutes.length < 2 ? '0' + minutes : minutes;
-const date_str = hours + ':' + minutes;
+const date_str = hours + ':' + minutes + ' ' + d.toDateString();
 
 document.getElementById('source').textContent = date_str;
 

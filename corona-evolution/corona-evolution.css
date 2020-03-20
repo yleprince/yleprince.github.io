@@ -20,3 +20,9 @@ li {
 .small {
     font-size: 0.8rem;
 }
+
+#divControl {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

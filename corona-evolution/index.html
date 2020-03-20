@@ -45,9 +45,19 @@
         </li>
     </ul>
 
-    <div class="controls">
+    <div id="divControl">
         <input id="logCheckbox" type="checkbox" value="logscale"></input>
         <label for="logCheckbox">Log scale</label>
+    </div>
+
+    <div class="controls">
+        <select name="metricSelector" id="metricSelector">
+            <option value="total_cases" selected>Total cases</option>
+            <option value="total_deaths">Total deaths</option>
+            <option value="total_recoveries">Total recoveries</option>
+            <option value="new_daily_cases">New daily cases</option>
+            <option value="new_daily_deaths">New daily deaths</option>
+        </select>
     </div>
     <div id="plot"></div>
     <hr>

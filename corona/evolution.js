@@ -1,6 +1,62 @@
+const countries_ = [{
+    code: 'CN',
+    flag: '🇨🇳',
+    name: 'China',
+    fr: 'Chine'
+}, {
+    code: 'US',
+    flag: '🇺🇸',
+    name: 'USA',
+    fr: 'États-Unis'
+}, {
+    code: 'FR',
+    flag: '🇫🇷',
+    name: 'France',
+    fr: 'France'
+}, {
+    code: 'IT',
+    flag: '🇮🇹',
+    name: 'Italy',
+    fr: 'Italie'
+}, {
+    code: 'DE',
+    flag: '🇩🇪',
+    name: 'Germany',
+    fr: 'Allemagne'
+}, {
+    code: 'ES',
+    flag: '🇪🇸',
+    name: 'Spain',
+    fr: 'Espagne'
+}, {
+    code: 'CH',
+    flag: '🇨🇭',
+    name: 'Switzerland',
+    fr: 'États-Unis'
+}, {
+    code: 'BE',
+    flag: '🇧🇪',
+    name: 'Belgium',
+    fr: 'Belgique'
+}, {
+    code: 'LU',
+    flag: '🇱🇺',
+    name: 'Luxembourg',
+    fr: 'Luxembourg'
+}, {
+    code: 'UK',
+    flag: '🇬🇧',
+    name: 'United Kingdom',
+    fr: 'Royaume-Uni'
+}].sort((a, b) => a.name.localeCompare(b.name));
+
+
+let countriesSelected = ['FR', 'IT'];
+let countrySelector = document.getElementById('countrySelector');
+let countrySelected = document.getElementById('countrySelected');
+
 const colors = ['#46AFB9', '#0b6e78', '#DF8C95', '#8a2f3e'];
 
-const countryCheckboxes = document.querySelectorAll('#selectedCountries input');
 const logCheckbox = document.getElementById('logCheckbox');
 
 const metricSelector = document.getElementById('metricSelector');
@@ -29,17 +85,7 @@ const getData = async (country) => fetch(url(country))
     );
 
 const update = () => {
-    const countries = Array.from(countryCheckboxes)
-        .filter(checkbox => checkbox.checked)
-        .map(({ value }) => value);
-
-    const tmp_colors = [...colors].reverse();
-    Array.from(countryCheckboxes)
-        .forEach((c, i) => {
-            c.labels[0].style.color = c.checked ? tmp_colors.pop() : '#666666';
-        });
-
-    Promise.all(countries.map(getData))
+    Promise.all(countriesSelected.map(getData))
         .then(full => {
             svg.selectAll("*").remove();
 
@@ -112,5 +158,47 @@ const update = () => {
         });
 }
 
-countryCheckboxes.forEach(d => d.addEventListener('input', update));
-update();
+const update_countrySelector = () => {
+    update();
+
+    const init = document.createElement('option');
+    init.value = '';
+    init.disabled = true;
+    init.selected = true;
+    init.innerHTML = lang === 'en' ? 'Select Country' : 'Sélectionnez un pays';
+
+    countrySelector.innerHTML = '';
+    countrySelector.appendChild(init);
+    countrySelected.innerHTML = countriesSelected.length ? '🗑️  ' : '';
+    countries_.filter(({ code }) => !countriesSelected.includes(code))
+        .forEach(c => {
+            let opt = document.createElement('option');
+            opt.value = c.code;
+            opt.innerHTML = (lang === 'en' ? c.name : c.fr) + ' ' + c.flag;
+            countrySelector.appendChild(opt);
+        });
+    countrySelector.onchange = () => {
+        countriesSelected.length >= colors.length ? countriesSelected.pop() : false;
+        countriesSelected.unshift(Array.from(countrySelector.selectedOptions)[0].value)
+        update_countrySelector();
+    };
+    countriesSelected
+        .forEach((ccode, i) => {
+            const c = countries_.find(({ code }) => ccode === code);
+            let span = document.createElement('span');
+            span.id = c.code;
+            span.style.color = colors[i];
+            span.innerHTML = (lang === 'en' ? c.name : c.fr) + ' ' + c.flag;
+            countrySelected.appendChild(span);
+            const space = document.createElement('span');
+            space.id = ' ' + c.code;
+            space.innerHTML = ' ';
+            countrySelected.appendChild(space);
+            span.addEventListener('click', () => {
+                countriesSelected = countriesSelected.filter(code => code != c.code);
+                console.log(countriesSelected);
+                update_countrySelector();
+            });
+        });
+}
+update_countrySelector();

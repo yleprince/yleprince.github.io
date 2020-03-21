@@ -53,24 +53,10 @@
 
     <h2>😷 Evolution by country</h2>
 
-    <ul id="selectedCountries">
-        <li>
-            <input id="chinaCheckbox" type="checkbox" value="CN"></input>
-            <label for="chinaCheckbox">China 🇨🇳</label>
-        </li>
-        <li>
-            <input id="franceCheckbox" type="checkbox" value="FR" checked></input>
-            <label for="franceCheckbox">France 🇫🇷</label>
-        </li>
-        <li>
-            <input id="italyCheckbox" type="checkbox" value="IT" checked></input>
-            <label for="italyCheckbox">Italy 🇮🇹</label>
-        </li>
-        <li>
-            <input id="usaCheckbox" type="checkbox" value="US"></input>
-            <label for="usaCheckbox">USA 🇺🇸</label>
-        </li>
-    </ul>
+    <div id="countries">
+        <select id="countrySelector"></select>
+        <div id="countrySelected"></div>
+    </div>
 
     <div id="divControl">
         <input id="logCheckbox" type="checkbox" value="logscale"></input>
@@ -78,7 +64,7 @@
     </div>
 
     <div class="controls">
-        <select name="metricSelector" id="metricSelector">
+        <select id="metricSelector">
             <option value="total_cases" selected>Total cases</option>
             <option value="total_deaths">Total deaths</option>
             <option value="total_recoveries">Total recoveries</option>
@@ -97,6 +83,7 @@
             href="https://www.linkedin.com/in/yrieixleprince/">LinkedIn</a> 👋</p>
 
     <p class="small">Data source: <a href="thevirustracker.com">thevirustracker.com</a> - <span id="source"></span></p>
+    <script>const lang = 'en';</script>
     <script type="text/javascript" src='worldwide.js'></script>
     <script type="text/javascript" src='evolution.js'></script>
 </body>

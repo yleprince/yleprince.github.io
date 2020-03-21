@@ -44,7 +44,7 @@ const countries_ = [{
     name: 'Luxembourg',
     fr: 'Luxembourg'
 }, {
-    code: 'UK',
+    code: 'GB',
     flag: '🇬🇧',
     name: 'United Kingdom',
     fr: 'Royaume-Uni'

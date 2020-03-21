@@ -3,25 +3,37 @@
 
 <head>
     <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-130602790-3"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-130693761-3"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
-        gtag('config', 'UA-130602790-3');
+
+        gtag('config', 'UA-130693761-3');
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1" , charset="UTF-8">
+    <meta property="og:title" content="Coronavirus statistics" />
+    <meta property="article:author" content="Yrieix Leprince" />
+    <meta property="og:description" content="Explore coronavirus evolution spreading country by country." />
+    <meta property="og:locale" content="en_GB" />
+    <meta property="og:site_name" content="yleprince.github.io" />
+    <meta property="og:image"
+        content="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/facebook/230/face-with-medical-mask_1f637.png" />
+
+
     <link rel="stylesheet" href="../corona.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="icon"
         href="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/facebook/230/face-with-medical-mask_1f637.png">
+    <script src="https://d3js.org/d3.v4.js"></script>
+
     <title>Coronavirus</title>
 </head>
 
 <body>
-    <h1>Statistiques mondiales</h1>
-    <p>Cette page affiche des données à jour à propos de la propagation du virus <a
-            href="https://fr.wikipedia.org/wiki/Coronavirus">covid-19</a>.</p>
+    <h1>Statistiques Coronavirus</h1>
+    <p>Cette page affiche des données à jour du <a href="https://fr.wikipedia.org/wiki/Coronavirus">covid-19</a>.</p>
+    <h2>🌍 Échelle mondiale</h2>
     <ul>
         <li>Nombre total de cas : <span class="number" id="total_cases">...</span></li>
         <li>Nombre total de cas résolu : <span class="number" id="total_recovered">...</span></li>
@@ -29,7 +41,7 @@
         <li>Nombre total de décès : <span class="number" id="total_deaths">...</span></li>
     </ul>
     <ul>
-        <li>Nombre de cas nouveau aujourd'hui : <span class="number" id="total_new_cases_today">...</span></li>
+        <li>Nombre de cas détecté aujourd'hui : <span class="number" id="total_new_cases_today">...</span></li>
         <li>Nombre de décès aujourd'hui : <span class="number" id="total_new_deaths_today">...</span></li>
     </ul>
     <ul>
@@ -39,18 +51,56 @@
 
     <hr>
 
-    <p>Pour obtenir des informations sur l'évolution du virus par pays, cliquez <a href="/corona-evolution">ici</a>.</p>
+    <h2>😷 Évolution par pays</h2>
+
+    <ul id="selectedCountries">
+        <li>
+            <input id="chinaCheckbox" type="checkbox" value="CN"></input>
+            <label for="chinaCheckbox">Chine 🇨🇳</label>
+        </li>
+        <li>
+            <input id="franceCheckbox" type="checkbox" value="FR" checked></input>
+            <label for="franceCheckbox">France 🇫🇷</label>
+        </li>
+        <li>
+            <input id="italyCheckbox" type="checkbox" value="IT" checked></input>
+            <label for="italyCheckbox">Italie 🇮🇹</label>
+        </li>
+        <li>
+            <input id="usaCheckbox" type="checkbox" value="US"></input>
+            <label for="usaCheckbox">États-Unis 🇺🇸</label>
+        </li>
+    </ul>
+
+    <div id="divControl">
+        <input id="logCheckbox" type="checkbox" value="logscale"></input>
+        <label for="logCheckbox">Échelle logarithmique 📉</label>
+    </div>
+
+    <div class="controls">
+        <select name="metricSelector" id="metricSelector">
+            <option value="total_cases" selected>Nombre de cas total</option>
+            <option value="total_deaths">Nombre total de décès</option>
+            <option value="total_recoveries">Nombre total de cas résolu</option>
+            <option value="new_daily_cases">Nombre de cas détecté aujourd'hui</option>
+            <option value="new_daily_deaths">Nombre de décès aujourd'hui</option>
+        </select>
+        <label for="metricSelector">👈</label>
+    </div>
+    <div id="plot"></div>
 
     <hr>
+
     <p lang="en" class="small">English version <a href="/corona">here</a>.</p>
-    <p class="small">Cette page a été modifié pour être plus inclusive. Elle est désormais supportée sur tout type de
-        smartphone/ordinateur, pour les personnes atteintes de daltonisme et les non-voyants.</p>
+    <p class="small">Cette page a été conçue pour être inclusive autant que possible. Elle est supportée sur la plupart
+        des smartphone/ordinateur, pour les personnes atteintes de daltonisme et les non-voyants.</p>
     <p class="small">Revenir à la page d'<a href="/">accueil</a>, ou retrouvez moi sur <a
-            href="https://www.linkedin.com/in/yrieixleprince/">LinkedIn</a>.</p>
+            href="https://www.linkedin.com/in/yrieixleprince/">LinkedIn</a> 👋</p>
 
     <p class="small">Source des données : <a href="thevirustracker.com">thevirustracker.com</a> - <span
             id="source"></span></p>
-    <script type="text/javascript" src='../corona.js'></script>
+    <script type="text/javascript" src='../worldwide.js'></script>
+    <script type="text/javascript" src='../evolution.js'></script>
 </body>
 
 </html>

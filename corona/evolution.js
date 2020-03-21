@@ -51,6 +51,8 @@ const countries_ = [{
 }].sort((a, b) => a.name.localeCompare(b.name));
 
 
+const helpDel = document.getElementById('helpDel');
+helpDel.style.color = '#989898';
 let countriesSelected = ['FR', 'IT'];
 let countrySelector = document.getElementById('countrySelector');
 let countrySelected = document.getElementById('countrySelected');
@@ -165,11 +167,12 @@ const update_countrySelector = () => {
     init.value = '';
     init.disabled = true;
     init.selected = true;
-    init.innerHTML = lang === 'en' ? 'Select Country' : 'Sélectionnez un pays';
+    init.innerHTML = lang === 'en' ? 'Add Country' : 'Ajoutez un pays';
 
     countrySelector.innerHTML = '';
     countrySelector.appendChild(init);
-    countrySelected.innerHTML = countriesSelected.length ? '🗑️  ' : '';
+    helpDel.innerHTML = countriesSelected.length ? lang === 'en' ? '👇 Click name to delete country 🗑️' : '👇 Touchez un pays pour l\'effacer 🗑️' : '';
+    countrySelected.innerHTML = '';
     countries_.filter(({ code }) => !countriesSelected.includes(code))
         .forEach(c => {
             let opt = document.createElement('option');

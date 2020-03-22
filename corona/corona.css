@@ -21,6 +21,10 @@ li {
     font-size: 0.8rem;
 }
 
+.clickable {
+    cursor: pointer;
+}
+
 #divControl {
     display: flex;
     justify-content: center;

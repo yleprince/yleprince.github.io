@@ -54,18 +54,18 @@
     <h2>😷 Évolution par pays</h2>
 
     <div id="countries">
-        <select id="countrySelector"></select>
+        <select class="clickable" id="countrySelector"></select>
         <p class="small" id="helpDel"></p>
         <div id="countrySelected"></div>
     </div>
 
     <div id="divControl">
         <input id="logCheckbox" type="checkbox" value="logscale"></input>
-        <label for="logCheckbox">Échelle logarithmique 📉</label>
+        <label class="clickable" for="logCheckbox">Échelle logarithmique 📉</label>
     </div>
 
     <div class="controls">
-        <select name="metricSelector" id="metricSelector">
+        <select class="clickable" name="metricSelector" id="metricSelector">
             <option value="total_cases" selected>Nombre de cas total</option>
             <option value="total_deaths">Nombre total de décès</option>
             <option value="total_recoveries">Nombre total de cas résolu</option>

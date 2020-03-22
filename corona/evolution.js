@@ -1,54 +1,25 @@
 const countries_ = [{
-    code: 'CN',
-    flag: '🇨🇳',
-    name: 'China',
-    fr: 'Chine'
+    code: 'CN', flag: '🇨🇳', name: 'China', fr: 'Chine'
 }, {
-    code: 'US',
-    flag: '🇺🇸',
-    name: 'USA',
-    fr: 'États-Unis'
+    code: 'US', flag: '🇺🇸', name: 'USA', fr: 'États-Unis'
 }, {
-    code: 'FR',
-    flag: '🇫🇷',
-    name: 'France',
-    fr: 'France'
+    code: 'FR', flag: '🇫🇷', name: 'France', fr: 'France'
 }, {
-    code: 'IT',
-    flag: '🇮🇹',
-    name: 'Italy',
-    fr: 'Italie'
+    code: 'IT', flag: '🇮🇹', name: 'Italy', fr: 'Italie'
 }, {
-    code: 'DE',
-    flag: '🇩🇪',
-    name: 'Germany',
-    fr: 'Allemagne'
+    code: 'DE', flag: '🇩🇪', name: 'Germany', fr: 'Allemagne'
 }, {
-    code: 'ES',
-    flag: '🇪🇸',
-    name: 'Spain',
-    fr: 'Espagne'
+    code: 'ES', flag: '🇪🇸', name: 'Spain', fr: 'Espagne'
 }, {
-    code: 'CH',
-    flag: '🇨🇭',
-    name: 'Switzerland',
-    fr: 'États-Unis'
+    code: 'CH', flag: '🇨🇭', name: 'Switzerland', fr: 'États-Unis'
 }, {
-    code: 'BE',
-    flag: '🇧🇪',
-    name: 'Belgium',
-    fr: 'Belgique'
+    code: 'BE', flag: '🇧🇪', name: 'Belgium', fr: 'Belgique'
 }, {
-    code: 'LU',
-    flag: '🇱🇺',
-    name: 'Luxembourg',
-    fr: 'Luxembourg'
+    code: 'LU', flag: '🇱🇺', name: 'Luxembourg', fr: 'Luxembourg'
 }, {
-    code: 'GB',
-    flag: '🇬🇧',
-    name: 'United Kingdom',
-    fr: 'Royaume-Uni'
-}].sort((a, b) => a.name.localeCompare(b.name));
+    code: 'GB', flag: '🇬🇧', name: 'United Kingdom', fr: 'Royaume-Uni'
+}
+].sort((a, b) => a.name.localeCompare(b.name));
 
 
 const helpDel = document.getElementById('helpDel');
@@ -189,6 +160,7 @@ const update_countrySelector = () => {
         .forEach((ccode, i) => {
             const c = countries_.find(({ code }) => ccode === code);
             let span = document.createElement('span');
+            span.className = "clickable";
             span.id = c.code;
             span.style.color = colors[i];
             span.innerHTML = (lang === 'en' ? c.name : c.fr) + ' ' + c.flag;

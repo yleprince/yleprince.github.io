@@ -34,7 +34,7 @@ d3.json("worldGeojson.json")
             .attr("d", path)
             .attr("id", (d) => d.id)
             .attr("name", (d) => d.name)
-            .attr("class", "country")
+            .attr("class", "country clickable")
             .on("click", function (d) {
                 d3.selectAll('.country').classed("selected", false)
                 d3.select(this).classed("selected", true);

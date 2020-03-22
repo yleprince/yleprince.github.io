@@ -19,7 +19,7 @@ h1,h2,h3{
 
 .country {
     stroke: dimgray;
-    fill: none;
+    fill: rgba(0, 0, 0, 0);
 }
 
 .selected {

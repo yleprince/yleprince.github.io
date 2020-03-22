@@ -17,8 +17,14 @@ const path = d3.geoPath()
 
 const cGroup = map.append("g");
 
-d3.json(`${(lang === 'en' ? '' : '../')}worldGeojson.json`)
-    .then(geojson => {
+const promises = [
+    d3.json(`${(lang === 'en' ? '' : '../')}worldGeojson.json`),
+    fetch("https://raw.githubusercontent.com/yleprince/data/master/country.json").then(raw => raw.json())
+];
+
+Promise.all(promises)
+    .then(([geojson, countries]) => {
+        const getFlag = (code) => countries.find(({ iso }) => iso === code)["flag"]
         const b = path.bounds(geojson),
             s = 1 / Math.max((b[1][0] - b[0][0]) / m_width, (b[1][1] - b[0][1]) / m_height),
             t = [(m_width - s * (b[1][0] + b[0][0])) / 2, (m_height - s * (b[1][1] + b[0][1])) / 2];
@@ -38,11 +44,11 @@ d3.json(`${(lang === 'en' ? '' : '../')}worldGeojson.json`)
             .on("click", function (d) {
                 d3.selectAll('.country').classed("selected", false)
                 d3.select(this).classed("selected", true);
-                document.getElementById("country").innerHTML = d.properties.name;
+                document.getElementById("country").innerHTML = `${d.properties.name} ${getFlag(d.id)}`;
                 updateCountryData(d.id);
             });
         updateCountryData('FR');
-        document.getElementById("country").innerHTML = 'France';
+        document.getElementById("country").innerHTML = `France ${getFlag('FR')}`;
         map.select('path#FR').classed("selected", true);
     });
 

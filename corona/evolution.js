@@ -167,11 +167,11 @@ const update_countrySelector = () => {
     init.value = '';
     init.disabled = true;
     init.selected = true;
-    init.innerHTML = lang === 'en' ? 'Add Country' : 'Ajoutez un pays';
+    init.innerHTML = lang === 'en' ? 'Add a country' : 'Ajoutez un pays';
 
     countrySelector.innerHTML = '';
     countrySelector.appendChild(init);
-    helpDel.innerHTML = countriesSelected.length ? lang === 'en' ? '👇 Click name to delete country 🗑️' : '👇 Touchez un pays pour l\'effacer 🗑️' : '';
+    helpDel.innerHTML = countriesSelected.length ? lang === 'en' ? '👇 Click a country to hide it 🗑️' : '👇 Touchez un pays pour l\'effacer 🗑️' : '';
     countrySelected.innerHTML = '';
     countries_.filter(({ code }) => !countriesSelected.includes(code))
         .forEach(c => {

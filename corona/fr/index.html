@@ -74,7 +74,33 @@
         </select>
         <label for="metricSelector">👈</label>
     </div>
-    <div id="plot"></div>
+    <div id="containerPlot">
+        <div id="plot"></div>
+    </div>
+
+    <hr>
+
+    <h2>📍 Statistiques par pays</h2>
+
+    <div id="container">
+        <div id="map"></div>
+    </div>
+    <p class="small grey">Sélectionnez un pays sur la carte 👆 pour afficher les données ci-dessous 👇</p>
+    <h3 id="country"></h3>
+    <ul>
+        <li>Nombre total de cas : <span id="c_total_cases"></span></li>
+        <li>Nombre total de cas résolu : <span id="c_total_recovered"></span></li>
+        <li>Nombre total de cas non résolu : <span id="c_total_unresolved"></span></li>
+        <li>Nombre total de décès : <span id="c_total_deaths"></span></li>
+    </ul>
+    <ul>
+        <li>Nombre de cas détecté aujourd'hui : <span id="c_total_new_cases_today"></span></li>
+        <li>Nombre de décès aujourd'hui : <span id="c_total_new_deaths_today"></span></li>
+    </ul>
+    <ul>
+        <li>Nombre total de cas actif : <span id="c_total_active_cases"></span></li>
+        <li>Nombre total de cas grave : <span id="c_total_serious_cases"></span></li>
+    </ul>
 
     <hr>
 
@@ -89,6 +115,7 @@
     <script>const lang = 'fr';</script>
     <script type="text/javascript" src='../worldwide.js'></script>
     <script type="text/javascript" src='../evolution.js'></script>
+    <script type="text/javascript" src='../map.js'></script>
 </body>
 
 </html>

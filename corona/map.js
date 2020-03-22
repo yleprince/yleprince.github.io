@@ -17,7 +17,7 @@ const path = d3.geoPath()
 
 const cGroup = map.append("g");
 
-d3.json("worldGeojson.json")
+d3.json(`${(lang === 'en' ? '' : '../')}worldGeojson.json`)
     .then(geojson => {
         const b = path.bounds(geojson),
             s = 1 / Math.max((b[1][0] - b[0][0]) / m_width, (b[1][1] - b[0][1]) / m_height),

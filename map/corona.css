@@ -14,9 +14,14 @@ h1,h2,h3{
 }
 
 .svg {
-    /* background-color: dimgray; */
+    /* background-color: white; */
 }
 
 .country {
-    fill: dimgray;
+    stroke: dimgray;
+    fill: none;
+}
+
+.selected {
+    fill: #17b78c;
 }

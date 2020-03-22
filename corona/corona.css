@@ -44,3 +44,7 @@ li {
 .grey {
     color: #aaaaaa;
 }
+
+hr {
+    border-top: 1px dotted grey;
+}

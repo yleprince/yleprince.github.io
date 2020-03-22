@@ -1,25 +1,22 @@
-const countries_ = [{
-    code: 'CN', flag: '🇨🇳', name: 'China', fr: 'Chine'
-}, {
-    code: 'US', flag: '🇺🇸', name: 'USA', fr: 'États-Unis'
-}, {
-    code: 'FR', flag: '🇫🇷', name: 'France', fr: 'France'
-}, {
-    code: 'IT', flag: '🇮🇹', name: 'Italy', fr: 'Italie'
-}, {
-    code: 'DE', flag: '🇩🇪', name: 'Germany', fr: 'Allemagne'
-}, {
-    code: 'ES', flag: '🇪🇸', name: 'Spain', fr: 'Espagne'
-}, {
-    code: 'CH', flag: '🇨🇭', name: 'Switzerland', fr: 'États-Unis'
-}, {
-    code: 'BE', flag: '🇧🇪', name: 'Belgium', fr: 'Belgique'
-}, {
-    code: 'LU', flag: '🇱🇺', name: 'Luxembourg', fr: 'Luxembourg'
-}, {
-    code: 'GB', flag: '🇬🇧', name: 'United Kingdom', fr: 'Royaume-Uni'
-}
-].sort((a, b) => a.name.localeCompare(b.name));
+const available = ["AF", "AL", "DZ", "AO", "AR", "AM", "AU", "AT", "AZ", "BS",
+    "BD", "BY", "BE", "BZ", "BJ", "BT", "BO", "BA", "BW", "BR",
+    "BN", "BG", "BF", "BI", "KH", "CM", "CA", "CI", "CF", "TD",
+    "CL", "CN", "CO", "CG", "CD", "CR", "HR", "CU", "CY", "CZ",
+    "DK", "DP", "DJ", "DO", "CD", "EC", "EG", "SV", "GQ", "ER",
+    "EE", "ET", "FK", "FJ", "FI", "FR", "GF", "TF", "GA", "GM",
+    "GE", "DE", "GH", "GR", "GL", "GT", "GN", "GW", "GY", "HT",
+    "HN", "HK", "HU", "IS", "IN", "ID", "IR", "IQ", "IE", "IL",
+    "IT", "JM", "JP", "JO", "KZ", "KE", "KP", "XK", "KW", "KG",
+    "LA", "LV", "LB", "LS", "LR", "LY", "LT", "LU", "MK", "MG",
+    "MW", "MY", "ML", "MR", "MX", "MD", "MN", "ME", "MA", "MZ",
+    "MM", "NA", "NP", "NL", "NC", "NZ", "NI", "NE", "NG", "KP",
+    "NO", "OM", "PK", "PS", "PA", "PG", "PY", "PE", "PH", "PL",
+    "PT", "PR", "QA", "XK", "RO", "RU", "RW", "SA", "SN", "RS",
+    "SL", "SG", "SK", "SI", "SB", "SO", "ZA", "KR", "SS", "ES",
+    "LK", "SD", "SR", "SJ", "SZ", "SE", "CH", "SY", "TW", "TJ",
+    "TZ", "TH", "TL", "TG", "TT", "TN", "TR", "TM", "AE", "UG",
+    "GB", "UA", "US", "UY", "UZ", "VU", "VE", "VN", "EH", "YE",
+    "ZM", "ZW"];
 
 
 const helpDel = document.getElementById('helpDel');
@@ -28,8 +25,7 @@ let countriesSelected = ['FR', 'IT'];
 let countrySelector = document.getElementById('countrySelector');
 let countrySelected = document.getElementById('countrySelected');
 
-const colors = ['#46AFB9', '#0b6e78', '#DF8C95', '#8a2f3e'];
-
+const colors = ['#FF8D54', '#7F2B00', '#3F72A6', '#042A52', '#38AA85', '#005439']
 const logCheckbox = document.getElementById('logCheckbox');
 
 const metricSelector = document.getElementById('metricSelector');
@@ -128,52 +124,58 @@ const update = () => {
             }
             updateMetric(false);
             metricSelector.onchange = () => updateMetric(true);
-        });
+        })
+        .catch(err => console.log("Error", err));
 }
+fetch("https://raw.githubusercontent.com/yleprince/data/master/country.json")
+    .then(raw => raw.json())
+    .then(data => data.filter(({ iso }) => available.includes(iso))
+        .sort((a, b) => a.name.localeCompare(b.name)))
+    .then(countries_ => {
+        const update_countrySelector = () => {
+            update();
 
-const update_countrySelector = () => {
-    update();
+            const init = document.createElement('option');
+            init.value = '';
+            init.disabled = true;
+            init.selected = true;
+            init.innerHTML = lang === 'en' ? 'Add a country' : 'Ajoutez un pays';
 
-    const init = document.createElement('option');
-    init.value = '';
-    init.disabled = true;
-    init.selected = true;
-    init.innerHTML = lang === 'en' ? 'Add a country' : 'Ajoutez un pays';
-
-    countrySelector.innerHTML = '';
-    countrySelector.appendChild(init);
-    helpDel.innerHTML = countriesSelected.length ? lang === 'en' ? '👇 Click a country to hide it 🗑️' : '👇 Touchez un pays pour l\'effacer 🗑️' : '';
-    countrySelected.innerHTML = '';
-    countries_.filter(({ code }) => !countriesSelected.includes(code))
-        .forEach(c => {
-            let opt = document.createElement('option');
-            opt.value = c.code;
-            opt.innerHTML = (lang === 'en' ? c.name : c.fr) + ' ' + c.flag;
-            countrySelector.appendChild(opt);
-        });
-    countrySelector.onchange = () => {
-        countriesSelected.length >= colors.length ? countriesSelected.pop() : false;
-        countriesSelected.unshift(Array.from(countrySelector.selectedOptions)[0].value)
-        update_countrySelector();
-    };
-    countriesSelected
-        .forEach((ccode, i) => {
-            const c = countries_.find(({ code }) => ccode === code);
-            let span = document.createElement('span');
-            span.className = "clickable";
-            span.id = c.code;
-            span.style.color = colors[i];
-            span.innerHTML = (lang === 'en' ? c.name : c.fr) + ' ' + c.flag;
-            countrySelected.appendChild(span);
-            const space = document.createElement('span');
-            space.id = ' ' + c.code;
-            space.innerHTML = ' ';
-            countrySelected.appendChild(space);
-            span.addEventListener('click', () => {
-                countriesSelected = countriesSelected.filter(code => code != c.code);
-                console.log(countriesSelected);
+            countrySelector.innerHTML = '';
+            countrySelector.appendChild(init);
+            helpDel.innerHTML = countriesSelected.length ? lang === 'en' ? '👇 Click a country to hide it 🗑️' : '👇 Touchez un pays pour l\'effacer 🗑️' : '';
+            countrySelected.innerHTML = '';
+            countries_.filter(({ iso }) => !countriesSelected.includes(iso))
+                .forEach(c => {
+                    let opt = document.createElement('option');
+                    opt.value = c.iso;
+                    opt.innerHTML = (lang === 'en' ? c.name : c.fr) + ' ' + c.flag;
+                    countrySelector.appendChild(opt);
+                });
+            countrySelector.onchange = () => {
+                countriesSelected.length >= colors.length ? countriesSelected.pop() : false;
+                countriesSelected.unshift(Array.from(countrySelector.selectedOptions)[0].value)
                 update_countrySelector();
-            });
-        });
-}
-update_countrySelector();
+            };
+            countriesSelected
+                .forEach((ciso, i) => {
+                    const c = countries_.find(({ iso }) => ciso === iso);
+                    let span = document.createElement('span');
+                    span.className = "clickable";
+                    span.id = c.iso;
+                    span.style.color = colors[i];
+                    span.innerHTML = (lang === 'en' ? c.name : c.fr) + ' ' + c.flag;
+                    countrySelected.appendChild(span);
+                    const space = document.createElement('span');
+                    space.id = ' ' + c.iso;
+                    space.innerHTML = ' ';
+                    countrySelected.appendChild(space);
+                    span.addEventListener('click', () => {
+                        countriesSelected = countriesSelected.filter(iso => iso != c.iso);
+                        console.log(countriesSelected);
+                        update_countrySelector();
+                    });
+                });
+        }
+        update_countrySelector();
+    });

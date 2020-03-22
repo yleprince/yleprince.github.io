@@ -44,7 +44,7 @@ Promise.all(promises)
             .on("click", function (d) {
                 d3.selectAll('.country').classed("selected", false)
                 d3.select(this).classed("selected", true);
-                document.getElementById("country").innerHTML = `${d.properties.name} ${getFlag(d.id)}`;
+                document.getElementById("country").innerHTML = `${(lang === 'en' ? d.properties.name : countries.find(({ iso }) => iso === d.id)['fr'])} ${getFlag(d.id)}`;
                 updateCountryData(d.id);
             });
         updateCountryData('FR');

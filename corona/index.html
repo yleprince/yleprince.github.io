@@ -55,7 +55,7 @@
 
     <div id="countries">
         <select class="clickable" id="countrySelector"></select>
-        <p class="small" id="helpDel"></p>
+        <p class="small grey" id="helpDel"></p>
         <div id="countrySelected"></div>
     </div>
 
@@ -74,7 +74,33 @@
         </select>
         <label for="metricSelector">👈</label>
     </div>
-    <div id="plot"></div>
+    <div id="containerPlot">
+        <div id="plot"></div>
+    </div>
+
+    <hr>
+
+    <h2>📍 Statistics by country</h2>
+
+    <div id="container">
+        <div id="map"></div>
+    </div>
+    <p class="small grey">Select a country on the map 👆 to display data below 👇</p>
+    <h3 id="country"></h3>
+    <ul>
+        <li>Total cases: <span id="c_total_cases"></span></li>
+        <li>Total recovered: <span id="c_total_recovered"></span></li>
+        <li>Total unresolved: <span id="c_total_unresolved"></span></li>
+        <li>Total deaths: <span id="c_total_deaths"></span></li>
+    </ul>
+    <ul>
+        <li>Total new cases today: <span id="c_total_new_cases_today"></span></li>
+        <li>Total new deaths today: <span id="c_total_new_deaths_today"></span></li>
+    </ul>
+    <ul>
+        <li>Total active cases: <span id="c_total_active_cases"></span></li>
+        <li>Total serious cases: <span id="c_total_serious_cases"></span></li>
+    </ul>
 
     <hr>
 
@@ -88,6 +114,7 @@
     <script>const lang = 'en';</script>
     <script type="text/javascript" src='worldwide.js'></script>
     <script type="text/javascript" src='evolution.js'></script>
+    <script type="text/javascript" src='map.js'></script>
 </body>
 
 </html>

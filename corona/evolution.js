@@ -23,7 +23,7 @@ const countries_ = [{
 
 
 const helpDel = document.getElementById('helpDel');
-helpDel.style.color = '#989898';
+// helpDel.style.color = '';
 let countriesSelected = ['FR', 'IT'];
 let countrySelector = document.getElementById('countrySelector');
 let countrySelected = document.getElementById('countrySelected');
@@ -37,8 +37,8 @@ let selected = metricSelector.value;
 
 // set the dimensions and margins of the graph
 let margin = { top: 10, right: 30, bottom: 30, left: 60 },
-    width = 460 - margin.left - margin.right,
-    height = 400 - margin.top - margin.bottom;
+    width = document.getElementById("containerPlot").offsetWidth - margin.left - margin.right,
+    height = document.getElementById("containerPlot").offsetWidth - margin.top - margin.bottom;
 // append the svg object to the body of the page
 let svg = d3.select("#plot")
     .append("svg")

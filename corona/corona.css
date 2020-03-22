@@ -30,3 +30,17 @@ li {
     justify-content: center;
     align-items: center;
 }
+
+.country {
+    stroke: #aaaaaa;
+    fill: rgba(0, 0, 0, 0);
+}
+
+.selected {
+    stroke: dimgray;
+    fill: #17b78c;
+}
+
+.grey {
+    color: #aaaaaa;
+}

@@ -1,11 +1,11 @@
-const width = document.getElementById("container").offsetWidth * 0.95;
-const height = 500;
+const m_width = document.getElementById("container").offsetWidth;
+const m_height = m_width * 0.6;
 
-const svg = d3.select('#map').append("svg")
+const map = d3.select('#map').append("svg")
     .attr("id", "svg")
     .attr("class", "svg")
-    .attr("width", width)
-    .attr("height", height);
+    .attr("width", m_width)
+    .attr("height", m_height);
 
 const projection = d3.geoNaturalEarth1()
     .scale(1)
@@ -15,13 +15,13 @@ const path = d3.geoPath()
     .pointRadius(2)
     .projection(projection);
 
-const cGroup = svg.append("g");
+const cGroup = map.append("g");
 
 d3.json("worldGeojson.json")
     .then(geojson => {
         const b = path.bounds(geojson),
-            s = 1 / Math.max((b[1][0] - b[0][0]) / width, (b[1][1] - b[0][1]) / height),
-            t = [(width - s * (b[1][0] + b[0][0])) / 2, (height - s * (b[1][1] + b[0][1])) / 2];
+            s = 1 / Math.max((b[1][0] - b[0][0]) / m_width, (b[1][1] - b[0][1]) / m_height),
+            t = [(m_width - s * (b[1][0] + b[0][0])) / 2, (m_height - s * (b[1][1] + b[0][1])) / 2];
 
         projection
             .scale(s)
@@ -39,13 +39,11 @@ d3.json("worldGeojson.json")
                 d3.selectAll('.country').classed("selected", false)
                 d3.select(this).classed("selected", true);
                 document.getElementById("country").innerHTML = d.properties.name;
-                console.log(d);
                 updateCountryData(d.id);
             });
-
         updateCountryData('FR');
-        d3.select('#FR').classed("selected", true);
         document.getElementById("country").innerHTML = 'France';
+        map.select('path#FR').classed("selected", true);
     });
 
 const countryStats = ['c_total_cases', 'c_total_recovered', 'c_total_unresolved',

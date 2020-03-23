@@ -17,4 +17,21 @@ fetch('https://thevirustracker.com/free-api?global=stats')
             .map(id =>
                 document.getElementById(id).textContent = data.results[0][id]);
     })
-    .catch(console.error);
+    .catch(err => {
+
+        document.body.innerHTML = '';
+
+        const mess = document.createElement('p');
+        const mess_en = "The data source is not reachable, please try again later.";
+        const mess_fr = "La source des données n'est pas disponible, veuillez réessayer plus tard, merci.";
+        mess.innerHTML = lang === 'en' ? mess_en : mess_fr
+
+        document.body.appendChild(mess);
+
+        const home = document.createElement('a');
+        home.href = "https://yleprince.github.io"
+        home.text = lang === 'en' ? "Home" : "Accueil";
+
+        document.body.appendChild(home);
+        console.error(err);
+    });

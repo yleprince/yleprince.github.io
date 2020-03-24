@@ -25,7 +25,7 @@ li {
     cursor: pointer;
 }
 
-#divControl {
+.centerContainer {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -47,4 +47,22 @@ li {
 
 hr {
     border-top: 1px dotted #aaaaaa;
+}
+
+.button_corona {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size:18px;
+    color:#444;
+    background-color: rgba(0, 0, 0, 0);
+    border: 2px solid #4CAF50;
+    padding: 0.8rem 2rem;
+    text-align: center;
+    text-decoration: none;
+    transition-duration: 0.4s;
+}
+
+.clicked {
+    color: white;
+    background-color: #4CAF50;
+    border: none;
 }

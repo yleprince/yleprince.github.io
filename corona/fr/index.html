@@ -59,7 +59,7 @@
         <div id="countrySelected"></div>
     </div>
 
-    <div id="divControl">
+    <div id="centerContainer">
         <input id="logCheckbox" type="checkbox" value="logscale"></input>
         <label class="clickable" for="logCheckbox">Échelle logarithmique 📉</label>
     </div>
@@ -103,7 +103,10 @@
     </ul>
 
     <hr>
-
+    <div class="centerContainer">
+        <button class="button_corona clickable" id="linkButton">Partager le lien</button>
+    </div>
+    <hr>
     <p lang="en" class="small">English version <a href="/corona">here</a>.</p>
     <p class="small grey">Cette page a été conçue pour être inclusive autant que possible. Elle est supportée sur la
         plupart des smartphone/ordinateur, pour les personnes atteintes de daltonisme.</p>
@@ -116,6 +119,7 @@
     <script type="text/javascript" src='../worldwide.js'></script>
     <script type="text/javascript" src='../evolution.js'></script>
     <script type="text/javascript" src='../map.js'></script>
+    <script type="text/javascript" src='../link.js'></script>
 </body>
 
 </html>

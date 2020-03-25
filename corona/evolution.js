@@ -135,7 +135,7 @@ const update = () => {
 fetch("https://raw.githubusercontent.com/yleprince/data/master/country.json")
     .then(raw => raw.json())
     .then(data => data.filter(({ iso }) => available.includes(iso))
-        .sort((a, b) => a.name.localeCompare(b.name)))
+        .sort((a, b) => a.name[lang].localeCompare(b.name[lang])))
     .then(countries_ => {
         const update_countrySelector = () => {
             update();
@@ -154,7 +154,7 @@ fetch("https://raw.githubusercontent.com/yleprince/data/master/country.json")
                 .forEach(c => {
                     let opt = document.createElement('option');
                     opt.value = c.iso;
-                    opt.innerHTML = (lang === 'en' ? c.name : c.fr) + ' ' + c.flag;
+                    opt.innerHTML = c.name[lang] + ' ' + c.flag;
                     countrySelector.appendChild(opt);
                 });
             countrySelector.onchange = () => {
@@ -169,7 +169,7 @@ fetch("https://raw.githubusercontent.com/yleprince/data/master/country.json")
                     span.className = "clickable";
                     span.id = c.iso;
                     span.style.color = colors[i];
-                    span.innerHTML = (lang === 'en' ? c.name : c.fr) + ' ' + c.flag;
+                    span.innerHTML = c.name[lang] + ' ' + c.flag;
                     countrySelected.appendChild(span);
                     const space = document.createElement('span');
                     space.id = ' ' + c.iso;

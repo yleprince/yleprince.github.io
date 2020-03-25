@@ -32,7 +32,7 @@ const metricSelector = document.getElementById('metricSelector');
 let selected = metricSelector.value;
 
 // set the dimensions and margins of the graph
-let margin = { top: 10, right: 30, bottom: 30, left: 60 },
+let margin = { top: 10, right: 30, bottom: 45, left: 60 },
     width = document.getElementById("containerPlot").offsetWidth - margin.left - margin.right,
     height = document.getElementById("containerPlot").offsetWidth - margin.top - margin.bottom;
 // append the svg object to the body of the page
@@ -67,7 +67,12 @@ const update = () => {
                 svg.append("g")
                     .attr("transform", "translate(0," + height + ")")
                     .attr("class", "axis x")
-                    .call(d3.axisBottom(x));
+                    .call(d3.axisBottom(x).ticks(10))
+                    .selectAll("text")
+                    .style("text-anchor", "end")
+                    .attr("dx", "-.8em")
+                    .attr("dy", "-.5em")
+                    .attr("transform", "rotate(-65)");
 
                 selected = metricSelector.value;
                 const max_y = d3.max(full.map(series => d3.max(series.map(d => d[selected]))));

@@ -18,9 +18,7 @@ const available = ["AF", "AL", "DZ", "AO", "AR", "AM", "AU", "AT", "AZ", "BS",
     "GB", "UA", "US", "UY", "UZ", "VU", "VE", "VN", "EH", "YE",
     "ZM", "ZW"];
 
-
 const helpDel = document.getElementById('helpDel');
-// helpDel.style.color = '';
 let countriesSelected = ['FR', 'IT'];
 let countrySelector = document.getElementById('countrySelector');
 let countrySelected = document.getElementById('countrySelected');
@@ -51,11 +49,13 @@ const getData = async (country) => fetch(url(country))
     .then(raw => Object.entries(raw.timelineitems[0])
         .filter(entry => entry[0] != 'stat')
         .map(([date, rest]) => ({ date: d3.timeParse("%m/%d/%Y")(date), ...rest }))
+        .sort((a, b) => (a.date > b.date) ? 1 : -1)
     );
 
 const update = () => {
     Promise.all(countriesSelected.map(getData))
         .then(full => {
+            console.log('full', full);
             svg.selectAll("*").remove();
 
             const updateMetric = (isCreated) => {

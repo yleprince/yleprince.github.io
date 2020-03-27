@@ -11,7 +11,6 @@ document.getElementById('source').textContent = date_str;
 fetch('https://thevirustracker.com/free-api?global=stats')
     .then(res => res.json())
     .then(data => {
-        console.log('data', data)
         Object.keys(data.results[0])
             .filter(k => k != 'source')
             .map(id =>

@@ -22,9 +22,12 @@ const promises = [
     fetch("https://raw.githubusercontent.com/yleprince/data/master/country.json").then(raw => raw.json())
 ];
 
+const main = getParams().main || 'FR';
 Promise.all(promises)
     .then(([geojson, countries]) => {
-        const getFlag = (code) => countries.find(({ iso }) => iso === code)["flag"]
+        console.log(countries);
+        const getFlag = (iso_) => countries.find(({ iso }) => iso === iso_)["flag"];
+        const getName = (iso_) => countries.find(({ iso }) => iso === iso_).name[lang];
         const b = path.bounds(geojson),
             s = 1 / Math.max((b[1][0] - b[0][0]) / m_width, (b[1][1] - b[0][1]) / m_height),
             t = [(m_width - s * (b[1][0] + b[0][0])) / 2, (m_height - s * (b[1][1] + b[0][1])) / 2];
@@ -39,25 +42,27 @@ Promise.all(promises)
             .append("path")
             .attr("d", path)
             .attr("id", (d) => d.id)
-            .attr("name", (d) => d.name)
             .attr("class", "country clickable")
             .on("click", function (d) {
                 d3.selectAll('.country').classed("selected", false)
                 d3.select(this).classed("selected", true);
-                document.getElementById("country").innerHTML = `${(lang === 'en' ? d.properties.name : countries.find(({ iso }) => iso === d.id)['fr'])} ${getFlag(d.id)}`;
+                document.getElementById("country").innerHTML = `${getName(d.id)} ${getFlag(d.id)}`;
                 updateCountryData(d.id);
+                setParams({ main: d.id });
             });
-        updateCountryData('FR');
-        document.getElementById("country").innerHTML = `France ${getFlag('FR')}`;
-        map.select('path#FR').classed("selected", true);
+
+        // init
+        updateCountryData(main);
+        document.getElementById("country").innerHTML = `${getName(main)} ${getFlag(main)}`;
+        map.select(`path#${main}`).classed("selected", true);
     });
 
 const countryStats = ['c_total_cases', 'c_total_recovered', 'c_total_unresolved',
     'c_total_deaths', 'c_total_new_cases_today', 'c_total_new_deaths_today',
     'c_total_active_cases', 'c_total_serious_cases'];
 
-const urlCountry = (code) => `https://thevirustracker.com/free-api?countryTotal=${code}`;
-const updateCountryData = (code) => fetch(urlCountry(code))
+const urlCountry = (iso) => `https://thevirustracker.com/free-api?countryTotal=${iso}`;
+const updateCountryData = (iso) => fetch(urlCountry(iso))
     .then(res => res.json())
     .then(data => countryStats.forEach(k => {
         const span = document.getElementById(k);

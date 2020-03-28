@@ -19,15 +19,18 @@ const available = ["AF", "AL", "DZ", "AO", "AR", "AM", "AU", "AT", "AZ", "BS",
     "ZM", "ZW"];
 
 const helpDel = document.getElementById('helpDel');
-let countriesSelected = ['FR', 'IT'];
+let countriesSelected = (getParams().comp || 'FRIT').match(/.{1,2}/g);
 let countrySelector = document.getElementById('countrySelector');
 let countrySelected = document.getElementById('countrySelected');
 
 const colors = ['#FF8D54', '#7F2B00', '#3F72A6', '#042A52', '#38AA85', '#005439']
 const logCheckbox = document.getElementById('logCheckbox');
+logCheckbox.checked = getParams().log;
 
 const metricSelector = document.getElementById('metricSelector');
-let selected = metricSelector.value;
+let selected = getParams().metric || 'total_cases';
+metricSelector.value = selected;
+console.log('selected', selected);
 
 // set the dimensions and margins of the graph
 let margin = { top: 10, right: 30, bottom: 45, left: 60 },
@@ -101,6 +104,7 @@ const update = () => {
                     ));
 
                 d3.select("#logCheckbox").on("click", function () {
+                    setParams('log');
                     if (this.checked) {
                         y = d3.scaleLog()
                             .domain([1, max_y])
@@ -128,7 +132,10 @@ const update = () => {
                 })
             }
             updateMetric(false);
-            metricSelector.onchange = () => updateMetric(true);
+            metricSelector.onchange = () => {
+                setParams({ metric: metricSelector.value });
+                updateMetric(true)
+            };
         })
         .catch(err => console.log("Error", err));
 }
@@ -159,7 +166,8 @@ fetch("https://raw.githubusercontent.com/yleprince/data/master/country.json")
                 });
             countrySelector.onchange = () => {
                 countriesSelected.length >= colors.length ? countriesSelected.pop() : false;
-                countriesSelected.unshift(Array.from(countrySelector.selectedOptions)[0].value)
+                countriesSelected.unshift(Array.from(countrySelector.selectedOptions)[0].value);
+                setParams({ comp: countriesSelected.join('') });
                 update_countrySelector();
             };
             countriesSelected
@@ -177,7 +185,7 @@ fetch("https://raw.githubusercontent.com/yleprince/data/master/country.json")
                     countrySelected.appendChild(space);
                     span.addEventListener('click', () => {
                         countriesSelected = countriesSelected.filter(iso => iso != c.iso);
-                        console.log(countriesSelected);
+                        setParams({ comp: countriesSelected.join('') });
                         update_countrySelector();
                     });
                 });

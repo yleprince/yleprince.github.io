@@ -54,18 +54,18 @@
     <h2>😷 Evolution by country</h2>
 
     <div id="countries">
-        <select class="clickable" id="countrySelector"></select>
+        <select class="clickable corona" id="countrySelector"></select>
         <p class="small grey" id="helpDel"></p>
         <div id="countrySelected"></div>
     </div>
 
     <div class="centerContainer">
-        <input id="logCheckbox" type="checkbox" value="logscale"></input>
+        <input id="logCheckbox" type="checkbox" class="corona"></input>
         <label class="clickable" for="logCheckbox">Log scale 📉</label>
     </div>
 
     <div class="controls">
-        <select class="clickable" id="metricSelector">
+        <select class="clickable corona" id="metricSelector">
             <option value="total_cases" selected>Total cases</option>
             <option value="total_deaths">Total deaths</option>
             <option value="total_recoveries">Total recoveries</option>
@@ -103,9 +103,11 @@
     </ul>
 
     <hr>
+    <br>
     <div class="centerContainer">
         <button class="button_corona clickable" id="linkButton"></button>
     </div>
+    <br>
     <hr>
 
     <p lang="en" class="small">Version française <a href="/corona/fr">ici</a>.</p>

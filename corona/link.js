@@ -1,3 +1,10 @@
+const buttonText = {
+    init: { en: 'Share Link 🕊️', fr: 'Partager le lien 🕊️' },
+    copied: { en: 'copied! 🕊️', fr: 'Lien copié ! 🕊️' }
+};
+const linkButton = document.getElementById('linkButton');
+linkButton.innerHTML = buttonText.init[lang];
+
 const parseParams = (str) => str.split('&')
     .reduce((o, k) => {
         if (k.includes('=')) {
@@ -50,9 +57,14 @@ const copyUrl = () => {
     document.body.removeChild(tmp);
 }
 
-const linkButton = document.getElementById('linkButton');
 linkButton.addEventListener('click', () => {
     copyUrl();
-    linkButton.innerHTML = lang == 'en' ? 'copied!' : 'lien copié !';
+    linkButton.innerHTML = buttonText.copied[lang];
     linkButton.classList.add('clicked');
+    const wait = ms => new Promise(resolve => setTimeout(resolve, ms));
+    wait(2000)
+        .then(() => {
+            linkButton.classList.remove('clicked');
+            linkButton.innerHTML = buttonText.init[lang];
+        });
 });

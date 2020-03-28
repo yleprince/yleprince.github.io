@@ -139,56 +139,55 @@ const update = () => {
         })
         .catch(err => console.log("Error", err));
 }
-fetch("https://raw.githubusercontent.com/yleprince/data/master/country.json")
-    .then(raw => raw.json())
-    .then(data => data.filter(({ iso }) => available.includes(iso))
-        .sort((a, b) => a.name[lang].localeCompare(b.name[lang])))
-    .then(countries_ => {
-        const update_countrySelector = () => {
-            update();
 
-            const init = document.createElement('option');
-            init.value = '';
-            init.disabled = true;
-            init.selected = true;
-            init.innerHTML = lang === 'en' ? 'Add a country' : 'Ajoutez un pays';
+const createLinechart = (countries) => {
+    countries_ = countries.filter(({ iso }) => available.includes(iso))
+        .sort((a, b) => a.name[lang].localeCompare(b.name[lang]));
+    const update_countrySelector = () => {
+        update();
 
-            countrySelector.innerHTML = '';
-            countrySelector.appendChild(init);
-            helpDel.innerHTML = countriesSelected.length ? lang === 'en' ? '👇 Click a country to hide it 🗑️' : '👇 Touchez un pays pour l\'effacer 🗑️' : '';
-            countrySelected.innerHTML = '';
-            countries_.filter(({ iso }) => !countriesSelected.includes(iso))
-                .forEach(c => {
-                    let opt = document.createElement('option');
-                    opt.value = c.iso;
-                    opt.innerHTML = c.name[lang] + ' ' + c.flag;
-                    countrySelector.appendChild(opt);
+        const init = document.createElement('option');
+        init.value = '';
+        init.disabled = true;
+        init.selected = true;
+        init.innerHTML = lang === 'en' ? 'Add a country' : 'Ajoutez un pays';
+
+        countrySelector.innerHTML = '';
+        countrySelector.appendChild(init);
+        helpDel.innerHTML = countriesSelected.length ? lang === 'en' ? '👇 Click a country to hide it 🗑️' : '👇 Touchez un pays pour l\'effacer 🗑️' : '';
+        countrySelected.innerHTML = '';
+        countries_.filter(({ iso }) => !countriesSelected.includes(iso))
+            .forEach(c => {
+                let opt = document.createElement('option');
+                opt.value = c.iso;
+                opt.innerHTML = c.name[lang] + ' ' + c.flag;
+                countrySelector.appendChild(opt);
+            });
+        countrySelector.onchange = () => {
+            countriesSelected.length >= colors.length ? countriesSelected.pop() : false;
+            countriesSelected.unshift(Array.from(countrySelector.selectedOptions)[0].value);
+            setParams({ comp: countriesSelected.join('') });
+            update_countrySelector();
+        };
+        countriesSelected
+            .forEach((ciso, i) => {
+                const c = countries_.find(({ iso }) => ciso === iso);
+                let span = document.createElement('span');
+                span.className = "clickable";
+                span.id = c.iso;
+                span.style.color = colors[i];
+                span.innerHTML = c.name[lang] + ' ' + c.flag;
+                countrySelected.appendChild(span);
+                const space = document.createElement('span');
+                space.id = ' ' + c.iso;
+                space.innerHTML = ' ';
+                countrySelected.appendChild(space);
+                span.addEventListener('click', () => {
+                    countriesSelected = countriesSelected.filter(iso => iso != c.iso);
+                    setParams({ comp: countriesSelected.join('') });
+                    update_countrySelector();
                 });
-            countrySelector.onchange = () => {
-                countriesSelected.length >= colors.length ? countriesSelected.pop() : false;
-                countriesSelected.unshift(Array.from(countrySelector.selectedOptions)[0].value);
-                setParams({ comp: countriesSelected.join('') });
-                update_countrySelector();
-            };
-            countriesSelected
-                .forEach((ciso, i) => {
-                    const c = countries_.find(({ iso }) => ciso === iso);
-                    let span = document.createElement('span');
-                    span.className = "clickable";
-                    span.id = c.iso;
-                    span.style.color = colors[i];
-                    span.innerHTML = c.name[lang] + ' ' + c.flag;
-                    countrySelected.appendChild(span);
-                    const space = document.createElement('span');
-                    space.id = ' ' + c.iso;
-                    space.innerHTML = ' ';
-                    countrySelected.appendChild(space);
-                    span.addEventListener('click', () => {
-                        countriesSelected = countriesSelected.filter(iso => iso != c.iso);
-                        setParams({ comp: countriesSelected.join('') });
-                        update_countrySelector();
-                    });
-                });
-        }
-        update_countrySelector();
-    });
+            });
+    }
+    update_countrySelector();
+};

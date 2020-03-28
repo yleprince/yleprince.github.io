@@ -123,6 +123,14 @@
     <script type="text/javascript" src='worldwide.js'></script>
     <script type="text/javascript" src='evolution.js'></script>
     <script type="text/javascript" src='map.js'></script>
+    <script>
+        fetch("https://raw.githubusercontent.com/yleprince/data/master/coronavirus/countries_light.json")
+            .then(raw => raw.json())
+            .then(countries => {
+                create_map(countries);
+                createLinechart(countries);
+            });
+    </script>
 </body>
 
 </html>

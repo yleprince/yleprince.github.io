@@ -19,7 +19,7 @@ const cGroup = map.append("g");
 
 const promises = [
     d3.json(`${(lang === 'en' ? '' : '../')}worldGeojson.json`),
-    fetch("https://raw.githubusercontent.com/yleprince/data/master/country.json").then(raw => raw.json())
+    fetch("https://raw.githubusercontent.com/yleprince/data/master/coronavirus/countries_light.json").then(raw => raw.json())
 ];
 
 const main = getParams().main || 'FR';

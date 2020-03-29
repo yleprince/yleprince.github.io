@@ -58,7 +58,7 @@ let countryData;
 const updateCountryHtml = () => countryStats.forEach(k => {
     const span = document.getElementById(k);
     const value = popButton.classList.contains('clicked')
-        ? 1000 * Math.round(1000000 * countryData[k.slice(2)] / getPop(focusCountry)) / 1000000
+        ? 100 * Math.round(1000000 * countryData[k.slice(2)] / getPop(focusCountry)) / 1000000
         : countryData[k.slice(2)];
     span.innerHTML = `${value}${popButton.classList.contains('clicked') ? '‰' : ''}`;
 });

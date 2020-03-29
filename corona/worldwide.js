@@ -5,7 +5,7 @@ const updateWorld = (res) => Object.keys(res)
     .filter(k => k != 'source')
     .forEach(id => {
         const value = popButton.classList.contains('clicked')
-            ? 1000 * Math.round(1000000 * res[id] / worldPop) / 1000000
+            ? 100 * Math.round(1000000 * res[id] / worldPop) / 1000000
             : res[id];
         document.getElementById(id).textContent = `${value}${popButton.classList.contains('clicked') ? '‰' : ''}`;
     });

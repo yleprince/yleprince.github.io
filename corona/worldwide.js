@@ -7,7 +7,7 @@ const updateWorld = (res) => Object.keys(res)
         const value = popButton.classList.contains('clicked')
             ? 100 * Math.round(1000000 * res[id] / worldPop) / 1000000
             : res[id];
-        document.getElementById(id).textContent = `${value}${popButton.classList.contains('clicked') ? '‰' : ''}`;
+        document.getElementById(id).textContent = `${value}${popButton.classList.contains('clicked') ? '%' : ''}`;
     });
 
 const displayError = () => {

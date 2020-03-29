@@ -63,6 +63,10 @@ hr {
     -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
 }
 
+.button_corona:focus {
+    outline: none;
+}
+
 .clicked {
     transition-duration: 0.8s;
     color: white;

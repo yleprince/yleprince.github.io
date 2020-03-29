@@ -49,7 +49,7 @@ const create_map = (countries) => {
                 en: 'inhabitants',
                 fr: 'habitants'
             }
-            const pop = `${getPop(focusCountry)} popText[lang]`
+            const pop = `${getPop(focusCountry)} ${popText[lang]}`
             document.getElementById("country").innerHTML = `${getFlag(focusCountry)} ${getName(focusCountry)}: ${pop}`;
             map.select(`path#${focusCountry}`).classed("selected", true);
         });

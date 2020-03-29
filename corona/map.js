@@ -16,13 +16,10 @@ const path = d3.geoPath()
     .projection(projection);
 
 const cGroup = map.append("g");
-const focusCountry = getParams().focusCountry || 'FR';
+const focusCountry = getParams().main || 'FR';
 const create_map = (countries) => {
     d3.json(`${(lang === 'en' ? '' : '../')}worldGeojson.json`)
         .then((geojson) => {
-            console.log(countries);
-            const getFlag = (iso_) => countries.find(({ iso }) => iso === iso_)["flag"];
-            const getName = (iso_) => countries.find(({ iso }) => iso === iso_).name[lang];
             const b = path.bounds(geojson),
                 s = 1 / Math.max((b[1][0] - b[0][0]) / m_width, (b[1][1] - b[0][1]) / m_height),
                 t = [(m_width - s * (b[1][0] + b[0][0])) / 2, (m_height - s * (b[1][1] + b[0][1])) / 2];
@@ -41,14 +38,14 @@ const create_map = (countries) => {
                 .on("click", function (d) {
                     d3.selectAll('.country').classed("selected", false)
                     d3.select(this).classed("selected", true);
-                    document.getElementById("country").innerHTML = `${getName(d.id)} ${getFlag(d.id)}`;
+                    document.getElementById("country").innerHTML = `${getFlag(d.id)} ${getName(d.id)}`;
                     updateCountryData(d.id);
-                    setParams({ focusCountry: d.id });
+                    setParams({ main: d.id });
                 });
 
             // init
             updateCountryData(focusCountry);
-            document.getElementById("country").innerHTML = `${getName(focusCountry)} ${getFlag(focusCountry)}`;
+            document.getElementById("country").innerHTML = `${getFlag(focusCountry)} ${getName(focusCountry)}`;
             map.select(`path#${focusCountry}`).classed("selected", true);
         });
 }
@@ -57,11 +54,20 @@ const countryStats = ['c_total_cases', 'c_total_recovered', 'c_total_unresolved'
     'c_total_deaths', 'c_total_new_cases_today', 'c_total_new_deaths_today',
     'c_total_active_cases', 'c_total_serious_cases'];
 
+let countryData;
+const updateCountryHtml = () => countryStats.forEach(k => {
+    const span = document.getElementById(k);
+    const value = popButton.classList.contains('clicked')
+        ? 1000 * Math.round(1000000 * countryData[k.slice(2)] / getPop(focusCountry)) / 1000000
+        : countryData[k.slice(2)];
+    span.innerHTML = `${value}${popButton.classList.contains('clicked') ? '‰' : ''}`;
+});
+
 const urlCountry = (iso) => `https://thevirustracker.com/free-api?countryTotal=${iso}`;
 const updateCountryData = (iso) => fetch(urlCountry(iso))
     .then(res => res.json())
-    .then(data => countryStats.forEach(k => {
-        const span = document.getElementById(k);
-        span.innerHTML = data.countrydata[0][k.slice(2)];
-    }));
+    .then(data => {
+        countryData = data.countrydata[0];
+        updateCountryHtml();
+    });
 

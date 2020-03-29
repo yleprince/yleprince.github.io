@@ -22,7 +22,7 @@
 
 
     <link rel="stylesheet" href="corona.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
     <link rel="icon"
         href="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/facebook/230/face-with-medical-mask_1f637.png">
     <script src="https://d3js.org/d3.v5.js"></script>
@@ -33,6 +33,13 @@
 <body>
     <h1>Coronavirus statistics</h1>
     <p>This page displays up to date <a href="https://en.wikipedia.org/wiki/Coronavirus">covid-19</a> statistics.</p>
+
+    <br>
+    <div class="centerContainer">
+        <button class="button_corona clickable" id="popButton">👥 Scale by population</button>
+    </div>
+    <br>
+
     <h2>🌍 Worldwide</h2>
     <ul>
         <li>Total cases: <span class="number" id="total_cases">...</span></li>
@@ -59,10 +66,11 @@
         <div id="countrySelected"></div>
     </div>
 
+    <br>
     <div class="centerContainer">
-        <input id="logCheckbox" type="checkbox" class="corona"></input>
-        <label class="clickable" for="logCheckbox">Log scale 📉</label>
+        <button class="button_corona clickable" id="logButton">📉 Log scale</button>
     </div>
+    <br>
 
     <div class="controls">
         <select class="clickable corona" id="metricSelector">
@@ -120,6 +128,10 @@
     </p>
     <script>
         const lang = 'en';
+        let getCountry;
+        let getFlag;
+        let getName;
+        let getPop;
     </script>
     <script type="text/javascript" src='link.js'></script>
     <script type="text/javascript" src='worldwide.js'></script>

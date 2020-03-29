@@ -24,13 +24,12 @@ let countrySelector = document.getElementById('countrySelector');
 let countrySelected = document.getElementById('countrySelected');
 
 const colors = ['#FF8D54', '#7F2B00', '#3F72A6', '#042A52', '#38AA85', '#005439']
-const logCheckbox = document.getElementById('logCheckbox');
-logCheckbox.checked = getParams().log;
+const logButton = document.getElementById('logButton');
+getParams().log ? logButton.classList.add('clicked') : null;
 
 const metricSelector = document.getElementById('metricSelector');
 let selected = getParams().metric || 'total_cases';
 metricSelector.value = selected;
-console.log('selected', selected);
 
 // set the dimensions and margins of the graph
 let margin = { top: 10, right: 30, bottom: 45, left: 60 },
@@ -54,88 +53,102 @@ const getData = async (country) => fetch(url(country))
         .map(([date, rest]) => ({ date: d3.timeParse("%m/%d/%Y")(date), ...rest }))
         .sort((a, b) => (a.date > b.date) ? 1 : -1)
     );
+let full;
 
-const update = () => {
-    Promise.all(countriesSelected.map(getData))
-        .then(full => {
-            console.log('full', full);
-            svg.selectAll("*").remove();
+const buildChart = (full) => {
+    svg.selectAll("*").remove();
 
-            const updateMetric = (isCreated) => {
-                isCreated && svg.selectAll('*').remove();
+    const updateMetric = (isCreated) => {
+        isCreated && svg.selectAll('*').remove();
 
-                let x = d3.scaleTime()
-                    .domain(d3.extent(full.flat(), (d) => d.date))
-                    .range([0, width]);
-                svg.append("g")
-                    .attr("transform", "translate(0," + height + ")")
-                    .attr("class", "axis x")
-                    .call(d3.axisBottom(x).ticks(10))
-                    .selectAll("text")
-                    .style("text-anchor", "end")
-                    .attr("dx", "-.8em")
-                    .attr("dy", "-.5em")
-                    .attr("transform", "rotate(-65)");
+        let x = d3.scaleTime()
+            .domain(d3.extent(full.flat(), (d) => d.date))
+            .range([0, width]);
+        svg.append("g")
+            .attr("transform", "translate(0," + height + ")")
+            .attr("class", "axis x")
+            .call(d3.axisBottom(x).ticks(10))
+            .selectAll("text")
+            .style("text-anchor", "end")
+            .attr("dx", "-.8em")
+            .attr("dy", "-.5em")
+            .attr("transform", "rotate(-65)");
 
-                selected = metricSelector.value;
-                const max_y = d3.max(full.map(series => d3.max(series.map(d => d[selected]))));
-                let y = (logCheckbox.checked ? d3.scaleLog() : d3.scaleLinear())
+        selected = metricSelector.value;
+        const max_y = d3.max(full.map(series => d3.max(series.map(d => d[selected]))));
+        let y = (logButton.classList.contains('clicked') ? d3.scaleLog() : d3.scaleLinear())
+            .domain([1, max_y])
+            .range([height, 0]);
+
+        let yAxis = d3.axisLeft()
+            .scale(y)
+            .tickFormat(d3.format(","))
+            .ticks(4);
+
+        svg.append("g")
+            .attr("class", "axis y")
+            .call(yAxis);
+
+        full.map((data, i) => svg.append("path")
+            .attr("class", "line")
+            .datum(data.filter(d => d[selected] > 0))
+            .attr("fill", "none")
+            .attr("stroke", colors[i])
+            .attr("stroke-width", 1.5)
+            .attr("d", d3.line()
+                .x((d) => x(d.date))
+                .y((d) => {
+                    console.log();
+                    return y(d[selected]);
+                })
+            ));
+
+        logButton.addEventListener("click", function () {
+            logButton.classList.contains('clicked')
+                ? logButton.classList.remove('clicked')
+                : logButton.classList.add('clicked');
+            setParams('log');
+            if (getParams().log) {
+                y = d3.scaleLog()
                     .domain([1, max_y])
                     .range([height, 0]);
-
-                let yAxis = d3.axisLeft()
-                    .scale(y)
-                    .tickFormat(d3.format(","))
-                    .ticks(4);
-
-                svg.append("g")
-                    .attr("class", "axis y")
-                    .call(yAxis);
-
-                full.map((data, i) => svg.append("path")
-                    .attr("class", "line")
-                    .datum(data.filter(d => d[selected] > 0))
-                    .attr("fill", "none")
-                    .attr("stroke", colors[i])
-                    .attr("stroke-width", 1.5)
-                    .attr("d", d3.line()
-                        .x((d) => x(d.date))
-                        .y((d) => y(d[selected]))
-                    ));
-
-                d3.select("#logCheckbox").on("click", function () {
-                    setParams('log');
-                    if (this.checked) {
-                        y = d3.scaleLog()
-                            .domain([1, max_y])
-                            .range([height, 0]);
-                    } else {
-                        y = d3.scaleLinear()
-                            .domain([1, max_y])
-                            .range([height, 0]);
-                    }
-                    yAxis.scale(y);
-                    d3.select("g.axis.y")
-                        .transition()
-                        .ease(d3.easeCubicOut)
-                        .duration(500)
-                        .call(yAxis);
-
-                    d3.selectAll(".line")
-                        .transition()
-                        .ease(d3.easeCubicOut)
-                        .duration(500)
-                        .attr("d", d3.line()
-                            .x((d) => x(d.date))
-                            .y((d) => y(d[selected]))
-                        )
-                })
+            } else {
+                y = d3.scaleLinear()
+                    .domain([1, max_y])
+                    .range([height, 0]);
             }
-            updateMetric(false);
-            metricSelector.onchange = () => {
-                setParams({ metric: metricSelector.value });
-                updateMetric(true)
-            };
+            yAxis.scale(y);
+            d3.select("g.axis.y")
+                .transition()
+                .ease(d3.easeCubicOut)
+                .duration(500)
+                .call(yAxis);
+
+            d3.selectAll(".line")
+                .transition()
+                .ease(d3.easeCubicOut)
+                .duration(500)
+                .attr("d", d3.line()
+                    .x((d) => x(d.date))
+                    .y((d) => y(d[selected]))
+                )
+        })
+    }
+    updateMetric(false);
+    metricSelector.onchange = () => {
+        setParams({ metric: metricSelector.value });
+        updateMetric(true)
+    };
+}
+
+const updateLinechart = () => {
+    Promise.all(countriesSelected.map(getData))
+        .then(full_ => {
+            full = full_.map((data, i) => {
+                const population = getPop(countriesSelected[i]);
+                return data.map(record => ({ population, ...record }))
+            });
+            buildChart(full);
         })
         .catch(err => console.log("Error", err));
 }
@@ -144,7 +157,7 @@ const createLinechart = (countries) => {
     countries_ = countries.filter(({ iso }) => available.includes(iso))
         .sort((a, b) => a.name[lang].localeCompare(b.name[lang]));
     const update_countrySelector = () => {
-        update();
+        updateLinechart();
 
         const init = document.createElement('option');
         init.value = '';
@@ -160,7 +173,7 @@ const createLinechart = (countries) => {
             .forEach(c => {
                 let opt = document.createElement('option');
                 opt.value = c.iso;
-                opt.innerHTML = c.name[lang] + ' ' + c.flag;
+                opt.innerHTML = `${c.flag} ${c.name[lang]}`;
                 countrySelector.appendChild(opt);
             });
         countrySelector.onchange = () => {
@@ -171,19 +184,21 @@ const createLinechart = (countries) => {
         };
         countriesSelected
             .forEach((ciso, i) => {
-                const c = countries_.find(({ iso }) => ciso === iso);
+                const c = getCountry(ciso);
                 let span = document.createElement('span');
                 span.className = "clickable";
-                span.id = c.iso;
+                span.id = ciso;
                 span.style.color = colors[i];
-                span.innerHTML = c.name[lang] + ' ' + c.flag;
+                span.innerHTML = `${c.flag} ${c.name[lang]}`;
                 countrySelected.appendChild(span);
                 const space = document.createElement('span');
-                space.id = ' ' + c.iso;
+                space.id = ' ' + ciso;
                 space.innerHTML = ' ';
                 countrySelected.appendChild(space);
+                span.style.padding = "0 .5rem 0 0";
+                span.style.wordWrap = 'none';
                 span.addEventListener('click', () => {
-                    countriesSelected = countriesSelected.filter(iso => iso != c.iso);
+                    countriesSelected = countriesSelected.filter(iso => iso != ciso);
                     setParams({ comp: countriesSelected.join('') });
                     update_countrySelector();
                 });

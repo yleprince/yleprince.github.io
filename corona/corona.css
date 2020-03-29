@@ -1,5 +1,5 @@
 body{
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Montserrat', sans-serif;
     margin:40px auto;
     max-width:650px;
     line-height:1.6;
@@ -51,7 +51,7 @@ hr {
 
 .button_corona {
     transition-duration: 1.8s;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size:18px;
     color: #444;
     background-color: rgba(0, 0, 0, 0);
@@ -75,9 +75,13 @@ hr {
 
 .corona {
     padding: .2rem;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 1.1rem;
     color: #444;
     background-color: rgba(0,0,0,0);
     border-color: #aaaaaa;
+}
+
+span.clickable {
+    white-space:nowrap;
 }

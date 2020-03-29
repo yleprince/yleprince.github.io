@@ -1,6 +1,6 @@
 const buttonText = {
-    init: { en: 'Share Link 🕊️', fr: 'Partager le lien 🕊️' },
-    copied: { en: 'copied! 🕊️', fr: 'Lien copié ! 🕊️' }
+    init: { en: '🕊️ Share Link', fr: '🕊️ Partager le lien' },
+    copied: { en: '🕊️ copied!', fr: '🕊️ Lien copié !' }
 };
 const linkButton = document.getElementById('linkButton');
 linkButton.innerHTML = buttonText.init[lang];

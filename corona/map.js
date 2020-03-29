@@ -17,6 +17,14 @@ const path = d3.geoPath()
 
 const cGroup = map.append("g");
 const focusCountry = getParams().main || 'FR';
+const countryPopulation = document.getElementById('countryPopulation');
+const countryTitle = document.getElementById("country");
+const formatInt = (n) => n.toLocaleString().replace(/,/gi, ' ');
+const popText = {
+    en: 'inhabitants',
+    fr: 'habitants'
+}
+
 const create_map = (countries) => {
     d3.json(`${(lang === 'en' ? '' : '../')}worldGeojson.json`)
         .then((geojson) => {
@@ -38,19 +46,17 @@ const create_map = (countries) => {
                 .on("click", function (d) {
                     d3.selectAll('.country').classed("selected", false)
                     d3.select(this).classed("selected", true);
-                    document.getElementById("country").innerHTML = `${getFlag(d.id)} ${getName(d.id)}`;
+                    countryPopulation.innerHTML = `${formatInt(getPop(d.id))} ${popText[lang]}`;
+                    countryTitle.innerHTML = `${getFlag(d.id)} ${getName(d.id)}`;
                     updateCountryData(d.id);
                     setParams({ main: d.id });
                 });
 
             // init
             updateCountryData(focusCountry);
-            const popText = {
-                en: 'inhabitants',
-                fr: 'habitants'
-            }
-            document.getElementById('countryPopulation').innerHTML = `${getPop(focusCountry)} ${popText[lang]}`;
-            document.getElementById("country").innerHTML = `${getFlag(focusCountry)} ${getName(focusCountry)}`;
+
+            countryPopulation.innerHTML = `${formatInt(getPop(focusCountry))} ${popText[lang]}`;
+            countryTitle.innerHTML = `${getFlag(focusCountry)} ${getName(focusCountry)}`;
             map.select(`path#${focusCountry}`).classed("selected", true);
         });
 }

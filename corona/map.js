@@ -60,7 +60,7 @@ const updateCountryHtml = () => countryStats.forEach(k => {
     const value = popButton.classList.contains('clicked')
         ? 100 * Math.round(1000000 * countryData[k.slice(2)] / getPop(focusCountry)) / 1000000
         : countryData[k.slice(2)];
-    span.innerHTML = `${value}${popButton.classList.contains('clicked') ? '‰' : ''}`;
+    span.innerHTML = `${value}${popButton.classList.contains('clicked') ? '%' : ''}`;
 });
 
 const urlCountry = (iso) => `https://thevirustracker.com/free-api?countryTotal=${iso}`;

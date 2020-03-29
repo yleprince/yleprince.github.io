@@ -49,8 +49,8 @@ const create_map = (countries) => {
                 en: 'inhabitants',
                 fr: 'habitants'
             }
-            const pop = `${getPop(focusCountry)} ${popText[lang]}`
-            document.getElementById("country").innerHTML = `${getFlag(focusCountry)} ${getName(focusCountry)}: ${pop}`;
+            document.getElementById('countryPopulation').innerHTML = `${getPop(focusCountry)} ${popText[lang]}`;
+            document.getElementById("country").innerHTML = `${getFlag(focusCountry)} ${getName(focusCountry)}`;
             map.select(`path#${focusCountry}`).classed("selected", true);
         });
 }

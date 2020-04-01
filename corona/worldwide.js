@@ -10,27 +10,45 @@ const updateWorld = (res) => Object.keys(res)
         document.getElementById(id).textContent = `${value}${popButton.classList.contains('clicked') ? '%' : ''}`;
     });
 
-const displayError = () => {
-    document.body.innerHTML = '';
+const displayError = (err) => {
+    const userMessage = document.getElementById('userMessage');
 
+    userMessage.innerHTML = '';
+
+    userMessage.appendChild(document.createElement('hr'));
     const mess = document.createElement('p');
     const messText = {
-        en: "The data source is not reachable, please try again later.",
-        fr: "La source des données n'est pas disponible, veuillez réessayer plus tard, merci.",
-        es: "No se puede acceder a la fuente de datos, intente nuevamente más tarde."
+        en: "The data source is not reachable 😕, please try again later.",
+        fr: "La source des données n'est pas disponible 😕, veuillez réessayer plus tard, merci.",
+        es: "No se puede acceder a la fuente de datos 😕, intente nuevamente más tarde."
     }
     mess.innerHTML = messText[lang];
-    document.body.appendChild(mess);
+    mess.classList.add('error');
+    userMessage.appendChild(mess);
 
-    const home = document.createElement('a');
-    home.href = "https://yleprince.github.io"
+    // <button onclick="window.location.href = 'https://w3docs.com';">Click Here</button>
+
+    const centerContainer = document.createElement('div');
+    centerContainer.className = "centerContainer";
+
+    const home = document.createElement('button');
+    home.id = 'home';
+    home.addEventListener('click', () => {
+        window.location.href = window.origin;
+    });
+
     const homeText = {
-        en: 'Home',
-        fr: 'Accueil',
+        en: 'Checkout my other projects',
+        fr: 'Voir mes autres projets',
         es: 'Inicio'
     };
-    home.text = homeText[lang];
-    document.body.appendChild(home);
+    home.className = 'button_corona clickable';
+    home.innerHTML = homeText[lang];
+    centerContainer.appendChild(home);
+    userMessage.appendChild(centerContainer);
+    userMessage.appendChild(document.createElement('br'));
+    userMessage.appendChild(document.createElement('hr'));
+    userMessage.appendChild(document.createElement('br'));
 }
 
 fetch('https://thevirustracker.com/free-api?global=stats')
@@ -40,6 +58,6 @@ fetch('https://thevirustracker.com/free-api?global=stats')
         updateWorld(worldwideData);
     })
     .catch(err => {
-        displayError();
-        console.error(err);
+        displayError(err);
+        // console.error();
     });

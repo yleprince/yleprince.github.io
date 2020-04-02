@@ -44,15 +44,22 @@ let svg = d3.select("#plot")
     .attr("transform",
         "translate(" + margin.left + "," + margin.top + ")");
 
-const url = (country) => `https://api.thevirustracker.com/free-api?countryTimeline=${country}`;
+let urlTimeline = (iso) => `${API()}${SOURCEDOWN ? `${iso}_timeline.json` : `countryTimeline=${iso}`}`;
 
-const getData = async (country) => fetch(url(country))
+const getData = async (iso) => fetch(urlTimeline(iso))
     .then(res => res.json())
     .then(raw => Object.entries(raw.timelineitems[0])
         .filter(entry => entry[0] != 'stat')
         .map(([date, rest]) => ({ date: d3.timeParse("%m/%d/%Y")(date), ...rest }))
         .sort((a, b) => (a.date > b.date) ? 1 : -1)
-    );
+    )
+    .catch(err => {
+        console.log('Failed to retrieve data for the plot section', err);
+        console.log('Retrieving from github');
+        SOURCEDOWN = true;
+        updateDate();
+        return getData(iso);
+    });
 let full;
 
 const buildChart = (full) => {
@@ -98,7 +105,6 @@ const buildChart = (full) => {
             .attr("d", d3.line()
                 .x((d) => x(d.date))
                 .y((d) => {
-                    console.log();
                     return y(d[selected]);
                 })
             ));

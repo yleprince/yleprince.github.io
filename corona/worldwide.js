@@ -11,6 +11,7 @@ const updateWorld = (res) => Object.keys(res)
     });
 
 const displayError = (err) => {
+    console.log(err);
     const userMessage = document.getElementById('userMessage');
 
     userMessage.innerHTML = '';
@@ -49,13 +50,19 @@ const displayError = (err) => {
     userMessage.appendChild(document.createElement('br'));
 }
 
-fetch('https://api.thevirustracker.com/free-api?global=stats')
+let urlWorldwide = () => `${API()}${SOURCEDOWN ? 'worldwide.json' : 'global=stats'}`;
+
+const initWorld = () => fetch(urlWorldwide())
     .then(res => res.json())
     .then(data => {
         worldwideData = data.results[0];
         updateWorld(worldwideData);
     })
     .catch(err => {
-        displayError(err);
-        console.error(err);
+        SOURCEDOWN = true;
+        initWorld();
+        console.log('Failed to retrieve data for the world section', err);
+        console.log('Retrieving from github');
+        updateDate();
     });
+initWorld();

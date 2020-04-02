@@ -74,11 +74,18 @@ const updateCountryHtml = () => countryStats.forEach(k => {
     span.innerHTML = `${value}${popButton.classList.contains('clicked') ? '%' : ''}`;
 });
 
-const urlCountry = (iso) => `https://api.thevirustracker.com/free-api?countryTotal=${iso}`;
+const urlCountry = (iso) => `${API()}${SOURCEDOWN ? `${iso}_total.json` : `countryTotal=${iso}`}`;
 const updateCountryData = (iso) => fetch(urlCountry(iso))
     .then(res => res.json())
     .then(data => {
         countryData = data.countrydata[0];
         updateCountryHtml();
-    });
+    })
+    .catch(err => {
+        SOURCEDOWN = true;
+        console.log('Failed to retrieve data for the map section', err);
+        console.log('Retrieving from github');
+        updateDate();
+        updateCountryData(iso);
+    })
 

@@ -133,6 +133,10 @@
         let getFlag;
         let getName;
         let getPop;
+        let SOURCEDOWN = false;
+        const githubData = 'https://raw.githubusercontent.com/yleprince/data/master/coronavirus/'
+        const API = () => SOURCEDOWN ? `${githubData}virustrackerexports/latest/`
+            : 'https://api.thevirustracker.com/free-api?';
     </script>
     <script type="text/javascript" src='../link.js'></script>
     <script type="text/javascript" src='../worldwide.js'></script>

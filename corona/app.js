@@ -14,10 +14,17 @@ let min = d.getMinutes().toString();
 hours = hours.length < 2 ? '0' + hours : hours;
 min = min.length < 2 ? '0' + min : min;
 const date_str = `${hours}:${min} ${d.toDateString()}`;
-document.getElementById('source').textContent = date_str;
+const dateSpan = document.getElementById('source')
+dateSpan.textContent = date_str;
 
+const updateDate = () => fetch(`${githubData}virustrackerexports/latest/metadata.json`)
+    .then(res => res.json())
+    .then(metadata => {
+        dateSpan.textContent = metadata.export_date
+        dateSpan.classList.add('error');
+    });
 
-fetch("https://raw.githubusercontent.com/yleprince/data/master/coronavirus/countries_light.json")
+fetch(`${githubData}countries_light.json`)
     .then(raw => raw.json())
     .then(countries => {
         getCountry = (iso_) => countries.find(({ iso }) => iso === iso_);

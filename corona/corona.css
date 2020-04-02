@@ -91,6 +91,7 @@ span.clickable {
 }
 
 .error {
+    color: #444;
     background-color: rgba(256, 0, 0, .3);
 }
 

@@ -4,6 +4,7 @@ let worldwideData;
 const updateWorld = (res) => Object.keys(res)
     .filter(k => k != 'source')
     .forEach(id => {
+        console.log(id);
         const value = popButton.classList.contains('clicked')
             ? 100 * Math.round(1000000 * res[id] / worldPop) / 1000000
             : res[id];
@@ -25,8 +26,6 @@ const displayError = (err) => {
     mess.innerHTML = messText[lang];
     mess.classList.add('error');
     userMessage.appendChild(mess);
-
-    // <button onclick="window.location.href = 'https://w3docs.com';">Click Here</button>
 
     const centerContainer = document.createElement('div');
     centerContainer.className = "centerContainer";
@@ -51,7 +50,7 @@ const displayError = (err) => {
     userMessage.appendChild(document.createElement('br'));
 }
 
-fetch('https://thevirustracker.com/free-api?global=stats')
+fetch('https://api.thevirustracker.com/free-api?global=stats')
     .then(res => res.json())
     .then(data => {
         worldwideData = data.results[0];
@@ -59,5 +58,5 @@ fetch('https://thevirustracker.com/free-api?global=stats')
     })
     .catch(err => {
         displayError(err);
-        // console.error();
+        console.error(err);
     });

@@ -44,7 +44,7 @@ let svg = d3.select("#plot")
     .attr("transform",
         "translate(" + margin.left + "," + margin.top + ")");
 
-const url = (country) => `https://thevirustracker.com/free-api?countryTimeline=${country}`;
+const url = (country) => `https://api.thevirustracker.com/free-api?countryTimeline=${country}`;
 
 const getData = async (country) => fetch(url(country))
     .then(res => res.json())
@@ -187,7 +187,7 @@ const createLinechart = (countries) => {
                 const c = getCountry(ciso);
                 let span = document.createElement('span');
                 span.className = "clickable";
-                span.id = ciso;
+                span.id = `_${ciso}`;
                 span.style.color = colors[i];
                 span.innerHTML = `${c.flag} ${c.name[lang]}`;
                 countrySelected.appendChild(span);

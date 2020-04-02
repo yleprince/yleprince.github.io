@@ -74,7 +74,7 @@ const updateCountryHtml = () => countryStats.forEach(k => {
     span.innerHTML = `${value}${popButton.classList.contains('clicked') ? '%' : ''}`;
 });
 
-const urlCountry = (iso) => `https://thevirustracker.com/free-api?countryTotal=${iso}`;
+const urlCountry = (iso) => `https://api.thevirustracker.com/free-api?countryTotal=${iso}`;
 const updateCountryData = (iso) => fetch(urlCountry(iso))
     .then(res => res.json())
     .then(data => {

@@ -4,7 +4,6 @@ let worldwideData;
 const updateWorld = (res) => Object.keys(res)
     .filter(k => k != 'source')
     .forEach(id => {
-        console.log(id);
         const value = popButton.classList.contains('clicked')
             ? 100 * Math.round(1000000 * res[id] / worldPop) / 1000000
             : res[id];

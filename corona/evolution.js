@@ -197,11 +197,7 @@ const createLinechart = (countries) => {
                 span.style.color = colors[i];
                 span.innerHTML = `${c.flag} ${c.name[lang]}`;
                 countrySelected.appendChild(span);
-                const space = document.createElement('span');
-                space.id = ' ' + ciso;
-                space.innerHTML = ' ';
-                countrySelected.appendChild(space);
-                span.style.padding = "0 .5rem 0 0";
+                span.style.padding = "0 .8rem 0 0";
                 span.style.wordWrap = 'none';
                 span.addEventListener('click', () => {
                     countriesSelected = countriesSelected.filter(iso => iso != ciso);

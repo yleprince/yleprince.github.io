@@ -4,7 +4,7 @@ body{
     max-width:650px;
     line-height:1.6;
     font-size:18px;
-    color:#444;
+    color:#363636;
     background-color: #f5f5f5;
     padding:0 10px
 }
@@ -53,7 +53,7 @@ hr {
     transition-duration: 1.8s;
     font-family: 'Montserrat', sans-serif;
     font-size:18px;
-    color: #444;
+    color: #363636;
     background-color: rgba(0, 0, 0, 0);
     border: none;
     padding: 0.8rem 2rem;
@@ -81,7 +81,7 @@ hr {
     padding: .2rem;
     font-family: 'Montserrat', sans-serif;
     font-size: 1.1rem;
-    color: #444;
+    color: #363636;
     background-color: rgba(0,0,0,0);
     border-color: #aaaaaa;
 }
@@ -91,7 +91,7 @@ span.clickable {
 }
 
 .error {
-    color: #444;
+    color: #363636;
     background-color: rgba(256, 0, 0, .3);
 }
 

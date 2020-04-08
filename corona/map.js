@@ -19,7 +19,6 @@ const cGroup = map.append("g");
 const focusCountry = getParams().main || 'FR';
 const countryPopulation = document.getElementById('countryPopulation');
 const countryTitle = document.getElementById("country");
-const formatInt = (n) => n.toLocaleString().replace(/,/gi, ' ');
 const popText = {
     en: 'inhabitants',
     fr: 'habitants'
@@ -70,7 +69,7 @@ const updateCountryHtml = () => countryStats.forEach(k => {
     const span = document.getElementById(k);
     const value = popButton.classList.contains('clicked')
         ? 100 * Math.round(1000000 * countryData[k.slice(2)] / getPop(focusCountry)) / 1000000
-        : countryData[k.slice(2)];
+        : formatInt(countryData[k.slice(2)]);
     span.innerHTML = `${value}${popButton.classList.contains('clicked') ? '%' : ''}`;
 });
 

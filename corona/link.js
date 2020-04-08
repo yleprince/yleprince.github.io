@@ -68,3 +68,5 @@ linkButton.addEventListener('click', () => {
             linkButton.innerHTML = buttonText.init[lang];
         });
 });
+
+const formatInt = (n) => n.toLocaleString().replace(/,/gi, ' ');

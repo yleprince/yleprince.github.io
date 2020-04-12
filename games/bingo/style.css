@@ -94,3 +94,19 @@ h2 {
     -webkit-box-shadow: 0 5px 40px -10px rgba(0, 0, 0, 0);
     -moz-box-shadow: 0 5px 40px -10px rgba(0, 0, 0, 0);
 }
+
+#drawn {
+    display: flex;
+    align-items: left;
+    /* justify-content: space-around; */
+    flex-wrap: wrap;
+}
+
+.drawnValue {
+    padding: .8rem;
+    width: 2rem;
+    text-align: center;
+    margin: .3rem;
+    -webkit-box-shadow: 0 5px 40px -10px rgba(0, 0, 0, .57);
+    -moz-box-shadow: 0 5px 40px -10px rgba(0, 0, 0, .57);
+}

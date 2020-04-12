@@ -7,6 +7,10 @@ body {
     font-size: 18px;
 }
 
+h2 {
+    color: darkgrey;
+}
+
 @media (min-width: 650px) {
     #grid {
         padding: 0.2rem;

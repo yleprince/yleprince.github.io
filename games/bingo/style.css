@@ -7,9 +7,11 @@ body {
     font-size: 18px;
 }
 
-#grid {
-    padding: 0.2rem;
-    border: solid #bf0000 0.1rem;
+@media (min-width: 650px) {
+    #grid {
+        padding: 0.2rem;
+        border: solid #bf0000 0.1rem;
+    }
 }
 
 .line {

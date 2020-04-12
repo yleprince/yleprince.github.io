@@ -27,7 +27,7 @@ for (let li = 0; li < 3; li++) {
     }
     for (let col = 0; col < 9; col++) {
         const box = document.createElement('div');
-        box.id = `box_${col}`;
+        box.id = `box_${li}_${col}`;
         box.classList.add('box');
         if (disableds.includes(col)) {
             box.classList.add('disabled');

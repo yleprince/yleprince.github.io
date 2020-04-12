@@ -1,0 +1,36 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: auto;
+    background-color: rgb(228, 228, 228);
+    max-width: 650px;
+    line-height: 1.6;
+    font-size: 18px;
+}
+
+#grid {
+    padding: 0.2rem;
+    border: solid red 0.1rem;
+}
+
+.line {
+    display: flex;
+}
+
+.box {
+    font-family: 'Abril Fatface', cursive;
+    letter-spacing: 0.1rem;
+    padding: 1rem;
+    flex: 1;
+    min-width: 1rem;
+    text-align: center;
+    border: solid rgb(87, 87, 87) 0.1em;
+}
+
+.box.clicked:not(:disabled) {
+    color: white;
+    background-color: brown;
+}
+
+.box.disabled {
+    background-color: green;
+}

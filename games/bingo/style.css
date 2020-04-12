@@ -23,7 +23,7 @@ body {
     letter-spacing: 0.1rem;
     padding: 1rem;
     flex: 1;
-    min-width: 1rem;
+    min-width: .7rem;
     text-align: center;
     border: solid rgb(87, 87, 87) 0.1em;
 }

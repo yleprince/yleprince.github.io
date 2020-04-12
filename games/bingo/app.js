@@ -45,3 +45,48 @@ for (let li = 0; li < 3; li++) {
 };
 
 
+
+const count = () => {
+    let clickCounter = 1;
+    Array.from(grid.childNodes)
+        .forEach(line => {
+            Array.from(line.childNodes)
+                .forEach(b => {
+                    clickCounter += b.classList.contains('clicked');
+                });
+        });
+
+    console.log(clickCounter);
+    return clickCounter;
+}
+
+const bingos = [
+    'Y2slF40tSE9LtrG71K/giphy.webp',
+    'BLjbqh9Yg2LqzBIbf6/source.gif',
+    'J8NaR2tsCdNew/source.gif',
+    '3oFzlUq9gpFanxX1f2/giphy.webp'
+];
+const celebrate = () => {
+    document.getElementById('spancelebrate').innerHTML = '🥳';
+    const gif = document.createElement('img');
+    gif.id = 'celebrate';
+    gif.style.padding = '1rem';
+    gif.src = `https://i.giphy.com/media/${bingos[Math.floor(Math.random() * bingos.length)]}`;
+    document.body.appendChild(gif);
+}
+
+const uncelebrate = () => {
+    if (document.getElementById('celebrate')) {
+        document.getElementById('celebrate').remove();
+    }
+    document.getElementById('spancelebrate').innerHTML = '';
+}
+
+document.body.addEventListener('click', () => {
+    if (count() === 15) {
+        celebrate();
+    }
+    else {
+        uncelebrate();
+    }
+}, true);

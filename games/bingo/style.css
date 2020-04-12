@@ -26,7 +26,11 @@ body {
     border: solid rgb(87, 87, 87) 0.1em;
 }
 
-.box.clicked:not(:disabled) {
+.box:not(.disabled) {
+    cursor: pointer;
+}
+
+.box.clicked:not(.disabled) {
     color: white;
     background-color: #bf0000;
 }

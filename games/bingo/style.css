@@ -1,7 +1,7 @@
 body {
     font-family: 'Montserrat', sans-serif;
     margin: auto;
-    background-color: rgb(228, 228, 228);
+    background-color: #e4e4e4;
     max-width: 650px;
     line-height: 1.6;
     font-size: 18px;
@@ -13,8 +13,9 @@ h2 {
 
 @media (min-width: 650px) {
     #grid {
-        padding: 0.2rem;
-        border: solid #bf0000 0.1rem;
+        padding: 1rem;
+        -webkit-box-shadow: 0 5px 40px -10px rgba(0, 0, 0, .2);
+        -moz-box-shadow: 0 5px 40px -10px rgba(0, 0, 0, .2);
     }
 }
 
@@ -23,24 +24,73 @@ h2 {
 }
 
 .box {
+    margin: .2rem;
     font-family: 'Abril Fatface', cursive;
     letter-spacing: 0.1rem;
-    padding: 1rem;
+    padding: 0.8rem;
     flex: 1;
     min-width: .7rem;
     text-align: center;
-    border: solid rgb(87, 87, 87) 0.1em;
+    border: none;
+    /* background-color: white; */
 }
 
 .box:not(.disabled) {
     cursor: pointer;
+    transition: ease-in-out 0.6s;
+    background-color: #eeeeee;
+    -webkit-box-shadow: 0 2px 20px -10px rgba(0, 0, 0, .57);
+    -moz-box-shadow: 0 2px 20px -10px rgba(0, 0, 0, .57);
 }
 
 .box.clicked:not(.disabled) {
+    transition: ease-in-out 0.1s;
     color: white;
-    background-color: #bf0000;
+    background-color: #4CAF50;
+    border-radius: 1rem;
+    -webkit-box-shadow: 0 5px 40px -10px rgba(0, 0, 0, 0);
+    -moz-box-shadow: 0 5px 40px -10px rgba(0, 0, 0, 0);
 }
 
 .box.disabled {
-    background-color: #007500;
+    background-color: hsla(0, 100%, 66%, 0.315);
+    border-radius: 1.2rem;
+    /* background-color: darkgray; */
+}
+
+#buttons {
+    display: flex;
+    max-width: 50%;
+    min-width: 11rem;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.divbutton {
+    cursor: pointer;
+    transition-duration: 1.8s;
+    margin: 1rem;
+    padding: .2rem;
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    text-align: center;
+    flex: 1;
+    width: 5rem;
+    text-decoration: none;
+    -webkit-box-shadow: 0 5px 40px -10px rgba(0, 0, 0, .57);
+    -moz-box-shadow: 0 5px 40px -10px rgba(0, 0, 0, .57);
+}
+
+.divbutton:focus {
+    outline: none;
+}
+
+.divbutton:hover {
+    transition-duration: .8s;
+    color: white;
+    background-color: #4CAF50;
+    border-radius: 2rem;
+    border: none;
+    -webkit-box-shadow: 0 5px 40px -10px rgba(0, 0, 0, 0);
+    -moz-box-shadow: 0 5px 40px -10px rgba(0, 0, 0, 0);
 }

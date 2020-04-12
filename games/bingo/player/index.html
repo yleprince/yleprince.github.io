@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="../style.css">
 <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
 <meta property="og:title" content="Bingo Game" />
 <meta property="article:author" content="Yrieix Leprince" />
 <meta property="og:description" content="Play Bingo with your friends." />
@@ -21,24 +22,11 @@
 </head>
 
 <body>
-    <h1>Bingo! 🥳</h1>
-    <p>Play bingo with your friends!</p>
-
-    <div id="buttons">
-        <div class="divbutton" id="master">master</div>
-        <div class="divbutton" id="player">player</div>
-    </div>
-
+    <h1>Bingo <span id="spancelebrate"></span></h1>
+    <h2>Player</h2>
+    <div id="grid"></div>
 </body>
-<script>
-    document.getElementById('player').addEventListener('click', () => {
-        const current = window.location;
-        window.location = `${current}player`;
-    });
-    document.getElementById('master').addEventListener('click', () => {
-        const current = window.location;
-        window.location = `${current}master`;
-    })
-</script>
+
+<script src="app.js"></script>
 
 </html>

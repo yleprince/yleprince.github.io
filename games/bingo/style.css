@@ -150,9 +150,3 @@ h2 {
     -webkit-box-shadow: 0 5px 40px -10px rgba(0, 0, 0, 0);
     -moz-box-shadow: 0 5px 40px -10px rgba(0, 0, 0, 0);
 }
-
-#signature {
-    color: #bdbdbd;
-    text-align: end;
-    margin: 2rem 0 2rem 0;
-}

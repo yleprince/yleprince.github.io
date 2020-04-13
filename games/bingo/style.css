@@ -25,10 +25,10 @@ h2 {
 
 .box {
     margin: .2rem;
-    font-family: 'Abril Fatface', cursive;
     letter-spacing: 0.1rem;
     padding: 0.8rem;
     flex: 1;
+    font-family: 'Abril Fatface', cursive;
     min-width: .7rem;
     text-align: center;
     border: none;
@@ -45,16 +45,31 @@ h2 {
 
 .box.clicked:not(.disabled) {
     transition: ease-in-out 0.1s;
-    color: white;
-    background-color: #4CAF50;
+    color: rgb(233, 233, 233);
+    background-color: rgb(184, 184, 184);
     border-radius: 1rem;
     -webkit-box-shadow: 0 5px 40px -10px rgba(0, 0, 0, 0);
     -moz-box-shadow: 0 5px 40px -10px rgba(0, 0, 0, 0);
 }
 
+.box:not(.disabled):hover {
+    transition: ease-in-out 0.2s;
+    color: white;
+    border-radius: 1rem;
+    -ms-transform: scale(1.2) rotate(20deg);
+    /* IE 9 */
+    transform: scale(1.2) rotate(20deg);
+    /* Standard syntax */
+    background-color: #4CAF50;
+    -webkit-box-shadow: 0 5px 40px -10px rgba(0, 0, 0, 0);
+    -moz-box-shadow: 0 5px 40px -10px rgba(0, 0, 0, 0);
+}
+
 .box.disabled {
-    background-color: hsla(0, 100%, 66%, 0.315);
-    border-radius: 1.2rem;
+    background-color: hsla(0, 0%, 20%, 0.05);
+    border-radius: 1rem;
+    border: dashed hsla(0, 0%, 20%, 0.1);
+    ;
     /* background-color: darkgray; */
 }
 
@@ -89,10 +104,15 @@ h2 {
     transition-duration: .8s;
     color: white;
     background-color: #4CAF50;
-    border-radius: 2rem;
+    border-radius: 1rem;
     border: none;
     -webkit-box-shadow: 0 5px 40px -10px rgba(0, 0, 0, 0);
     -moz-box-shadow: 0 5px 40px -10px rgba(0, 0, 0, 0);
+}
+
+#drawnButton {
+    padding: 1rem;
+    font-size: 1.5rem;
 }
 
 #drawn {
@@ -103,10 +123,26 @@ h2 {
 }
 
 .drawnValue {
+    transition: ease-in-out 1.8s;
+    font-family: 'Abril Fatface', cursive;
+    letter-spacing: 0.1rem;
     padding: .8rem;
     width: 2rem;
     text-align: center;
     margin: .3rem;
     -webkit-box-shadow: 0 5px 40px -10px rgba(0, 0, 0, .57);
     -moz-box-shadow: 0 5px 40px -10px rgba(0, 0, 0, .57);
+}
+
+.drawnValue:hover {
+    transition: ease-in-out 0.2s;
+    color: white;
+    border-radius: 1rem;
+    -ms-transform: scale(1.2) rotate(20deg);
+    /* IE 9 */
+    transform: scale(1.2) rotate(20deg);
+    /* Standard syntax */
+    background-color: #4CAF50;
+    -webkit-box-shadow: 0 5px 40px -10px rgba(0, 0, 0, 0);
+    -moz-box-shadow: 0 5px 40px -10px rgba(0, 0, 0, 0);
 }

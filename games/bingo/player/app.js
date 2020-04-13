@@ -67,7 +67,7 @@ const bingos = [
     '3oFzlUq9gpFanxX1f2/giphy.webp'
 ];
 const celebrate = () => {
-    document.getElementById('spancelebrate').innerHTML = '🥳';
+    document.getElementById('spancelebrate').innerHTML = '🎉';
     const gif = document.createElement('img');
     gif.id = 'celebrate';
     gif.style.padding = '1rem';

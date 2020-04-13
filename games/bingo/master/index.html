@@ -29,22 +29,26 @@
 </body>
 
 <script>
+    const button = document.getElementById('drawnButton');
+    const max = 90;
     let drawn = [];
     const randomPick = () => {
         let rand;
         do {
-            rand = Math.floor(Math.random() * 90 + 1);
+            rand = Math.floor(Math.random() * max + 1);
         }
         while (drawn.includes(rand));
         drawn.push(rand);
+        if (drawn.length >= max) {
+            button.remove();
+        }
         return rand;
     }
 
     const drawnHtml = document.getElementById('drawn');
     const displayValue = (value) => {
         drawnHtml.innerHTML = '';
-        let copy = [...drawn];
-        copy.reverse()
+        [...drawn].reverse()
             .map(d => {
                 const box = document.createElement('div');
                 box.classList.add('drawnValue');
@@ -52,7 +56,6 @@
                 drawnHtml.appendChild(box);
             })
     };
-    const button = document.getElementById('drawnButton');
 
     button.addEventListener('click', () => {
         const newValue = randomPick();

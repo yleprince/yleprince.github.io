@@ -38,6 +38,8 @@ for (let li = 0; li < 3; li++) {
                 this.classList.contains('clicked') ?
                     this.classList.remove('clicked')
                     : this.classList.add('clicked');
+
+                count() >= 15 ? celebrate() : uncelebrate();
             })
         }
         line.appendChild(box);
@@ -47,7 +49,7 @@ for (let li = 0; li < 3; li++) {
 
 
 const count = () => {
-    let clickCounter = 1;
+    let clickCounter = 0;
     Array.from(grid.childNodes)
         .forEach(line => {
             Array.from(line.childNodes)
@@ -69,24 +71,12 @@ const bingos = [
 const celebrate = () => {
     document.getElementById('spancelebrate').innerHTML = '🎉';
     const gif = document.createElement('img');
-    gif.id = 'celebrate';
     gif.style.padding = '1rem';
     gif.src = `https://i.giphy.com/media/${bingos[Math.floor(Math.random() * bingos.length)]}`;
-    document.body.appendChild(gif);
+    document.getElementById('celebrate').appendChild(gif);
 }
 
 const uncelebrate = () => {
-    if (document.getElementById('celebrate')) {
-        document.getElementById('celebrate').remove();
-    }
+    document.getElementById('celebrate').innerHTML = '';
     document.getElementById('spancelebrate').innerHTML = '';
 }
-
-document.body.addEventListener('click', () => {
-    if (count() >= 15) {
-        celebrate();
-    }
-    else {
-        uncelebrate();
-    }
-}, true);

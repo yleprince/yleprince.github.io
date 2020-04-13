@@ -83,7 +83,7 @@ const uncelebrate = () => {
 }
 
 document.body.addEventListener('click', () => {
-    if (count() === 15) {
+    if (count() >= 15) {
         celebrate();
     }
     else {

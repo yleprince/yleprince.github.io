@@ -7,29 +7,64 @@ body {
     font-size: 18px;
 }
 
+p {
+    letter-spacing: .2rem;
+}
+
+h1 {
+    letter-spacing: .2rem;
+    color: rgb(58, 58, 58);
+}
+
 h2 {
+    letter-spacing: .3rem;
     color: darkgrey;
 }
 
 @media (min-width: 650px) {
-    #grid {
+    .grid {
         padding: 1rem;
-        -webkit-box-shadow: 0 5px 40px -10px rgba(0, 0, 0, .2);
-        -moz-box-shadow: 0 5px 40px -10px rgba(0, 0, 0, .2);
+        border-radius: 1rem;
+        -webkit-box-shadow: 5px 5px 10px #a2a2a2, -5px -5px 10px #ffffff;
+        -moz-box-shadow: 5px 5px 10px #a2a2a2, -5px -5px 10px #ffffff;
+    }
+    .box {
+        letter-spacing: 0.1rem;
+        font-family: 'Abril Fatface', cursive;
+        min-width: .7rem;
+        margin: .2rem;
+        padding: 0.8rem;
+    }
+    .divbutton:focus {
+        outline: none;
+    }
+    .divbutton:hover {
+        transition-duration: .8s;
+        color: white;
+        background-color: #4CAF50;
+        border-radius: 1rem;
+        border: none;
+        -webkit-box-shadow: 0 5px 40px -10px rgba(0, 0, 0, 0);
+        -moz-box-shadow: 0 5px 40px -10px rgba(0, 0, 0, 0);
+    }
+}
+
+@media (max-width: 650px) {
+    .box {
+        letter-spacing: 0.1rem;
+        min-width: .5rem;
+        margin: .1rem;
+        padding: 0.3rem;
     }
 }
 
 .line {
     display: flex;
+    padding: .2rem;
 }
 
 .box {
-    margin: .2rem;
-    letter-spacing: 0.1rem;
-    padding: 0.8rem;
     flex: 1;
-    font-family: 'Abril Fatface', cursive;
-    min-width: .7rem;
     text-align: center;
     border: none;
     /* background-color: white; */
@@ -45,32 +80,17 @@ h2 {
 
 .box.clicked:not(.disabled) {
     transition: ease-in-out 0.1s;
-    color: rgb(233, 233, 233);
-    background-color: rgb(184, 184, 184);
+    color: hsla(0, 0%, 20%, 0.3);
+    background-color: #e4e4e4;
     border-radius: 1rem;
-    -webkit-box-shadow: 0 5px 40px -10px rgba(0, 0, 0, 0);
-    -moz-box-shadow: 0 5px 40px -10px rgba(0, 0, 0, 0);
-}
-
-.box:not(.disabled):hover {
-    transition: ease-in-out 0.2s;
-    color: white;
-    border-radius: 1rem;
-    -ms-transform: scale(1.2) rotate(20deg);
-    /* IE 9 */
-    transform: scale(1.2) rotate(20deg);
-    /* Standard syntax */
-    background-color: #4CAF50;
+    border: dashed hsla(0, 0%, 20%, 0.1);
     -webkit-box-shadow: 0 5px 40px -10px rgba(0, 0, 0, 0);
     -moz-box-shadow: 0 5px 40px -10px rgba(0, 0, 0, 0);
 }
 
 .box.disabled {
-    background-color: hsla(0, 0%, 20%, 0.05);
     border-radius: 1rem;
     border: dashed hsla(0, 0%, 20%, 0.1);
-    ;
-    /* background-color: darkgray; */
 }
 
 #buttons {
@@ -86,6 +106,7 @@ h2 {
     transition-duration: 1.8s;
     margin: 1rem;
     padding: .2rem;
+    letter-spacing: .2rem;
     background-color: rgba(0, 0, 0, 0);
     border: none;
     text-align: center;
@@ -96,23 +117,10 @@ h2 {
     -moz-box-shadow: 0 5px 40px -10px rgba(0, 0, 0, .57);
 }
 
-.divbutton:focus {
-    outline: none;
-}
-
-.divbutton:hover {
-    transition-duration: .8s;
-    color: white;
-    background-color: #4CAF50;
-    border-radius: 1rem;
-    border: none;
-    -webkit-box-shadow: 0 5px 40px -10px rgba(0, 0, 0, 0);
-    -moz-box-shadow: 0 5px 40px -10px rgba(0, 0, 0, 0);
-}
-
 #drawnButton {
-    padding: 1rem;
-    font-size: 1.5rem;
+    padding: 0.8rem;
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
 }
 
 #drawn {
@@ -130,19 +138,21 @@ h2 {
     width: 2rem;
     text-align: center;
     margin: .3rem;
-    -webkit-box-shadow: 0 5px 40px -10px rgba(0, 0, 0, .57);
-    -moz-box-shadow: 0 5px 40px -10px rgba(0, 0, 0, .57);
+    -webkit-box-shadow: 0 2px 20px -10px rgba(0, 0, 0, .57);
+    -moz-box-shadow: 0 2px 20px -10px rgba(0, 0, 0, .57);
 }
 
 .drawnValue:hover {
     transition: ease-in-out 0.2s;
     color: white;
     border-radius: 1rem;
-    -ms-transform: scale(1.2) rotate(20deg);
-    /* IE 9 */
-    transform: scale(1.2) rotate(20deg);
-    /* Standard syntax */
     background-color: #4CAF50;
     -webkit-box-shadow: 0 5px 40px -10px rgba(0, 0, 0, 0);
     -moz-box-shadow: 0 5px 40px -10px rgba(0, 0, 0, 0);
+}
+
+#signature {
+    color: #bdbdbd;
+    text-align: end;
+    margin: 2rem 0 2rem 0;
 }

@@ -48,7 +48,7 @@
     const drawnHtml = document.getElementById('drawn');
     const displayValue = (value) => {
         drawnHtml.innerHTML = '';
-        [...drawn].reverse()
+        [...drawn].sort((a, b) => a < b ? -1 : 1)
             .map(d => {
                 const box = document.createElement('div');
                 box.classList.add('drawnValue');
@@ -59,6 +59,7 @@
 
     button.addEventListener('click', () => {
         const newValue = randomPick();
+        button.innerHTML = newValue;
         console.log(newValue);
         displayValue(newValue);
     });

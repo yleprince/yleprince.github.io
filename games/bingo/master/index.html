@@ -53,14 +53,21 @@
                 const box = document.createElement('div');
                 box.classList.add('drawnValue');
                 box.innerHTML = d;
+                box.id = `box_${d}`;
                 drawnHtml.appendChild(box);
-            })
+            });
+        const gradient = 3;
+        drawn.slice(drawn.length - gradient, drawn.length)
+            .map((d, i) => {
+                document.getElementById(`box_${d}`)
+                    .style.backgroundColor = `rgba(76, 174, 79, ${i / gradient})`;
+            });
+        console.log();
     };
 
     button.addEventListener('click', () => {
         const newValue = randomPick();
         button.innerHTML = newValue;
-        console.log(newValue);
         displayValue(newValue);
     });
 </script>

@@ -76,3 +76,15 @@ print(mylist)
 > ```sh
 > ['a', 'b', 'c']
 > ```
+
+## 3. Normalize columns (using pandas)
+
+Mean + STD:
+```py
+normalized_df=(df-df.mean())/df.std()
+```
+Min-max normalization:
+```py
+normalized_df=(df-df.min())/(df.max()-df.min())
+```
+

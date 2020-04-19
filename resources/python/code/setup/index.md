@@ -26,6 +26,10 @@ $ pyenv global 3.8.1 # Select version 3.8.1 as default Python version
 ```
 
 
+## [`poetry`](https://python-poetry.org/) ##
+
+Check the documentation on their website.
+
 ## [`pipenv`](https://github.com/pypa/pipenv) ##
 
 `pipenv` is the equivalent of [`npm`](https://www.npmjs.com) or [`cargo`](https://github.com/rust-lang/cargo) but for python. It describes the dependencies of a project, the python version to use and manage isolated environment.
@@ -36,4 +40,4 @@ $ pyenv global 3.8.1 # Select version 3.8.1 as default Python version
 $ pip install pipenv
 ```
 
-Then you should only use pipenv to work in a clean environment. :bulb: 
+Then you should only use pipenv to work in a clean environment. 

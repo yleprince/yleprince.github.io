@@ -88,3 +88,22 @@ Min-max normalization:
 normalized_df=(df-df.min())/(df.max()-df.min())
 ```
 
+## 4. Json I/O
+
+Load:
+```python
+import json
+
+with open('data.txt') as json_file:
+    data = json.load(json_file)
+```
+
+Write:
+```python
+import json
+
+with open('data.txt', 'w') as outfile:
+    json.dump(data, outfile)
+```
+
+

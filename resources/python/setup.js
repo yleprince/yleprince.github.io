@@ -22,7 +22,7 @@ let content = [
   {
     'id_': 'polar chart',
     'href_': '/resources/python/polar/',
-    'class_': 'fas fa - asterisk'
+    'class_': 'fas fa-asterisk'
   }
 ];
 

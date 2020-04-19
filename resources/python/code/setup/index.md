@@ -30,7 +30,7 @@ $ pyenv global 3.8.1 # Select version 3.8.1 as default Python version
 
 Check the documentation on their website.
 
-## [`pipenv`](https://github.com/pypa/pipenv) ##
+## [`pipenv`](https://github.com/pypa/pipenv) - deprecated ##
 
 `pipenv` is the equivalent of [`npm`](https://www.npmjs.com) or [`cargo`](https://github.com/rust-lang/cargo) but for python. It describes the dependencies of a project, the python version to use and manage isolated environment.
 

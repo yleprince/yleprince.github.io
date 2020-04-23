@@ -102,4 +102,13 @@ with open('data.txt', 'w') as outfile:
     json.dump(data, outfile)
 ```
 
+## 5. Leading char:
+
+```py
+'Toto'.rjust(8, 'a')
+>> aaaaToto
+```
+
+To append leading `0` you can use `.zfill(length)`.
+
 

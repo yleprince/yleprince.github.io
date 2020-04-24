@@ -111,4 +111,12 @@ with open('data.txt', 'w') as outfile:
 
 To append leading `0` you can use `.zfill(length)`.
 
+## 6. Typed Python
 
+
+```py
+import math
+
+def circumference(radius: float) -> float:
+    return 2 * math.pi * radius
+```

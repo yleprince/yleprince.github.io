@@ -65,11 +65,18 @@
         console.log();
     };
 
-    button.addEventListener('click', () => {
+    const pick = () => {
         const newValue = randomPick();
         button.innerHTML = newValue;
         displayValue(newValue);
-    });
+    };
+    button.addEventListener('click', pick);
+    
+    document.body.onkeyup = function(e){
+    if(e.keyCode == 32){
+        pick();
+    }
+}
 </script>
 
 </html>

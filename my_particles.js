@@ -1,4 +1,3 @@
-
 let parameters = {
   "particles": {
     "number": {
@@ -115,5 +114,3 @@ let parameters = {
     "background_size": "cover"
   }
 };
-
-particlesJS("particles-js", parameters);
